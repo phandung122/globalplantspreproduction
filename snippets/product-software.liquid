@@ -1,0 +1,27 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT SOFTWARE
+----------------------------------------------------------------------------------------------------------------------
+
+This component generates a review badge from the product metafields information.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product
+{%- endcomment -%}
+
+<ul class="software-list">
+{%- for option in product.options_with_values -%}
+  {%- for value in option.values -%}
+    {%- assign firstWord = value | split: " " | first | handleize -%}
+    {%- assign swatchImage = firstWord | prepend: 'image_swatch_' -%}
+    {%- if firstWord == '3ds' or firstWord == 'growfx' or firstWord == 'fbx' or firstWord == 'cinema' or firstWord == 'sketchup' or firstWord == 'twinmotion' or firstWord == 'blender' or firstWord == 'rhinoceros' or firstWord == 'redshift' or firstWord == 'unreal' or firstWord == 'enscape' or firstWord == 'hdri' -%}
+      <li>
+        <span data-tooltip="{{ value }}">{{- settings[swatchImage] | image_url: width: 100 | image_tag: loading: 'lazy', class: 'block-swatch__image', alt: value -}}</span>
+      </li>
+    {%- endif -%}
+  {%- endfor-%}
+{%- endfor-%}
+</ul>

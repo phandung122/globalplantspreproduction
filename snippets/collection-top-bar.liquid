@@ -1,0 +1,180 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COLLECTION TOP BAR
+----------------------------------------------------------------------------------------------------------------------
+
+Show the top bar faceting visible on collection and search pages. It either shows facets or active filters based on
+the selected settings.
+
+********************************************
+Supported variables
+********************************************
+
+* results: either collection or search drop to extract the filters from
+* show_filters: if set to true, it shows the filters in their horizontal layout
+* show_active_filters: if set to true, show the active filters
+* show_sort_by: if set to true, show the sort by
+{%- endcomment -%}
+
+{%- assign selected_sort_by_value = results.sort_by | default: results.default_sort_by -%}
+{%- assign selected_sort_by = results.sort_options | where: 'value', selected_sort_by_value | first -%}
+
+<div class="collection__top-bar">
+  {%- if show_active_filters -%}
+    {%- if section.settings.filter_layout == 'drawer' -%}
+      <button class="text-with-icon group justify-self-start" aria-controls="facets-drawer" aria-expanded="false">
+        <span class="icon-filter">
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0.5C0.723858 0.5 0.5 0.723858 0.5 1C0.5 1.27614 0.723858 1.5 1 1.5H3C3.27614 1.5 3.5 1.27614 3.5 1C3.5 0.723858 3.27614 0.5 3 0.5H1ZM1 3.16667C0.723858 3.16667 0.5 3.39052 0.5 3.66667C0.5 3.94281 0.723858 4.16667 1 4.16667H3C3.27614 4.16667 3.5 3.94281 3.5 3.66667C3.5 3.39052 3.27614 3.16667 3 3.16667H1ZM0.5 6.33333C0.5 6.05719 0.723858 5.83333 1 5.83333H3C3.27614 5.83333 3.5 6.05719 3.5 6.33333C3.5 6.60948 3.27614 6.83333 3 6.83333H1C0.723858 6.83333 0.5 6.60948 0.5 6.33333ZM1 8.5C0.723858 8.5 0.5 8.72386 0.5 9C0.5 9.27614 0.723858 9.5 1 9.5H3C3.27614 9.5 3.5 9.27614 3.5 9C3.5 8.72386 3.27614 8.5 3 8.5H1ZM4.5 1C4.5 0.723858 4.72386 0.5 5 0.5H13C13.2761 0.5 13.5 0.723858 13.5 1C13.5 1.27614 13.2761 1.5 13 1.5H5C4.72386 1.5 4.5 1.27614 4.5 1ZM5 3.16667C4.72386 3.16667 4.5 3.39052 4.5 3.66667C4.5 3.94281 4.72386 4.16667 5 4.16667H9.66667C9.94281 4.16667 10.1667 3.94281 10.1667 3.66667C10.1667 3.39052 9.94281 3.16667 9.66667 3.16667H5ZM4.5 6.33333C4.5 6.05719 4.72386 5.83333 5 5.83333H13C13.2761 5.83333 13.5 6.05719 13.5 6.33333C13.5 6.60948 13.2761 6.83333 13 6.83333H5C4.72386 6.83333 4.5 6.60948 4.5 6.33333ZM5 8.5C4.72386 8.5 4.5 8.72386 4.5 9C4.5 9.27614 4.72386 9.5 5 9.5H9C9.27614 9.5 9.5 9.27614 9.5 9C9.5 8.72386 9.27614 8.5 9 8.5H5Z" fill="#2A5A3D"/>
+          </svg>
+
+        </span>
+        <span class="reversed-link">{{- 'collection.faceting.filters' | t -}}</span>
+      </button>
+    {%- elsif section.settings.filter_layout == 'sidebar' -%}
+      <div class="text-with-icon">
+        <span class="icon-filter">
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0.5C0.723858 0.5 0.5 0.723858 0.5 1C0.5 1.27614 0.723858 1.5 1 1.5H3C3.27614 1.5 3.5 1.27614 3.5 1C3.5 0.723858 3.27614 0.5 3 0.5H1ZM1 3.16667C0.723858 3.16667 0.5 3.39052 0.5 3.66667C0.5 3.94281 0.723858 4.16667 1 4.16667H3C3.27614 4.16667 3.5 3.94281 3.5 3.66667C3.5 3.39052 3.27614 3.16667 3 3.16667H1ZM0.5 6.33333C0.5 6.05719 0.723858 5.83333 1 5.83333H3C3.27614 5.83333 3.5 6.05719 3.5 6.33333C3.5 6.60948 3.27614 6.83333 3 6.83333H1C0.723858 6.83333 0.5 6.60948 0.5 6.33333ZM1 8.5C0.723858 8.5 0.5 8.72386 0.5 9C0.5 9.27614 0.723858 9.5 1 9.5H3C3.27614 9.5 3.5 9.27614 3.5 9C3.5 8.72386 3.27614 8.5 3 8.5H1ZM4.5 1C4.5 0.723858 4.72386 0.5 5 0.5H13C13.2761 0.5 13.5 0.723858 13.5 1C13.5 1.27614 13.2761 1.5 13 1.5H5C4.72386 1.5 4.5 1.27614 4.5 1ZM5 3.16667C4.72386 3.16667 4.5 3.39052 4.5 3.66667C4.5 3.94281 4.72386 4.16667 5 4.16667H9.66667C9.94281 4.16667 10.1667 3.94281 10.1667 3.66667C10.1667 3.39052 9.94281 3.16667 9.66667 3.16667H5ZM4.5 6.33333C4.5 6.05719 4.72386 5.83333 5 5.83333H13C13.2761 5.83333 13.5 6.05719 13.5 6.33333C13.5 6.60948 13.2761 6.83333 13 6.83333H5C4.72386 6.83333 4.5 6.60948 4.5 6.33333ZM5 8.5C4.72386 8.5 4.5 8.72386 4.5 9C4.5 9.27614 4.72386 9.5 5 9.5H9C9.27614 9.5 9.5 9.27614 9.5 9C9.5 8.72386 9.27614 8.5 9 8.5H5Z" fill="#2A5A3D"/>
+          </svg>
+
+        </span>
+        {{- 'collection.faceting.filters' | t -}}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if show_active_filters or show_sort_by -%}
+    <div class="facets-summary">
+      {%- if show_active_filters -%}
+        {%- if section.settings.filter_layout != 'horizontal' -%}
+          {% comment %}{%- render 'active-facets', results: results -%}{% endcomment %}
+        {%- else -%}
+          {%- comment -%}The horizontal filtering show in a completely different way and have many exception, so the code end up pretty complex{%- endcomment -%}
+
+          {%- capture id_prefix -%}facets-{{ 'now' | date: '%N' }}{%- endcapture -%}
+          {%- assign availability_filter = results.filters | where: 'param_name', 'filter.v.availability' | first -%}
+
+          <form is="facet-form" update-on-change section-id="{{ section.id }}" method="GET" action="{{ request.path }}" class="contents">
+            {%- if request.page_type == 'search' -%}
+              <input type="hidden" name="q" value="{{ results.terms | escape }}">
+              <input type="hidden" name="type" value="product">
+            {%- endif -%}
+
+            {%- if availability_filter -%}
+              <div class="availability-facet">
+                <label for="{{ id_prefix }}-{{ availability_filter.param_name }}" class="bold">{{- 'collection.faceting.availability_label' | t -}}</label>
+                <input id="{{ id_prefix }}-{{ availability_filter.param_name }}" type="checkbox" class="switch" name="{{ availability_filter.param_name }}" value="1" {% if availability_filter.active_values.size > 0 %}checked{% endif %}>
+              </div>
+            {%- endif -%}
+
+            <div class="facets-horizontal">
+              {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+
+              {%- for filter in results.filters -%}
+                {%- if filter.param_name == 'filter.v.availability' -%}
+                  {%- continue -%}
+                {%- endif -%}
+
+                {%- assign downcase_label = filter.label | downcase -%}
+
+                {%- if section.settings.show_empty_filter_values == false -%}
+                  {%- assign empty_filter_values = filter.values | where: 'count', 0 | where: 'active', false -%}
+
+                  {%- if empty_filter_values.size == filter.values.size -%}
+                    {%- continue -%}
+                  {%- endif -%}
+                {%- endif -%}
+
+                <button type="button" class="text-with-icon group" aria-controls="filter-dialog-{{ filter.param_name }}" aria-expanded="false">
+                  <span class="bold">{{ filter.label }}</span>
+                  <span class="circle-chevron group-expanded:rotate">{%- render 'icon' with 'chevron-bottom-small', direction_aware: true -%}</span>
+                </button>
+
+                <facet-dialog id="filter-dialog-{{ filter.param_name }}" class="facet-dialog shadow">
+                  {%- case filter.type -%}
+                    {%- when 'list' or 'boolean' -%}
+                      {%- if section.settings.show_color_swatch and color_label_list contains downcase_label -%}
+                        <div class="color-list h-stack wrap justify-center gap-4">
+                          {%- for filter_value in filter.values -%}
+                            {%- assign disabled = false -%}
+
+                            {%- if filter_value.count == 0 and filter_value.active == false -%}
+                              {% if section.settings.show_empty_filter_values == false %}
+                                {%- continue -%}
+                              {%- else -%}
+                                {%- assign disabled = true -%}
+                              {%- endif -%}
+                            {%- endif -%}
+
+                            {% render 'swatch' with 'color', allow_multiple: true, selected: filter_value.active, value: filter_value.label, name: filter_value.param_name, disabled: disabled, show_tooltip: true %}
+                          {%- endfor -%}
+                        </div>
+                      {%- else -%}
+                        <div class="h-stack gap-2 justify-center wrap">
+                          {%- for filter_value in filter.values -%}
+                            {%- assign disabled = false -%}
+
+                            {%- if filter_value.count == 0 and filter_value.active == false -%}
+                              {% if section.settings.show_empty_filter_values == false %}
+                                {%- continue -%}
+                              {%- else -%}
+                                {%- assign disabled = true -%}
+                              {%- endif -%}
+                            {%- endif -%}
+
+                            {%- capture checkbox_id -%}checkbox-{{ 'now' | date: '%N' }}{%- endcapture -%}
+                            <input id="{{ checkbox_id }}" class="sr-only" type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}" {% if filter_value.active %}checked{% endif %} {% if disabled %}disabled{% endif %}>
+                            <label for="{{ checkbox_id }}" class="facet-dialog-option">{{ filter_value.label }} {% if section.settings.show_filter_values_count %}({{ filter_value.count }}){% endif %}</label>
+                          {%- endfor -%}
+                        </div>
+                      {%- endif -%}
+
+                    {%- when 'price_range' -%}
+                      {%- render 'price-range', filter: filter, layout: 'inline' -%}
+                  {%- endcase -%}
+                </facet-dialog>
+              {%- endfor -%}
+            </div>
+          </form>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if show_sort_by -%}
+        {%- capture sort_by_popover_id -%}popover-{{ 'now' | date: '%N' }}{%- endcapture -%}
+
+        <facet-sort-by class="sort-by-facet">
+          <span class="bold">{{ 'collection.faceting.sort_by' | t }}:</span>
+
+          <button type="button" class="text-with-icon group" aria-controls="{{ sort_by_popover_id }}" aria-expanded="false">
+            <span id="{{ sort_by_popover_id }}-value" class="reversed-link">{{- selected_sort_by.name -}}</span>
+            <span class="circle-chevron group-hover:colors group-expanded:rotate">{%- render 'icon' with 'chevron-bottom-small', direction_aware: true -%}</span>
+          </button>
+
+          <x-popover id="{{ sort_by_popover_id }}" class="popover" close-on-listbox-select anchor-horizontal="end" anchor-vertical="end">
+            <x-listbox class="popover-listbox" aria-owns="{{ sort_by_popover_id }}-value">
+              {%- for sort_option in results.sort_options -%}
+                <button type="button" class="popover-listbox__option group" role="option" value="{{ sort_option.value }}" {% if sort_option.value == selected_sort_by_value %}aria-selected="true"{% endif %}>
+                  <span class="reversed-link">{{ sort_option.name }}</span>
+                </button>
+              {%- endfor -%}
+            </x-listbox>
+          </x-popover>
+        </facet-sort-by>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if show_active_filters and section.settings.filter_layout == 'horizontal' -%}
+    {%- render 'active-facets', results: results -%}
+  {%- endif -%}
+</div>
+
+{%- if show_active_filters -%}
+  {%- if section.settings.filter_layout != 'horizontal' -%}
+    <div class="facets-summary show-botton">
+     <p class="text-center">{{ 'collection.products_count' | t: count: collection.products_count }}</p> 
+    {%- render 'active-facets', results: results -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}

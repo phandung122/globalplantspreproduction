@@ -1,0 +1,79 @@
+{%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --press-items-border: {{ section.settings.logo_item_border.rgb }} / {{ section.settings.logo_item_border.alpha }};
+      --press-max-width: {% if section.settings.content_size == 'small' %}760{% elsif section.settings.content_size == 'medium' %}1000{% elsif section.settings.content_size == 'large' %}1260{% endif %}px;
+    }
+
+    {%- if section.settings.background_image != blank -%}
+      #shopify-section-{{ section.id }} > .section {
+        position: relative;
+      }
+
+      #shopify-section-{{ section.id }} > .section > .section-stack {
+        position: relative;
+        z-index: 2;
+      }
+
+      #shopify-section-{{ section.id }} > .section > img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    {%- endif -%}
+  </style>
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+  {%- if section.settings.show_share_buttons -%}
+    <div class="article-content">
+      <div class="share-buttons gap-3">
+        {%- assign share_label = 'general.social.share' | t -%}
+        {%- assign share_url = shop.url | append: article.url -%}
+
+        <button class="button button--subdued button--lg w-full h-stack gap-3 align-center justify-center sm:hidden" is="share-button" style="--button-background: 0 0 0 / 0" share-url="{{ share_url | escape }}" share-title="{{ article.title | escape }}">
+          {%- render 'icon' with 'share', with: 18, height: 18 -%}
+          {{- 'general.social.share' | t -}}
+        </button>
+
+        <ul class="h-stack sm-max:hidden gap-3" role="list">
+          <li><a href="{% render 'share-link', host: 'twitter', title: article.title, url: share_url %}" class="share-buttons__item" target="_blank" aria-label="{{ 'general.social.share_on' | t: social_media: 'Twitter' }}">{%- render 'icon' with 'twitter', width: 24, height: 24 -%}</a></li>
+          <li><a href="{% render 'share-link', host: 'messenger', title: article.title, url: share_url %}" class="share-buttons__item" target="_blank" aria-label="{{ 'general.social.share_on' | t: social_media: 'Messenger' }}">{%- render 'icon' with 'messenger', width: 24, height: 24 -%}</a></li>
+          <li><a href="{% render 'share-link', host: 'facebook', title: article.title, url: share_url %}" class="share-buttons__item" target="_blank" aria-label="{{ 'general.social.share_on' | t: social_media: 'Facebook' }}">{%- render 'icon' with 'facebook', width: 24, height: 24 -%}</a></li>
+          <li><a href="mailto:?&subject={{ title | escape }}&body={{ share_url }}" class="share-buttons__item" target="_blank" aria-label="{{ 'general.social.share_email' | t }}">{%- render 'icon' with 'email' -%}</a></li>
+        </ul>
+      </div>
+    </div>
+  {%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Blog social media",
+  "class": "shopify-section--blog-social",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": "Show share buttons",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog social media"
+    }
+  ]
+}
+{% endschema %}

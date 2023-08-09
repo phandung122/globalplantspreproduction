@@ -1,0 +1,72 @@
+{
+  "sections": {
+    "2433ee1c-f51d-4913-8c93-4da66c05c411": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "40c3a7ba-a182-43fd-b015-92021319e6f5": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--19044059316514__40c3a7ba-a182-43fd-b015-92021319e6f5-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<span>My<\/span> Cart",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--19044059316514__40c3a7ba-a182-43fd-b015-92021319e6f5-heading-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/cart-title-bg.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "main": {
+      "type": "main-cart",
+      "blocks": {
+        "totals": {
+          "type": "totals",
+          "settings": {
+            "show_order_weight": false,
+            "show_shipping_text": true
+          }
+        },
+        "cart_note": {
+          "type": "cart_note",
+          "settings": {}
+        },
+        "checkout_button": {
+          "type": "checkout_button",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "totals",
+        "cart_note",
+        "checkout_button"
+      ],
+      "settings": {
+        "show_shipping_estimator": false,
+        "show_payment_icons": false
+      }
+    }
+  },
+  "order": [
+    "2433ee1c-f51d-4913-8c93-4da66c05c411",
+    "40c3a7ba-a182-43fd-b015-92021319e6f5",
+    "main"
+  ]
+}

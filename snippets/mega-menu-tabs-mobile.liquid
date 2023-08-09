@@ -1,0 +1,35 @@
+{%- if mega_menu_tab_block.settings.menu != blank -%}
+<div class="mega-menu-mobile">
+  <x-tabs class="mega-menu-mobile__tabs">
+    <template shadowrootmode="open">
+      <slot role="tablist" part="tab-list" name="title"></slot>
+      <slot part="tab-panels" name="content"></slot>
+    </template>
+
+    {%- for link in mega_menu_tab_block.settings.menu.links -%}
+      {%- if link.links.size > 0 -%}
+        <button type="button" slot="title" class="mega-menu-mobile__tab-button medium">{{ link.title }}</button>
+        <div role="tabpanel" class="mega-menu-mobile__tab-content" slot="content" {% cycle '', 'hidden', 'hidden' %}>
+          {%- for sub_link in link.links -%}
+            {%- if sub_link.levels > 0 -%}
+              <details aria-expanded="{% if forloop.first == true %}true{% else %}false{% endif %}" is="accordion-disclosure" class="accordion"{% if forloop.first == true %} open{% endif %}>
+                <summary class="text-with-icon w-full group justify-between montserrat semibold">
+                  {{- sub_link.title -}}
+                  {%- render 'icon' with 'chevron-nav-bottom' -%}
+                </summary>
+                <div class="accordion__content">
+                  <ul class="mega-menu__links v-stack" role="list">
+                    {%- for sub_sub_link in sub_link.links -%}
+                      <li><a href="{{ sub_sub_link.url }}" class="block">{{- sub_sub_link.title -}}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </x-tabs>
+</div>
+{%- endif -%}

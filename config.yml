@@ -1,0 +1,15 @@
+phandung:
+  password: shptka_bf45dec3f3bff12ad22f81570b4d7125
+  theme_id: "155430879522"
+  store: globe-plants.myshopify.com
+  ignore_files:
+phandung2:
+  password: shptka_bf45dec3f3bff12ad22f81570b4d7125
+  theme_id: "156238348578"
+  store: globe-plants.myshopify.com
+  ignore_files:
+preproduction:
+  password: shptka_bf45dec3f3bff12ad22f81570b4d7125
+  theme_id: "149809299746"
+  store: globe-plants.myshopify.com
+  ignore_files:

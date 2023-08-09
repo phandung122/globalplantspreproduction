@@ -1,0 +1,343 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_mode": "block",
+            "color_mode": "color",
+            "formats_guide_text": "Formats Guide",
+            "formats_guide_link": "shopify:\/\/pages\/formats-guide",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "atc_button_background": "#56842c",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "3c1c29ac-1633-4ef3-a73d-c1dd04ae4f28": {
+          "type": "downloaded_pdf",
+          "settings": {
+            "downloaded_pdf_text": "{{ product.metafields.custom.title_pdf.value }}"
+          }
+        },
+        "b6c07ce6-ea74-446c-93fd-4052e15c724a": {
+          "type": "share_buttons",
+          "settings": {
+            "alignment": "start"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "3c1c29ac-1633-4ef3-a73d-c1dd04ae4f28",
+        "b6c07ce6-ea74-446c-93fd-4052e15c724a"
+      ],
+      "settings": {
+        "full_width": false,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 56,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 4,
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "2ea01541-95c0-4421-92fa-542becc10131": {
+      "type": "tabs",
+      "blocks": {
+        "aaa9351a-2729-4261-9b87-2e8c7b6c8179": {
+          "type": "tab_description",
+          "settings": {
+            "title": "Descriptions",
+            "about_description": "{{ product.metafields.custom.about | metafield_tag }}",
+            "brand_logo": "shopify:\/\/shop_images\/gp-logo.png"
+          }
+        },
+        "a739ec34-d08f-4c73-b0a8-3e4cd742750d": {
+          "type": "tab_formats",
+          "settings": {
+            "title": "Formats Guide",
+            "title_supported": "SUPPORTED VERSIONS, FORMATS, RENDERER",
+            "support_icon_window": "shopify:\/\/shop_images\/formats-system-Win.png",
+            "support_icon_mac": "shopify:\/\/shop_images\/formats-system-Mac.png",
+            "support_3ds-max_logo": "shopify:\/\/shop_images\/formats-3DsMax.png",
+            "support_3ds-max_title_line1": "2018+",
+            "support_3ds-max_media_line2": "shopify:\/\/shop_images\/formats-VRay.png",
+            "support_3ds-max_title_line2": "V-Ray text",
+            "support_3ds-max_media_line3": "shopify:\/\/shop_images\/formats-Corona.png",
+            "support_3ds-max_title_line3": "Corona text",
+            "support_3ds-max_title_line4": "",
+            "support_3ds-max_title_line5": "",
+            "support_3ds-max_title_line6": "",
+            "support_3ds-max_title_window": "Text for Window",
+            "support_3ds-max_title_mac": "",
+            "support_growfx_logo": "shopify:\/\/shop_images\/formats-Growfx.png",
+            "support_growfx_title_line1": "GFX 1.99 SP11+",
+            "support_growfx_media_line2": "shopify:\/\/shop_images\/formats-VRay.png",
+            "support_growfx_title_line2": "V-Ray text",
+            "support_growfx_media_line3": "shopify:\/\/shop_images\/formats-Corona.png",
+            "support_growfx_title_line3": "Corona text..",
+            "support_growfx_title_line4": "",
+            "support_growfx_title_line5": "",
+            "support_growfx_title_line6": "",
+            "support_growfx_title_window": "Text for Window",
+            "support_growfx_title_mac": "",
+            "support_fbx_logo": "shopify:\/\/shop_images\/formats-FBX.png",
+            "support_fbx_title_line1": "",
+            "support_fbx_title_line2": "",
+            "support_fbx_title_line3": "",
+            "support_fbx_title_line4": "",
+            "support_fbx_media_line5": "shopify:\/\/shop_images\/formats-importable-Twinmotion.png",
+            "support_fbx_title_line5": "Twinmotion text ...",
+            "support_fbx_media_line6": "shopify:\/\/shop_images\/formats-importable-Lumion.png",
+            "support_fbx_title_line6": "Lumion text...",
+            "support_fbx_title_window": "Text for Window",
+            "support_fbx_title_mac": "Text for Mac",
+            "support_cinema-4d_logo": "shopify:\/\/shop_images\/formats-Cinema-4D.png",
+            "support_cinema-4d_title_line1": "R19+",
+            "support_cinema-4d_media_line2": "shopify:\/\/shop_images\/formats-VRay.png",
+            "support_cinema-4d_title_line2": "V-Ray for text",
+            "support_cinema-4d_media_line3": "shopify:\/\/shop_images\/formats-Corona.png",
+            "support_cinema-4d_title_line3": "Corona for text..",
+            "support_cinema-4d_title_line4": "",
+            "support_cinema-4d_title_line5": "",
+            "support_cinema-4d_title_line6": "",
+            "support_cinema-4d_title_window": "Text for Window",
+            "support_cinema-4d_title_mac": "Text for Mac",
+            "support_sketchup_logo": "shopify:\/\/shop_images\/formats-Sketchup.png",
+            "support_sketchup_title_line1": "2018+",
+            "support_sketchup_media_line2": "shopify:\/\/shop_images\/formats-VRay.png",
+            "support_sketchup_title_line2": "V-Ray for text",
+            "support_sketchup_title_line3": "",
+            "support_sketchup_title_line4": "",
+            "support_sketchup_media_line5": "shopify:\/\/shop_images\/formats-importable-Twinmotion.png",
+            "support_sketchup_title_line5": "Twinmotion for text",
+            "support_sketchup_media_line6": "shopify:\/\/shop_images\/formats-importable-Lumion.png",
+            "support_sketchup_title_line6": "Lumion Text",
+            "support_sketchup_title_window": "Text for Window",
+            "support_sketchup_title_mac": "Text for Mac",
+            "support_blender_logo": "shopify:\/\/shop_images\/formats-Blender.png",
+            "support_blender_title_line1": "2.8+",
+            "support_blender_title_line2": "",
+            "support_blender_title_line3": "",
+            "support_blender_title_line4": "Cycles Renderer",
+            "support_blender_title_line5": "",
+            "support_blender_title_line6": "",
+            "support_blender_title_window": "Text for Window",
+            "support_blender_title_mac": "Text for Mac",
+            "support_twinmotion_logo": "shopify:\/\/shop_images\/formats-TWINMOTION.png",
+            "support_twinmotion_title_line1": "2022+",
+            "support_twinmotion_title_line2": "",
+            "support_twinmotion_title_line3": "",
+            "support_twinmotion_title_line4": ".tmi for User Library",
+            "support_twinmotion_title_line5": "",
+            "support_twinmotion_title_line6": "",
+            "support_twinmotion_title_window": "Text for Window",
+            "support_twinmotion_title_mac": "Text for Mac",
+            "support_rhino3d_logo": "shopify:\/\/shop_images\/formats-RHINOCEROS.png",
+            "support_rhino3d_title_line1": "Rhino 7+",
+            "support_rhino3d_media_line2": "shopify:\/\/shop_images\/formats-VRay.png",
+            "support_rhino3d_title_line2": "V-Ray for text",
+            "support_rhino3d_title_line3": "",
+            "support_rhino3d_title_line4": "Rhino Renderer",
+            "support_rhino3d_title_line5": "",
+            "support_rhino3d_title_line6": "",
+            "support_rhino3d_title_window": "Text for Window",
+            "support_rhino3d_title_mac": "Text for Mac",
+            "support_unreal-engine_logo": "shopify:\/\/shop_images\/formats-UNREAL.png",
+            "support_unreal-engine_title_line1": "Unreal Engine 5+",
+            "support_unreal-engine_title_line2": "",
+            "support_unreal-engine_title_line3": "",
+            "support_unreal-engine_title_line4": "Lumen",
+            "support_unreal-engine_title_line5": "",
+            "support_unreal-engine_title_line6": "",
+            "support_unreal-engine_title_window": "Text for Window",
+            "support_unreal-engine_title_mac": "",
+            "support_enscape_logo": "shopify:\/\/shop_images\/formats-ENSCAPE-2.png",
+            "support_enscape_title_line1": "3.4+",
+            "support_enscape_media_line2": "shopify:\/\/shop_images\/formats-Revit.png",
+            "support_enscape_title_line2": "Revit",
+            "support_enscape_media_line3": "shopify:\/\/shop_images\/formats-Sketchup-s.png",
+            "support_enscape_title_line3": "SketchUp for Enscape",
+            "support_enscape_media_line4": "shopify:\/\/shop_images\/formats-RHINOCEROS-3D.png",
+            "support_enscape_title_line4": "Rhinoceros 3D",
+            "support_enscape_media_line5": "shopify:\/\/shop_images\/formats-Archicad.png",
+            "support_enscape_title_line5": "Archicad Enscape",
+            "support_enscape_media_line6": "shopify:\/\/shop_images\/formats-Vectorworks.png",
+            "support_enscape_title_line6": "Vectorworks Enscape",
+            "support_enscape_title_window": "Text for Window",
+            "support_enscape_title_mac": "",
+            "support_redshift_logo": "shopify:\/\/shop_images\/formats-Redshift.png",
+            "support_redshift_title_line1": "RS 1.5+",
+            "support_redshift_media_line2": "shopify:\/\/shop_images\/format-3DS-Max.png",
+            "support_redshift_title_line2": "3Ds Max for RedShift",
+            "support_redshift_media_line3": "shopify:\/\/shop_images\/formats-CINEMA-4D-s.png",
+            "support_redshift_title_line3": "Cinema 4D for RedShift",
+            "support_redshift_title_line4": "",
+            "support_redshift_title_line5": "",
+            "support_redshift_title_line6": "",
+            "support_redshift_title_window": "Title for Window",
+            "support_redshift_title_mac": "Title for Mac"
+          }
+        },
+        "a64dc731-7431-4079-86da-6523132172b8": {
+          "type": "system_high",
+          "settings": {
+            "text_general": "Please check the requirements below to find out if your PC can give you a good Globe Plants experience.",
+            "text_recommended": "If your hardware configuration does not meet the requirements below, we have a LOW POLY format product available #here!",
+            "text_table_cpu": "Intel\/AMD processor scoring a single thread CPUMark of 2,200 or higher. (Such as the AMD Ryzen 5 1600X, Intel Core i7-4790S or better)",
+            "text_table_ram": "16 GB or more",
+            "text_table_graphics-card": "GPU scoring a G3DMark of 9,000 or higher with up-to-date drivers. (Such as the Nvidia GeForce RTX 3060, Quadro RTX 4000, AMD Radeon RX 5700, or better)",
+            "text_table_graphics-card-memory": "6 GB or more*",
+            "text_table_space": "Minimum 75 GB of free disk space in the drives where the Windows User Account and Documents folder are located in."
+          }
+        },
+        "3d0644d0-f7a2-457f-9be7-eb9b5ef898ae": {
+          "type": "system_low",
+          "settings": {
+            "text_general": "Please check the requirements below to find out if your PC can give you a good Globe Plants experience.",
+            "text_recommended": "If you have a high end computer system and would like to maximize our models quality in SketchUp, FBX or Twinmotion format, we highly recommend a HIGH POLY format model available #here!",
+            "text_table_cpu": "Intel\/AMD processor scoring a single thread CPUMark of 2,200 or higher. (Such as the AMD Ryzen 5 1600X, Intel Core i7-4790S or better)",
+            "text_table_ram": "16 GB or more",
+            "text_table_graphics-card": "GPU scoring a G3DMark of 9,000 or higher with up-to-date drivers. (Such as the Nvidia GeForce RTX 3060, Quadro RTX 4000, AMD Radeon RX 5700, or better)",
+            "text_table_graphics-card-memory": "6 GB or more*",
+            "text_table_space": "Minimum 75 GB of free disk space in the drives where the Windows User Account and Documents folder are located in."
+          }
+        },
+        "b023a9d6-fbd4-466a-a9fa-00dfe291f655": {
+          "type": "system_2d_images",
+          "settings": {
+            "text_general": "Please check the requirements below to find out if your PC can give you a good Globe Plants experience.",
+            "text_recommended": "",
+            "text_table_cpu": "Intel\/AMD processor scoring a single thread CPUMark of 2,200 or higher. (Such as the AMD Ryzen 5 1600X, Intel Core i7-4790S or better)",
+            "text_table_ram": "16 GB or more",
+            "text_table_graphics-card": "GPU scoring a G3DMark of 9,000 or higher with up-to-date drivers. (Such as the Nvidia GeForce RTX 3060, Quadro RTX 4000, AMD Radeon RX 5700, or better)",
+            "text_table_graphics-card-memory": "6 GB or more*",
+            "text_table_space": "Minimum 75 GB of free disk space in the drives where the Windows User Account and Documents folder are located in."
+          }
+        },
+        "4fafc046-f4a5-4db6-8712-b1c1ab3ab8a8": {
+          "type": "high",
+          "settings": {
+            "title": "How can I extract 7zip files with numbers in extensions?",
+            "content": "<p>Write content to help your customers to better understand your products or policies.<\/p>"
+          }
+        },
+        "ed022ef4-9471-4886-b52c-b00da1a668d2": {
+          "type": "high",
+          "settings": {
+            "title": "What can I do if my purchased 3d models are corrupted?",
+            "content": "<p>Write content to help your customers to better understand your products or policies.<\/p>"
+          }
+        },
+        "8598ef4c-58e6-473e-924c-3f51d6522251": {
+          "type": "high",
+          "settings": {
+            "title": "Do I have to register an account to make a purchase?",
+            "content": "<p>Write content to help your customers to better understand your products or policies.<\/p>"
+          }
+        },
+        "02e38b31-cb4a-4fbd-a34e-5f2da8baf4d1": {
+          "type": "high",
+          "settings": {
+            "title": "How can I pay for my order?",
+            "content": "<p>Write content to help your customers to better understand your products or policies.<\/p>"
+          }
+        },
+        "eea267ac-b204-45f7-bb29-a06a97c7ae12": {
+          "type": "high",
+          "settings": {
+            "title": "How can I receive purchased products?",
+            "content": "<p>Write content to help your customers to better understand your products or policies.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "aaa9351a-2729-4261-9b87-2e8c7b6c8179",
+        "a739ec34-d08f-4c73-b0a8-3e4cd742750d",
+        "a64dc731-7431-4079-86da-6523132172b8",
+        "3d0644d0-f7a2-457f-9be7-eb9b5ef898ae",
+        "b023a9d6-fbd4-466a-a9fa-00dfe291f655",
+        "4fafc046-f4a5-4db6-8712-b1c1ab3ab8a8",
+        "ed022ef4-9471-4886-b52c-b00da1a668d2",
+        "8598ef4c-58e6-473e-924c-3f51d6522251",
+        "02e38b31-cb4a-4fbd-a34e-5f2da8baf4d1",
+        "eea267ac-b204-45f7-bb29-a06a97c7ae12"
+      ],
+      "settings": {
+        "full_width": false,
+        "title_gallery": "Showcase",
+        "title_gallery_bundle": "Technical & features",
+        "title_bundle_list": "List of species",
+        "title_faqs": "Have a question? <span>We have a mini FAQs below<\/span>",
+        "title_faqs_note": "Still have question?",
+        "content_faqs_note": "Check out our comprehensive FAQs",
+        "link_faqs": "shopify:\/\/pages\/faq",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "2f84e136-d813-4cd6-9a77-e877eb4b2948": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 4,
+        "products": [],
+        "full_width": false,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Related Products",
+        "content": "",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "2ea01541-95c0-4421-92fa-542becc10131",
+    "2f84e136-d813-4cd6-9a77-e877eb4b2948"
+  ]
+}

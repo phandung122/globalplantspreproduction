@@ -1,0 +1,203 @@
+<div id="software" class="section related-tab tab">
+  <div class="related__questions-title">
+    <div class="v-stack">
+      {%- if section.settings.title != blank -%}
+        <h2 class="h2">
+          {{ section.settings.title }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="p">
+          {{ section.settings.text }}
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- if section.blocks.size > 0 -%}
+    <div class="related__questions-content">
+      <div {% render 'surface', class: 'faq-accordion', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
+        <ul>
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {% when 'heading' %}
+                <li class="related-faq">
+                  {%- assign heading-title = block.settings.text | downcase -%}
+                  {%- assign headingTitle = heading-title | replace: " ", "-" -%}
+
+                  {%- capture related_heading -%}
+                      {%- if block.settings.heading_image != blank -%}
+                        <div class="icon">
+                          {{- block.settings.heading_image | image_url: width: block.settings.heading_image.width | image_tag: widths: '300,400' -}}
+                        </div>
+                      {%- endif -%}
+                      
+                      <div class="text">
+                        <span class="question">{{ block.settings.text }}</span>
+                      </div>
+                  {%- endcapture -%}
+  
+                  {%- capture related_content -%}
+                    <ul>
+                      {%- for block in section.blocks -%}
+                        {% case block.type %}
+                          {% when 'richtext' %}
+                            {% if block.settings.question_type == headingTitle %}
+                              <li class="faq">
+                                {%- capture related_content -%}
+                                  {{ block.settings.answer }}
+                                {%- endcapture -%}
+              
+                                {%- render 'accordion', title: block.settings.question, content: related_content, block: block -%}
+                              </li>
+                            {% endif %}
+                        {% endcase %}
+                      {%- endfor -%}
+                    </ul>
+                  {%- endcapture -%}
+  
+                  {%- render 'accordion-related', title: related_heading, content: related_content, block: block -%}
+                </li>
+            {% endcase %}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Related Questions",
+  "class": "shopify-section--faq",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "blocks": [
+    {
+			"name": "Related heading",
+			"type": "heading",
+			"settings": [
+        {
+					"type": "text",
+					"id": "text",
+					"label": "Heading",
+					"default": "GrowFX"
+				},
+        {
+          "type": "image_picker",
+          "id": "heading_image",
+          "label": "Heading Image"
+        }
+			]
+		},
+		{
+			"name": "Related FAQ",
+			"type": "richtext",
+			"settings": [
+				{
+					"type": "text",
+					"id": "question",
+					"label": "Question",
+					"default": "How can I pay for my order?"
+				},
+        {
+          "type": "select",
+          "id": "question_type",
+          "label": "Question type",
+          "options": [
+            {
+              "value": "3ds-max",
+              "label": "3Ds Max"
+            },
+            {
+              "value": "growfx",
+              "label": "GrowFX"
+            },
+            {
+              "value": "fbx",
+              "label": "FBX"
+            },
+            {
+              "value": "sketchup",
+              "label": "Sketchup"
+            },
+            {
+              "value": "cinema-4d",
+              "label": "Cinema 4D"
+            },
+            {
+              "value": "blender",
+              "label": "Blender"
+            },
+            {
+              "value": "twinmotion",
+              "label": "Twinmotion"
+            },
+            {
+              "value": "rhinoceros-3d",
+              "label": "Rhinoceros 3D"
+            },
+            {
+              "value": "redshift",
+              "label": "RedShift"
+            },
+            {
+              "value": "unreal-engine-5",
+              "label": "Unreal Engine 5"
+            },
+            {
+              "value": "enscape",
+              "label": "Enscape"
+            },
+            {
+              "value": "hdri-all-formats",
+              "label": "HDRI All Formats"
+            },
+            {
+              "value": "lumion",
+              "label": "Lumion"
+            }
+          ],
+          "default": "growfx"
+        },
+        {
+					"type": "richtext",
+					"label": "Answer",
+					"id": "answer",
+					"default": "<p>All prices on our store are in USD by default. You can change currencies by clicking on the top right USD text in the menu and select the available currencies to be converted.</p>"
+				}
+			]
+		}
+	],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "accordion_background",
+      "label": "Accordion background"
+    },
+    {
+      "type": "color",
+      "id": "accordion_text_color",
+      "label": "Accordion text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Realted questions"
+    }
+  ]
+}
+{% endschema %}

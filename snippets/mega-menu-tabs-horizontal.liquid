@@ -1,0 +1,75 @@
+{%- if link.links.size > 0 -%}
+  <style>
+    @media screen and (min-width: 1150px) {
+      #mega-menu-{{ mega_menu_tab_block.id }} {
+        --mega-menu-nav-column-max-width: {% if mega_menu_block.settings.submenu_style == 'bold_text' %}{% if link.links.size <= 2 %}240px{% else %}200px{% endif %}{% else %}{% if link.links.size <= 2 %}180px{% else %}160px{% endif %}{% endif %};
+        --mega-menu-justify-content: {% if link.links.size == 0 or mega_menu_block.settings.layout == 'horizontal_center' and mega_menu_block.settings.stretch_promo == false %}center{% else %}space-between{% endif %};
+        --mega-menu-nav-gap: {% if mega_menu_block.settings.stretch_promo %}var(--spacing-12){% else %}var(--spacing-8){% endif %};
+      }
+    }
+
+    @media screen and (min-width: 1400px) {
+      #mega-menu-{{ mega_menu_tab_block.id }} {
+        --mega-menu-nav-column-max-width: {% if mega_menu_block.settings.submenu_style == 'bold_text' %}{% if link.links.size == 1 %}260px{% elsif link.links.size == 2 %}240px{% else %}210px{% endif %}{% else %}{% if link.links.size == 1 %}220px{% elsif link.links.size == 2 %}200px{% else %}180px{% endif %}{% endif %};
+        --mega-menu-nav-gap: {% if mega_menu_block.settings.layout == 'horizontal_center' %}var(--spacing-12){% else %}var(--spacing-16){% endif %};
+      }
+    }
+
+    @media screen and (min-width: 1600px) {
+      #mega-menu-{{ mega_menu_tab_block.id }} {
+        --mega-menu-nav-gap: var(--spacing-16);
+      }
+    }
+
+    @media screen and (min-width: 1800px) {
+      #mega-menu-{{ mega_menu_tab_block.id }} {
+        --mega-menu-nav-gap: var(--spacing-20);
+      }
+    }
+  </style>
+{%- endif -%}
+
+{%- if mega_menu_tab_block.settings.menu != blank -%}
+<div id="mega-menu-{{ mega_menu_tab_block.id }}" class="mega-menu mega-menu--tabs">
+  <x-tabs class="mega-menu__tabs">
+    <template shadowrootmode="open">
+      <slot role="tablist" part="tab-list" name="title"></slot>
+      <slot part="tab-panels" name="content"></slot>
+    </template>
+
+    {%- for link in mega_menu_tab_block.settings.menu.links -%}
+      {%- if link.links.size > 0 -%}
+        <button type="button" slot="title" class="mega-menu__tab-button montserrat semibold">{{ link.title }}</button>
+        <div role="tabpanel" class="mega-menu__tab-content" slot="content" {% cycle '', 'hidden', 'hidden' %}>
+          <ul class="mega-menu__nav  w-full" role="list">
+            {%- for sub_link in link.links -%}
+              <li class="v-stack gap-3 justify-items-start">
+                <h4 class="mega-menu__title montserrat semibold">{{- sub_link.title -}}</h4>
+
+                {%- if sub_link.levels > 0 -%}
+                  <ul class="mega-menu__links v-stack w-full" role="list">
+                    {%- for sub_sub_link in sub_link.links -%}
+                      <li>
+                        <a href="{{ sub_sub_link.url }}" class="text-with-icon w-full group justify-between animated-arrow-svg">
+                          <span>{{- sub_sub_link.title -}}</span>
+                          <span class="circle-chevron">{%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}</span>
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if mega_menu_tab_block.settings.guide_content != blank -%}
+      <div class="mega-menu__extend" slot="title">
+        {{ mega_menu_tab_block.settings.guide_content }}
+      </div>
+    {%- endif -%}
+  </x-tabs>
+</div>
+{%- endif -%}

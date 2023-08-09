@@ -1,0 +1,270 @@
+<style>
+  main {
+    min-height: 500px;
+    overflow: hidden;
+  }
+  
+  .fb__title-list {
+    justify-content: center;
+    gap: var(--spacing-5) var(--spacing-10);
+  }
+
+  .fb__title-logo:hover,
+  .fb__title-logo.active {
+    border: 1px solid #608239;
+    border-radius: 32px;
+    cursor: pointer;
+  }
+
+  .fb__title-logo {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+  }
+
+  .fb__title-logo.disable {
+    cursor: auto;
+  }
+
+  .fd__title-content {
+    min-height: 64px;
+  }
+
+  .fd__title-content .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+
+  .fd__title-content {
+    font-size: var(--text-base);
+  }
+  
+  @media screen and (max-width: 699px) {
+    .fd__title-wrapper {
+      width: 100%;
+    }
+    .fb__title-list {
+      gap: var(--spacing-2) var(--spacing-2);
+    }
+    .fb__title-item {
+      width: calc((100% - 8px)/2);
+    }
+  }
+  
+  @media screen and (min-width: 700px) {
+    .fb__title-list img {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .shopify-section--format-guide .section {
+    --container-max-width: 1106px;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <script type="module" src="{{ 'format-guide.js' | asset_url }}" fetchpriority="low" defer="defer"></script>
+  <div class="section-stack section-stack--center">
+    <div class="section-content text-center">
+      {%- if section.settings.title_1 != blank -%}
+        <h2 class="h2">
+          {%- render 'styled-text', content: section.settings.title_1 -%}
+        </h2>
+      {%- endif -%}
+
+      {{- section.settings.content -}}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="fb__title-list">
+          {%- for block in section.blocks -%}
+            <div class="fb__title-item">
+              {%- assign classDisable = ' disable' -%}
+              <div class="fb__title-logo{%- if block.settings.title == blank -%}{{ classDisable }}{%- endif -%}" data-href="format-{{ block.settings.models_type }}-{{ block.settings.title | downcase | remove: ' ' }}">
+                {%- if block.settings.image != blank -%}
+                    {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'format-image' -}}
+                {%- else -%}
+                  {{- 'image' | placeholder_svg_tag: 'placeholder' -}}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.title_2 != blank -%}
+        <h2 class="h2">
+          {%- render 'styled-text', content: section.settings.title_2 -%}
+        </h2>
+      {%- endif -%}
+    </div>
+    <div class="section-format">
+      {%- if section.blocks.size > 0 -%}
+        <div class="format-content-list format-item-high">
+          <div class="format-label">
+            <h4>{{ section.settings.subtitle_1 }}</h4>
+            <div class="format-content-models">{{- section.settings.content_models_1 -}}</div>
+          </div>
+          {%- for block in section.blocks -%}
+            {%- if block.settings.title != blank and block.settings.content != blank -%}
+              {% case block.settings.models_type %}
+                {% when 'high' %}
+                  <span
+                    id="format-{{ block.settings.models_type }}-{{ block.settings.title | downcase | remove: ' ' }}"
+                  ></span>
+  
+                  {%- render 'format',
+                    title: block.settings.title,
+                    content: block.settings.content,
+                    image: block.settings.image
+                  -%}
+              {% endcase %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+  
+        <div class="format-content-list format-item-low">
+          <div class="format-label">
+            <h4>{{ section.settings.subtitle_2 }}</h4>
+            <div class="format-content-models">{{- section.settings.content_models_2 -}}</div>
+          </div>
+          {%- for block in section.blocks -%}
+            {%- if block.settings.title != blank and block.settings.content != blank -%}
+              {% case block.settings.models_type %}
+                {% when 'low' %}
+                  <span
+                    id="format-{{ block.settings.models_type }}-{{ block.settings.title | downcase | remove: ' ' }}"
+                  ></span>
+  
+                  {%- render 'format',
+                    title: block.settings.title,
+                    content: block.settings.content,
+                    image: block.settings.image
+                  -%}
+              {% endcase %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+  
+      {%- if section.settings.remember_note != blank -%}
+        <div class="format-note">{{ section.settings.remember_note }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Format guide",
+  "class": "shopify-section--format-guide",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Heading 1",
+      "default": "Which Software Are You Interested In?"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Please choose one of the following formats so we can help find the best option at Globe Plants for you:</p>"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Heading 2",
+      "default": "A Brief Description Of Our Formats"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_1",
+      "label": "Models label 1",
+      "default": "High Poly Models"
+    },
+    {
+      "type": "textarea",
+      "id": "content_models_1",
+      "label": "Models content 1",
+      "default": "High number of polygons that pushing our 3D plant models quality to the maximum. Suitable for: Photorealistic 3D rendering and Architectural Visualization. Requirements: High performance computer hardware to handle the poly counts and capable rendering engines. Our high poly models contain these formats:"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_2",
+      "label": "Models label 2",
+      "default": "Low Poly Models"
+    },
+    {
+      "type": "textarea",
+      "id": "content_models_2",
+      "label": "Models content 2",
+      "default": "Our low poly models are highly optimised. Their polygons/triangles are reduced by approx. 400-800% compared to their high poly counterparts. The model quality is therefore reduced to compromise for performance but they are perfectly acceptable. Only available in Bundles and contain these formats:"
+    },
+    {
+      "type": "text",
+      "id": "remember_note",
+      "label": "Remember Note",
+      "default": "Remember: Our personal customer support is lifetime and tailored to your needs. We are ready and available to assist you with any further questions you have or assistance that you require. Shoot us an email here"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Format Item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "models_type",
+          "label": "Poly Models Type",
+          "options": [
+            {
+              "value": "high",
+              "label": "High Poly Models"
+            },
+            {
+              "value": "low",
+              "label": "Low Poly Models"
+            }
+          ],
+          "default": "high"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Format logo"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Mesh (3Ds Max)"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>A .max format should only be used in Autodesk 3Ds Max with the minimum requirement being 2018 version. This format includes three native rendering engines for 3Ds Max: V-Ray Renderer, Corona Renderer and FStorm. Choosing this format for any Globe Plants bundle will include all Forest Pack Preset Library for the rendering engines listed above. This is NOT a .3ds file, we do not support .3ds on our website.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Format guide",
+      "blocks": [
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

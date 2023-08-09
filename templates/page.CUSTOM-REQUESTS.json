@@ -1,0 +1,331 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "5db6f841-7bcb-4b83-84db-0b85e1513136": {
+      "type": "contact",
+      "blocks": {
+        "135cd45f-eb78-438d-b8a8-c15bec4d6633": {
+          "type": "text",
+          "settings": {
+            "title": "Phone",
+            "use_long_text": false
+          }
+        }
+      },
+      "block_order": [
+        "135cd45f-eb78-438d-b8a8-c15bec4d6633"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Perfect for Landscape Designers and Architects",
+        "title": "Create your custom 3D Plant Models with Globe Plants",
+        "content": "",
+        "text_position": "center",
+        "contact_form_size": "small",
+        "background": "#f8f8f8",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "",
+        "heading_gradient": "",
+        "contact_background": "#ffffff",
+        "contact_text_color": "#1a1a1a",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "03e95a99-ba3a-4d7a-9362-c7e9688be905": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "template--14437691228246__03e95a99-ba3a-4d7a-9362-c7e9688be905-166623522025a37a10-0": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Platanus-occidentalis_PRV3_1.webp",
+            "image_rotation_degrees": 2.5,
+            "subheading": "Let us give you a fully tailored experience.",
+            "title": "Can’t find the correct 3D plant models you are looking for on our store?",
+            "content": "<p>We understand that it’s very important for architects, landscape designers or 3D visualisation studios to acquire the best and most accurate 3D plant species, forms or even plant sizes that suit their intended design project.<\/p><p><\/p><p>Whatever creation you’re working on, having the correct lush vegetation complements the rest of the environment and helps you visualize the end result in greater detail. Using plant 3D species that look exactly like what you want, you will be able to communicate your designs better.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14437691228246__03e95a99-ba3a-4d7a-9362-c7e9688be905-166623522025a37a10-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "7fc0cde4-a1c8-458f-9a28-c0354ed63390": {
+      "type": "timeline",
+      "blocks": {
+        "template--14437691228246__7fc0cde4-a1c8-458f-9a28-c0354ed63390-1666235227b86b62ad-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/reference-img_91d6e690-d4d1-46d1-9389-b12c8b75ca92.jpg",
+            "navigation_label": "STEP 01",
+            "subheading": "OUR PROCESS",
+            "title": "Design Request",
+            "content": "<p>Send us the species that you would like to create in Botanical or Common names, as well as any references (photos) if you have<\/p>"
+          }
+        },
+        "template--14437691228246__7fc0cde4-a1c8-458f-9a28-c0354ed63390-1666235227b86b62ad-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Step_2-_Island_Palm_dfc8b2ae-5974-4fa5-a4df-0563d6bc4084.jpg",
+            "navigation_label": "STEP 2",
+            "subheading": "OUR PROCESS",
+            "title": "Design Process",
+            "content": "<p>We create the exact same plants you want and send you multiple drafts for reviews and changes<\/p>"
+          }
+        },
+        "template--14437691228246__7fc0cde4-a1c8-458f-9a28-c0354ed63390-1666235227b86b62ad-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Step_3.webp",
+            "navigation_label": "STEP 3",
+            "subheading": "OUR PROCESS",
+            "title": "Approval",
+            "content": "<p>The final designs are sent to you for approval<\/p>"
+          }
+        },
+        "4f954eaf-e691-4a2e-ad21-633ace91c7ad": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Phoenix_canariensis.webp",
+            "navigation_label": "STEP 4",
+            "subheading": "OUR PROCESS",
+            "title": "Delivery",
+            "content": "<p>We send you the finalised designs in the file formats requested<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14437691228246__7fc0cde4-a1c8-458f-9a28-c0354ed63390-1666235227b86b62ad-0",
+        "template--14437691228246__7fc0cde4-a1c8-458f-9a28-c0354ed63390-1666235227b86b62ad-1",
+        "template--14437691228246__7fc0cde4-a1c8-458f-9a28-c0354ed63390-1666235227b86b62ad-2",
+        "4f954eaf-e691-4a2e-ad21-633ace91c7ad"
+      ],
+      "settings": {
+        "full_width": true,
+        "impact_text_ratio": 0.6,
+        "background": "#eff4fc",
+        "background_gradient": "",
+        "text_color": "",
+        "impact_text_color": "",
+        "impact_text_gradient": ""
+      }
+    },
+    "b96f956f-a893-4c09-9e50-a76ca152937a": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--14437691228246__b96f956f-a893-4c09-9e50-a76ca152937a-1666235227652e1339-0": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Experts_b1995357-f1f1-4157-bf91-62c5610f97e9.png",
+            "mobile_icon_width": 24,
+            "icon_width": 52,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Experts in the field",
+            "content": "<p>We use our years of experience in 3D visualisation, modelling and plant species to create the most accurate and highest quality 3D Models<\/p>"
+          }
+        },
+        "template--14437691228246__b96f956f-a893-4c09-9e50-a76ca152937a-1666235227652e1339-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Variety_dd77b6d4-c0a2-4cf1-809b-4b0c1481c0e2.png",
+            "mobile_icon_width": 24,
+            "icon_width": 52,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Exceptional variety",
+            "content": "<p>Choose from a wide range of species from all regions of the world in different variations of shape, season and age to suit any scene<\/p>"
+          }
+        },
+        "template--14437691228246__b96f956f-a893-4c09-9e50-a76ca152937a-1666235227652e1339-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Detail_1cd089d6-fc05-4507-9e54-42cc9574725d.png",
+            "mobile_icon_width": 24,
+            "icon_width": 52,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Outstanding level of detail",
+            "content": "<p>Enjoy the freedom of being able to manipulate the geometry of the foilage with the GrowFX format to your liking<\/p>"
+          }
+        },
+        "cfdd8cd1-158d-400c-980d-25699a8bc7b6": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Render-ready_7b156b73-7307-455b-8a9f-a1aa6a4dd927.png",
+            "mobile_icon_width": 24,
+            "icon_width": 52,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Render ready 3D Models",
+            "content": "<p>All models include user-friendly instructions, all pre-made material setups and highly realistic textures, ready for you to implement and use<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14437691228246__b96f956f-a893-4c09-9e50-a76ca152937a-1666235227652e1339-0",
+        "template--14437691228246__b96f956f-a893-4c09-9e50-a76ca152937a-1666235227652e1339-1",
+        "template--14437691228246__b96f956f-a893-4c09-9e50-a76ca152937a-1666235227652e1339-2",
+        "cfdd8cd1-158d-400c-980d-25699a8bc7b6"
+      ],
+      "settings": {
+        "full_width": true,
+        "title": "Why choose Globe Plants’ Custom 3D Plant Models?",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "189427a3-86cb-40fa-8739-0175d7e500ac": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--14437691228246__189427a3-86cb-40fa-8739-0175d7e500ac-166623521431b4bf86-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Ready-To-Render 3D Foilage Models Of The Highest Quality",
+            "heading_tag": "h3"
+          }
+        },
+        "b3c3b293-2624-4cbc-a2fc-5dda989e2f9c": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "REQUEST A QUOTE",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14437691228246__189427a3-86cb-40fa-8739-0175d7e500ac-166623521431b4bf86-1",
+        "b3c3b293-2624-4cbc-a2fc-5dda989e2f9c"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-27-north-american-home-and-garden-img-5_1000x841_crop_center_6d1cbe80-8aad-4a63-acea-796030ba1aa0.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "ac33a157-11b2-49cd-8e58-352c1251ccd1": {
+      "type": "testimonials",
+      "blocks": {
+        "template--14437691228246__ac33a157-11b2-49cd-8e58-352c1251ccd1-1666235227991a3ade-0": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a2.png",
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Thomas",
+            "title": "Skatter For SketchUp",
+            "content": "<p>Globe Plants render-ready assets are a perfect match with Skatter to create stunning vegetation renderings with just a few clicks!<\/p>"
+          }
+        },
+        "template--14437691228246__ac33a157-11b2-49cd-8e58-352c1251ccd1-1666235227991a3ade-1": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a1.png",
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Casey",
+            "title": "Stab Studio",
+            "content": "<p>All models from Globe Plants are high quality and easy to work with. The team also make custom models quickly at a reasonable price. They are really friendly and always go above and beyond!<\/p>"
+          }
+        },
+        "template--14437691228246__ac33a157-11b2-49cd-8e58-352c1251ccd1-1666235227991a3ade-2": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a3.png",
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Matheus",
+            "title": "VRay Workshop",
+            "content": "<p>Globe Plants are filling a gap in the visualization market with unique vegetation species and great detailed products.  All this care for quality and respect for artists in promoting excellent 3D models makes Globe Plants one of my favourite companies.<\/p>"
+          }
+        },
+        "51ef25c2-9e8b-4dfc-917e-db3a02c8a9df": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a2.png",
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Thomas",
+            "title": "Skatter For SketchUp",
+            "content": "<p>Globe Plants render-ready assets are a perfect match with Skatter to create stunning vegetation renderings with just a few clicks!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14437691228246__ac33a157-11b2-49cd-8e58-352c1251ccd1-1666235227991a3ade-0",
+        "template--14437691228246__ac33a157-11b2-49cd-8e58-352c1251ccd1-1666235227991a3ade-1",
+        "template--14437691228246__ac33a157-11b2-49cd-8e58-352c1251ccd1-1666235227991a3ade-2",
+        "51ef25c2-9e8b-4dfc-917e-db3a02c8a9df"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "TESTIMONIALS",
+        "title": "What some of our customers say about our service",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "#f8f8f8",
+        "testimonial_card_text_color": "#1a1a1a"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "5db6f841-7bcb-4b83-84db-0b85e1513136",
+    "03e95a99-ba3a-4d7a-9362-c7e9688be905",
+    "7fc0cde4-a1c8-458f-9a28-c0354ed63390",
+    "b96f956f-a893-4c09-9e50-a76ca152937a",
+    "189427a3-86cb-40fa-8739-0175d7e500ac",
+    "ac33a157-11b2-49cd-8e58-352c1251ccd1"
+  ]
+}

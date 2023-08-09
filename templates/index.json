@@ -1,0 +1,691 @@
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-52-north-american-trees-slide.webp",
+            "mobile_image": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-52-north-american-trees-slide.webp",
+            "content_max_width": 760,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "North american trees",
+            "title": "Bundle 52",
+            "heading_tag": "h2",
+            "button_text": "SHOP BUNDLE 52",
+            "button_link": "shopify:\/\/products\/bundle-47-vertical-garden-3d-model",
+            "text_color": "#ffffff",
+            "button_background": "#56842c",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "slide-2": {
+          "type": "image",
+          "settings": {
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "Swedish Plants",
+            "title": "BUNDLE 44",
+            "heading_tag": "h2",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#56842c",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 10,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "60ab57ee-8ee5-4d35-869b-16e6908f824f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-42-mexican-plants-02-low-3_28e8f0c1-2f98-4440-ac3d-995fbf2b87a2.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "Mexican Plants 02",
+            "title": "BUNDLE 42",
+            "heading_tag": "h2",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#56842c",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 12,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "0f1677a3-2966-4c0c-a2fb-5818d8baafd2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-43-canadian-home-and-garden-1.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "Canadian Plants",
+            "title": "BUNDLE 43",
+            "heading_tag": "h2",
+            "button_text": "Shop Now",
+            "button_link": "#",
+            "text_color": "#ffffff",
+            "button_background": "#56842c",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 10,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "60ab57ee-8ee5-4d35-869b-16e6908f824f",
+        "0f1677a3-2966-4c0c-a2fb-5818d8baafd2"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "image_size": "lg",
+        "controls_type": "filled_arrows",
+        "transition_type": "fade",
+        "autoplay": true,
+        "cycle_speed": 7,
+        "show_search_form": true,
+        "search_form_title": "Which plant species or software you are looking for today?",
+        "search_form_placeholder": "Search for trees, shrubs or preferred formats ...",
+        "background": "#f2f2f2",
+        "background_gradient": "linear-gradient(60deg, rgba(60, 65, 68, 1), rgba(23, 29, 33, 1) 98%)"
+      }
+    },
+    "5c74096b-a499-4486-b6b4-1280958051d0": {
+      "type": "logo-list-alt",
+      "blocks": {
+        "template--17872606331170__5c74096b-a499-4486-b6b4-1280958051d0-16857110782229c04c-0": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collection-logo-3dsmax.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/highpoly-3ds-max?formats=3Ds+Max&quality=High+Poly"
+          }
+        },
+        "template--17872606331170__5c74096b-a499-4486-b6b4-1280958051d0-16857110782229c04c-1": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Growfx.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/growfx?formats=GrowFX&quality=High+Poly"
+          }
+        },
+        "c36782da-d489-4267-b536-3b49079b7c49": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collection-logo-fbx.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/fbx?formats=FBX&quality=High+Poly,Low+Poly"
+          }
+        },
+        "a46041fa-0e1a-46ca-aa57-d05b87ebcf87": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-sketchup.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/3d-sketchup-plants?formats=SketchUp&quality=High+Poly,Low+Poly"
+          }
+        },
+        "07ed94e0-5057-4dbd-aa2c-92110bb455d6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-cinema4d.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/cinema-4d?formats=Cinema+4D&quality=High+Poly"
+          }
+        },
+        "4924e382-e666-458e-8a99-1a21cf65d0d7": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-blender.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/blender?formats=Blender&quality=High+Poly"
+          }
+        },
+        "b4ef9c10-ba51-4508-afce-ca6d2183f6ca": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-twinmotion.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/twinmotion?formats=Twinmotion&quality=High+Poly,Low+Poly"
+          }
+        },
+        "0f303d29-c0bc-4a69-b0cb-cd0583eac3c0": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-rhinoceros3D.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/rhino3d-vray?formats=Rhinoceros+3D&quality=High+Poly"
+          }
+        },
+        "03630ebb-ce0f-4047-b3b8-bde77e734845": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-redshift.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/redshift-3dsmax-cinema4d?formats=RedShift&quality=High+Poly"
+          }
+        },
+        "7b55df03-714b-4943-8cef-13a074c98b17": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-unreal-engine5.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/unreal-engine-5?formats=Unreal+Engine&quality=High+Poly"
+          }
+        },
+        "dea637ec-2524-4cc0-8be5-207984323582": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-revit-enscape_bbd8e0f9-61a7-45c7-a6bc-dfc45049143f.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/revit-enscape-3d-plant-models?formats=Enscape&quality=Low+Poly"
+          }
+        },
+        "f132ffea-b663-456f-b667-6679bdd24d91": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-sketchup-enscape.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/sketchup-enscape-3d-plant-models?formats=Enscape&quality=Low+Poly"
+          }
+        },
+        "a5f3319d-bcc6-422b-80fc-11caa5574401": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-rhino3d-enscape.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/rhinoceros-enscape-3d-plant-models?formats=Enscape&quality=Low+Poly"
+          }
+        },
+        "99553b51-af5c-49c5-ab31-d7b9fbaa0ad6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-archicad-enscape.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/archicad-enscape-3d-plant-models?formats=Enscape&quality=Low+Poly"
+          }
+        },
+        "ae89fff0-0520-4fb5-8bd1-4b7cb05c8c2c": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-vectorworks-enscape.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/vectorworks-enscape-3d-plant-models?formats=Enscape&quality=Low+Poly"
+          }
+        },
+        "46688adf-3c7e-4891-9b79-ac8dbe654000": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/globe-plants-collections-logo-HDRI.png",
+            "logo_width": 138,
+            "link": "https:\/\/globeplants.com\/collections\/hdri-sky-dome?formats=HDRI&quality=2D+Images"
+          }
+        }
+      },
+      "block_order": [
+        "template--17872606331170__5c74096b-a499-4486-b6b4-1280958051d0-16857110782229c04c-0",
+        "template--17872606331170__5c74096b-a499-4486-b6b4-1280958051d0-16857110782229c04c-1",
+        "c36782da-d489-4267-b536-3b49079b7c49",
+        "a46041fa-0e1a-46ca-aa57-d05b87ebcf87",
+        "07ed94e0-5057-4dbd-aa2c-92110bb455d6",
+        "4924e382-e666-458e-8a99-1a21cf65d0d7",
+        "b4ef9c10-ba51-4508-afce-ca6d2183f6ca",
+        "0f303d29-c0bc-4a69-b0cb-cd0583eac3c0",
+        "03630ebb-ce0f-4047-b3b8-bde77e734845",
+        "7b55df03-714b-4943-8cef-13a074c98b17",
+        "dea637ec-2524-4cc0-8be5-207984323582",
+        "f132ffea-b663-456f-b667-6679bdd24d91",
+        "a5f3319d-bcc6-422b-80fc-11caa5574401",
+        "99553b51-af5c-49c5-ab31-d7b9fbaa0ad6",
+        "ae89fff0-0520-4fb5-8bd1-4b7cb05c8c2c",
+        "46688adf-3c7e-4891-9b79-ac8dbe654000"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "",
+        "content": "",
+        "text_alignment": "start",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    },
+    "90d79e0c-5e3a-4560-b655-63f7bbf50d63": {
+      "type": "product-tabs",
+      "blocks": {
+        "82f10064-0ffa-4eb5-a0c0-6245c43fd676": {
+          "type": "product-tab",
+          "settings": {
+            "title": "New arrivals",
+            "product_list_collection": "new-arrivals",
+            "view_more": "shopify:\/\/collections\/new-arrivals"
+          }
+        },
+        "d0896d8a-00f5-44e0-a3db-7d6072343ecb": {
+          "type": "product-tab",
+          "settings": {
+            "title": "Best sellers",
+            "product_list_collection": "best_seller",
+            "view_more": ""
+          }
+        },
+        "d791ca30-13cb-4551-87da-b17d89887be1": {
+          "type": "product-tab",
+          "settings": {
+            "title": "High Poly",
+            "product_list_collection": "realistic-3d-plants-high-poly",
+            "view_more": ""
+          }
+        },
+        "badb7e34-2dd6-4983-bd70-860963473f4e": {
+          "type": "product-tab",
+          "settings": {
+            "title": "Low poly",
+            "product_list_collection": "low-poly",
+            "view_more": ""
+          }
+        },
+        "28e01931-3e83-4db6-8c26-dbf4b2968e19": {
+          "type": "product-tab",
+          "settings": {
+            "title": "2d images",
+            "product_list_collection": "2d-images",
+            "view_more": ""
+          }
+        }
+      },
+      "block_order": [
+        "82f10064-0ffa-4eb5-a0c0-6245c43fd676",
+        "d0896d8a-00f5-44e0-a3db-7d6072343ecb",
+        "d791ca30-13cb-4551-87da-b17d89887be1",
+        "badb7e34-2dd6-4983-bd70-860963473f4e",
+        "28e01931-3e83-4db6-8c26-dbf4b2968e19"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_more_text": "Browse All",
+        "products_per_row_desktop": "4",
+        "products_per_row_mobile": "1",
+        "products_count": 8,
+        "background": "#f4f4f4"
+      }
+    },
+    "b05d61ba-07bc-42a6-900c-3969255b9133": {
+      "type": "multi-column",
+      "blocks": {
+        "template--17872606331170__b05d61ba-07bc-42a6-900c-3969255b9133-16857699730f779e48-0": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection-trees-img.jpg",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "https:\/\/globeplants.com\/collections\/3d-tree-models?plant_types=Tree&quality=High+Poly,Low+Poly",
+            "link_text": "Trees",
+            "link_style": "link"
+          }
+        },
+        "template--17872606331170__b05d61ba-07bc-42a6-900c-3969255b9133-16857699730f779e48-1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection-shrubs-img.jpg",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "https:\/\/globeplants.com\/collections\/3d-shrubs-bushes-models?plant_types=Shrub&quality=High+Poly,Low+Poly",
+            "link_text": "Shrubs",
+            "link_style": "link"
+          }
+        },
+        "template--17872606331170__b05d61ba-07bc-42a6-900c-3969255b9133-16857699730f779e48-2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection-vines-img.jpg",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "https:\/\/globeplants.com\/collections\/3d-vines-creepers-models?plant_types=Vines+and+Creepers&quality=High+Poly,Low+Poly",
+            "link_text": "Vines & Creepers",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "template--17872606331170__b05d61ba-07bc-42a6-900c-3969255b9133-16857699730f779e48-0",
+        "template--17872606331170__b05d61ba-07bc-42a6-900c-3969255b9133-16857699730f779e48-1",
+        "template--17872606331170__b05d61ba-07bc-42a6-900c-3969255b9133-16857699730f779e48-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "is_promotion_grid": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "Plant <span>Types<\/span>",
+        "content": "<p>Your one-stop destination for a diverse range of plant types. Ranging from trees, shrubs, vines, grasses, ground covers, ornamental pot plants, hedges, and aquatic plants. Globe Plants cater to all gardening and landscaping styles. Explore our extensive library today and find the plant types that best suit your project.<\/p>",
+        "link_url": "https:\/\/globeplants.com\/collections\/all?sort_by=title-ascending&filter.p.tag=Bundle&filter.p.tag=Grass&filter.p.tag=Ornamental+Plants&filter.p.tag=Shrub&filter.p.tag=Tree",
+        "link_text": "Explore All",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "background_image": "shopify:\/\/shop_images\/collection-list-bg.jpg",
+        "text_color": "#ffffff"
+      }
+    },
+    "e1f1f082-f086-416d-bf47-d102a3970075": {
+      "type": "media-with-text",
+      "blocks": {
+        "0ca12c5c-baba-4de5-80f9-270004fc128b": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=MzYbr-yBBVg",
+            "autoplay": true,
+            "media_width": 75,
+            "media_position": "start",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Bundles <span>Collection<\/span>",
+            "content": "<p>Curated plant assortments for easy and efficient landscape visualisation. Bundles are grouped by themes, regions or aesthetics. From tropical paradises to serene aquatic environments, our Bundles Collection caters to all landscaping visions.<\/p>",
+            "link_text": "Explore Bundles",
+            "link_url": "shopify:\/\/collections\/3d-plant-bundles",
+            "button_style": "outline",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#2b2b2b",
+            "text_gradient": "",
+            "button_background": "rgba(0,0,0,0)",
+            "button_text_color": "#2b2b2b"
+          }
+        }
+      },
+      "block_order": [
+        "0ca12c5c-baba-4de5-80f9-270004fc128b"
+      ],
+      "settings": {
+        "full_width": false,
+        "enable_parallax": false,
+        "spacing": "small",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "background_image": "shopify:\/\/shop_images\/media-with-text-bg.jpg"
+      }
+    },
+    "f82aef63-c7a9-471d-9a95-d2b9083405a5": {
+      "type": "media-with-text",
+      "blocks": {
+        "template--17872606331170__f82aef63-c7a9-471d-9a95-d2b9083405a5-16857657212991f9cc-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/custome-request-img.png",
+            "media_width": 45,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Custom <span>Requests<\/span>",
+            "content": "<h5>Can’t find the correct 3D plant models you are looking for on our store?<\/h5><p>We understand that it’s very important for architects, landscape designers or 3D visualisation studios to acquire the best and most accurate 3D plant species, forms or even plant sizes that suit their intended design project.<\/p>",
+            "link_text": "Find Out More",
+            "link_url": "shopify:\/\/pages\/custom-3d-plant-models",
+            "button_style": "fill",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#2b2b2b",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17872606331170__f82aef63-c7a9-471d-9a95-d2b9083405a5-16857657212991f9cc-0"
+      ],
+      "settings": {
+        "full_width": false,
+        "enable_parallax": false,
+        "spacing": "small",
+        "background": "#ffffff",
+        "background_gradient": ""
+      }
+    },
+    "970c759c-308b-49d6-8f8f-695683d50db0": {
+      "type": "blog-posts",
+      "blocks": {
+        "template--17872606331170__970c759c-308b-49d6-8f8f-695683d50db0-1685242640a3b152d9-0": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "posts_count": 3,
+            "stack_items": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17872606331170__970c759c-308b-49d6-8f8f-695683d50db0-1685242640a3b152d9-0"
+      ],
+      "settings": {
+        "full_width": false,
+        "show_excerpt": true,
+        "show_date": true,
+        "show_author": false,
+        "show_comments_count": false,
+        "show_category": false,
+        "subheading": "",
+        "title": "Blog",
+        "content": "",
+        "link_url": "shopify:\/\/blogs\/news",
+        "link_text": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "87445082-a9ca-44d7-8f0a-0b32b1b6129a": {
+      "type": "press",
+      "blocks": {
+        "bc95092a-71e0-4ae5-bc2f-e28ae69b9151": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/AVA_signet.svg",
+            "logo_width": 40,
+            "author": "Agnieszka Klich - Arch Viz Artist",
+            "content": "Globe Plants' 3D plant models are a game-changer for my 3D art. The attention to detail, photorealism, and ease of integration into my workflow are outstanding. The wide range of plant species and excellent customer service make them my go-to source for high-quality plant models. Not to mention the availability of GrowFX files, which adds, even more, versatility to their offerings. Highly recommended!",
+            "show_rating": false,
+            "rating": 5
+          }
+        },
+        "template--17872606331170__87445082-a9ca-44d7-8f0a-0b32b1b6129a-16852426125b211194-0": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/review-skatter-logo.png",
+            "logo_width": 40,
+            "author": "Skatter For SketchUp",
+            "content": "Globe Plants render-ready assets are a perfect match with Skatter to create stunning vegetation renderings with just a few clicks!",
+            "show_rating": false,
+            "rating": 4
+          }
+        },
+        "template--17872606331170__87445082-a9ca-44d7-8f0a-0b32b1b6129a-16852426125b211194-1": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/a1.png",
+            "logo_width": 40,
+            "author": "Stab Studio",
+            "content": "All models from Globe Plants are high quality and easy to work with. The team also make custom models quickly at a reasonable price. They are really friendly and always go above and beyond!",
+            "show_rating": false,
+            "rating": 4
+          }
+        },
+        "template--17872606331170__87445082-a9ca-44d7-8f0a-0b32b1b6129a-16852426125b211194-2": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/a3.png",
+            "logo_width": 40,
+            "author": "VRay Workshop",
+            "content": "Globe Plants are filling a gap in the visualization market with unique vegetation species and great detailed products.  All this care for quality and respect for artists in promoting excellent 3D models makes Globe Plants one of my favourite companies.",
+            "show_rating": false,
+            "rating": 4
+          }
+        }
+      },
+      "block_order": [
+        "bc95092a-71e0-4ae5-bc2f-e28ae69b9151",
+        "template--17872606331170__87445082-a9ca-44d7-8f0a-0b32b1b6129a-16852426125b211194-0",
+        "template--17872606331170__87445082-a9ca-44d7-8f0a-0b32b1b6129a-16852426125b211194-1",
+        "template--17872606331170__87445082-a9ca-44d7-8f0a-0b32b1b6129a-16852426125b211194-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "title": "Words From <strong>The Industry<\/strong>",
+        "autoplay": true,
+        "cycle_speed": 6,
+        "background": "",
+        "background_gradient": "",
+        "background_image": "shopify:\/\/shop_images\/customer-reviews-bg.jpg",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "heading_gradient": "",
+        "logo_item_background": "#ffffff",
+        "logo_item_border": ""
+      }
+    },
+    "ca12fa9a-e329-4824-80cd-95894537811b": {
+      "type": "logo-list",
+      "blocks": {
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-1": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/chaos.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        },
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-0": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/ava.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        },
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-2": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/ronenbekerman.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        },
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-3": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/skatter_54f28c59-a935-4764-b667-7098b3eadd3b.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        },
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-4": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/cgtricks.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        },
+        "a71734ec-e0ce-453b-b865-897659913bc3": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/itoo.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        },
+        "12a104e1-b263-428c-bbfd-ec7f74d2fa93": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/vectorworks.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        },
+        "34aedaec-d23d-4785-87a2-be5015956f84": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/nvidia.png",
+            "logo_width": 230,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-1",
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-0",
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-2",
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-3",
+        "template--14437691097174__ca12fa9a-e329-4824-80cd-95894537811b-166601486410743d02-4",
+        "a71734ec-e0ce-453b-b865-897659913bc3",
+        "12a104e1-b263-428c-bbfd-ec7f74d2fa93",
+        "34aedaec-d23d-4785-87a2-be5015956f84"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "<strong>Our<\/strong> Partners",
+        "content": "",
+        "text_alignment": "center",
+        "items_per_row": 5,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "5c74096b-a499-4486-b6b4-1280958051d0",
+    "90d79e0c-5e3a-4560-b655-63f7bbf50d63",
+    "b05d61ba-07bc-42a6-900c-3969255b9133",
+    "e1f1f082-f086-416d-bf47-d102a3970075",
+    "f82aef63-c7a9-471d-9a95-d2b9083405a5",
+    "970c759c-308b-49d6-8f8f-695683d50db0",
+    "87445082-a9ca-44d7-8f0a-0b32b1b6129a",
+    "ca12fa9a-e329-4824-80cd-95894537811b"
+  ]
+}

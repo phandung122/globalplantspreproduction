@@ -1,0 +1,166 @@
+const tabsItem = document.querySelectorAll('.faq-search__tabs-logo');
+const searchResult = document.querySelector('.search-result');
+const allFaqItems = document.querySelectorAll('.faq');
+const tabs = document.querySelectorAll('.tab');
+const main = document.querySelector('.faq-main');
+
+tabsItem.forEach(function(item) {
+  item.addEventListener('click', function() {
+     // Remove "active" class from all tab titles
+     var tabTitles = document.getElementsByClassName('  faq-search__tabs-logo');
+     for (var i = 0; i < tabTitles.length; i++) {
+       tabTitles[i].classList.remove('active');
+     }
+
+    let itemId = this.closest('.faq-search__tabs-logo').getAttribute('data-search');
+    showTab(itemId);
+
+    this.classList.add('active');
+  })
+});
+
+function showTab(tabId) {
+  
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove('active');
+  }
+  
+  // Show the selected tab
+  var tab = document.querySelector(`#${tabId}`);
+
+  if (tab) {
+    tab.classList.add('active');
+    document.querySelector(`[data-search="${tabId}"]`).classList.add('active');
+    // tabsItem.hasAttribute('data-search', tabId).add('active');
+
+    if(tabId == 'technical') {
+      document.querySelector('#software').classList.add('active');
+    }
+  }
+}
+
+function searchFAQs() {
+  var searchInput = document.getElementById('search-input');
+  var query = searchInput.value.toLowerCase();
+
+  var allFAQs = document.querySelectorAll('.faq');
+  var count = 0;
+
+  for (var i = 0; i < allFAQs.length; i++) {
+    var faq = allFAQs[i];
+
+    var questionEl = faq.querySelector('.question');
+    
+    if(!questionEl) {
+      return;
+    }
+
+    const question = questionEl.textContent.toLowerCase();
+    const relatedFaq = faq.closest('.related-faq');
+
+    if (question.includes(query)) {
+      faq.classList.add('active');
+      count++;
+    } else {
+      faq.classList.remove('active');
+    }
+
+    var resultCount = document.getElementById('result-count');
+    var resultLog = document.getElementById('result-log');
+    var tabTitles = document.getElementById('faq-search__tabs');
+    var notFoundWrapper =  document.getElementById('faq-not-found');
+    var filterList = document.getElementById('filter-list');
+    var ulElements = document.querySelectorAll('.related-faq');
+
+    if(query.length > 0) {
+      tabTitles.classList.add('hide');
+      main.style.display = 'block';
+
+      tabs.forEach(function(item) {
+        item.classList.add('active');
+      });
+
+      if (count > 0) {
+        resultCount.textContent = count;
+        filterList.textContent = query;
+        searchResult.style.display = 'block';
+        notFoundWrapper.classList.add('hide');
+      } else {
+        searchResult.style.display = 'none';
+        notFoundWrapper.classList.remove('hide');
+        resultLog.textContent = query;
+      }
+
+      ulElements.forEach(function(ul) {
+        var liElements = ul.querySelectorAll('.faq');
+
+        var hasActiveClass = Array.from(liElements).some(function(li) {
+          return li.classList.contains('active');
+        });
+
+        if (hasActiveClass) {
+          ul.classList.remove('hide');
+        } else {
+          ul.classList.add('hide');
+        }
+      });
+
+      if(document.querySelectorAll('.related-faq.hide').length ==  document.querySelectorAll('.related-faq').length) {
+        document.querySelector('.related-tab').classList.remove('active')
+      } else {
+        document.querySelector('.related-tab').classList.add('active');
+      }
+
+      if(main.querySelectorAll('.faq.active').length == 0) {
+        main.style.display = 'none';
+      } else {
+        main.style.display = 'block';
+      }
+    } else {
+      tabTitles.classList.remove('hide');
+      main.style.display = 'block';
+
+      tabs.forEach(function(item) {
+        item.classList.remove('active');
+      });
+
+      tabsItem.forEach(function(item) {
+        if(item.classList.contains('active')) {
+          console.log('data-search', item.getAttribute('data-search'));
+          showTab(item.getAttribute('data-search'));
+        } 
+      });
+      notFoundWrapper.classList.add('hide');
+      searchResult.style.display = 'none';
+      ulElements.forEach(function(ul) {
+        ul.classList.remove('hide');
+      });
+    }
+  }
+}
+
+showTab('general');
+
+const inputSearch = document.querySelector('#search-input');
+
+inputSearch.addEventListener("keyup", (event) => {
+  if (event.isComposing || event.keyCode === 229) {
+    return;
+  }
+  searchFAQs();
+});
+
+allFaqItems.forEach(function(item) {
+  item.classList.add('active');
+});
+
+searchResult.style.display = 'none';
+
+function clearSearch() {
+  var searchInput = document.getElementById('search-input');
+  searchInput.value = '';
+  searchFAQs();
+}
+
+const btnClear = document.querySelector('#clear-button');
+btnClear.addEventListener('click', clearSearch);

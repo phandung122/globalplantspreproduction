@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "d24279a2-c5d8-4997-a189-82ff4a5c2586": {
+      "type": "contact-alt",
+      "settings": {
+        "full_width": true,
+        "title": "Contact <strong>Us<\/strong>",
+        "subheading": "<strong>Find Out More<\/strong> Or How We Can Help You Better",
+        "content": "",
+        "contact_email": "info@globeplants.com",
+        "contact_address": "Suite 66\/139 Cardigan St, Carton, Victoria 3053, Australia",
+        "contact_tel": "+61 1800 717 580",
+        "text_position": "center",
+        "html": "<div class=\"globo-formbuilder\" data-id=\"MTEyMDI=\"><\/div>",
+        "contact_form_size": "large",
+        "background_image": "shopify:\/\/shop_images\/gp-contact-bg.jpg",
+        "background_mobile_image": "shopify:\/\/shop_images\/gp-contact-mobile-bg.jpg",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "contact_background": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "d24279a2-c5d8-4997-a189-82ff4a5c2586"
+  ]
+}

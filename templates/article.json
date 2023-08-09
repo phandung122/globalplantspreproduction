@@ -1,0 +1,178 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "allow_transparent_header": false,
+        "layout": "content_first",
+        "show_author": true,
+        "show_date": true,
+        "show_comments_count": true,
+        "show_share_buttons": false,
+        "banner_text_color": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "content_width": "978px"
+      }
+    },
+    "98274cc0-dd29-4347-a83d-71a30b3c17ed": {
+      "type": "blog-details-text",
+      "blocks": {
+        "template--19253225816354__98274cc0-dd29-4347-a83d-71a30b3c17ed-1686455859d66675db-0": {
+          "type": "heading",
+          "settings": {
+            "text": "Below Are Very Important Things Of Note About Our Low Polygon 3D Plants.",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "template--19253225816354__98274cc0-dd29-4347-a83d-71a30b3c17ed-1686455859d66675db-1": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The number of polygons is optimised 400-800% compared to the original high poly tree, which means that a 2 million polygon tree will be reduced to 500,000 or 250,000 polygons. 3D shrubs and small trees are highly optimized so that almost any software can be used. However, for some software, the number of polygons is still quite large to be used. Additionally, larger 3D trees will possibly still slow down your computer.<br\/><br\/>Model quality will be reduced. This is bound to happen, given that highly detailed objects like leaves, flowers, and fruits will be less detailed than a 3D high poly tree.<br\/><br\/>These are not the type of assets used for games and virtual reality games. Assets for these purposes need to be further optimised. Globe Plants is still focusing on 3D plant models for 3D rendering used by artists and landscape designers. As a result, most of our low-poly plants will not be suitable for making games.<br\/><br\/>The low poly models are created by an independent and researched team. Therefore, the low polygon versions will be sold separately alongside the high polygon versions. Should customers want to buy both versions, we will have a reasonable price policy put in place.<\/p>"
+          }
+        },
+        "68ba3b9a-dd59-4a10-849d-6b0dc8ff8b27": {
+          "type": "heading",
+          "settings": {
+            "text": "We Provide Low Polygon Models In 2 Packages:",
+            "heading_tag": "h5",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19253225816354__98274cc0-dd29-4347-a83d-71a30b3c17ed-1686455859d66675db-0",
+        "template--19253225816354__98274cc0-dd29-4347-a83d-71a30b3c17ed-1686455859d66675db-1",
+        "68ba3b9a-dd59-4a10-849d-6b0dc8ff8b27"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "d396b5ed-9813-41d9-a45f-61d9edb5b4d9": {
+      "type": "blog-details-text",
+      "blocks": {
+        "template--19253225816354__d396b5ed-9813-41d9-a45f-61d9edb5b4d9-1686455859d66675db-1": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Sketchup<\/strong><br\/>This is specialised software for landscape designers and architects. Low-poly will facilitate designers to put 3D SketchUp plant models into the file without any difficulties.<\/p>"
+          }
+        },
+        "8073af8a-39f7-4989-8629-acc89edf451a": {
+          "type": "divider",
+          "settings": {}
+        },
+        "84003999-38d6-495e-accd-9641707df2fe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Obj and Fbx<\/strong><br\/>These are the two most popular intermediate formats. Customers who buy this format can optionally convert to any other format from Vector work, Archicad, Rhino3D, or event import vice versa 3Ds Max, Maya, C4D, Blender, etc.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--19253225816354__d396b5ed-9813-41d9-a45f-61d9edb5b4d9-1686455859d66675db-1",
+        "8073af8a-39f7-4989-8629-acc89edf451a",
+        "84003999-38d6-495e-accd-9641707df2fe"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "366f4f72-f6c5-4f1f-8d83-607cfe1ad0d5": {
+      "type": "blog-details-text",
+      "blocks": {
+        "51369279-37a5-4cf2-9a01-0313b390e863": {
+          "type": "heading",
+          "settings": {
+            "text": "Low Polygon Plant Model FAQs",
+            "heading_tag": "h5",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "template--19253225816354__366f4f72-f6c5-4f1f-8d83-607cfe1ad0d5-1686455859d66675db-1": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Below are Frequently Asked Questions from our customers enquiring about low polygon models:<\/p><p><strong>I use Luminon and Twinmotion, what is the difference between this version compared to the high polygon version?<\/strong><\/p><p>With a 400-800% reduction in polygon count, customers can import more trees or have a smoother working experience. Most real-time software takes up a lot of memory space. Using low-poly plants is an optimal way to save it. Essentially, our trees are optimised in both quality and capacity, which will make every customer satisfied.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "51369279-37a5-4cf2-9a01-0313b390e863",
+        "template--19253225816354__366f4f72-f6c5-4f1f-8d83-607cfe1ad0d5-1686455859d66675db-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "41e63242-0a36-4aca-b848-000820ca5f5f": {
+      "type": "blog-details-image-slide",
+      "blocks": {
+        "template--19253225816354__41e63242-0a36-4aca-b848-000820ca5f5f-1686461226f2817442-0": {
+          "type": "image",
+          "settings": {
+            "image_1": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-51-bamboo-world-LOW-2.webp",
+            "image_2": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-51-bamboo-world-LOW-4.webp"
+          }
+        },
+        "template--19253225816354__41e63242-0a36-4aca-b848-000820ca5f5f-1686461226f2817442-1": {
+          "type": "image",
+          "settings": {
+            "image_1": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-27-north-american-home-and-garden-img-5_18762c85-81ab-49c3-a282-6020e376d8c1.jpg",
+            "image_2": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-51-bamboo-world-LOW-5.webp"
+          }
+        }
+      },
+      "block_order": [
+        "template--19253225816354__41e63242-0a36-4aca-b848-000820ca5f5f-1686461226f2817442-0",
+        "template--19253225816354__41e63242-0a36-4aca-b848-000820ca5f5f-1686461226f2817442-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "content_size": "medium"
+      }
+    },
+    "9e4d0d40-6147-4a60-b65d-9d95640399fe": {
+      "type": "blog-social-media",
+      "settings": {
+        "show_share_buttons": true
+      }
+    },
+    "c2c15d2e-5ce1-4fe1-9a40-9cf8834afcba": {
+      "type": "blog-navigation",
+      "settings": {
+        "show_naviation": true,
+        "show_author": false,
+        "show_date": true,
+        "show_comments_count": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "98274cc0-dd29-4347-a83d-71a30b3c17ed",
+    "d396b5ed-9813-41d9-a45f-61d9edb5b4d9",
+    "366f4f72-f6c5-4f1f-8d83-607cfe1ad0d5",
+    "41e63242-0a36-4aca-b848-000820ca5f5f",
+    "9e4d0d40-6147-4a60-b65d-9d95640399fe",
+    "c2c15d2e-5ce1-4fe1-9a40-9cf8834afcba"
+  ]
+}

@@ -1,0 +1,657 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "e045a23f-77c2-4848-ad37-c20bb1ec4a16": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--19253226406178__e045a23f-77c2-4848-ad37-c20bb1ec4a16-168805592148dda089-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Frequently Asked Questions - FAQs",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--19253226406178__e045a23f-77c2-4848-ad37-c20bb1ec4a16-168805592148dda089-1"
+      ],
+      "custom_css": [
+        ".h1 {font-weight: 400;}",
+        ".h1 strong {font-weight: 600;}",
+        ".place-self-center {top: -32px;}",
+        "> div {--content-over-media-content-max-width: 100%;}",
+        "@media screen and (max-width: 699px) {.place-self-center {padding-block-start: 3rem; padding-block-end: 3rem; }}",
+        "image-banner {--content-over-media-height: 220px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/faq.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "17ee19d0-9a0f-40ec-8950-979625563c99": {
+      "type": "faq-search",
+      "settings": {
+        "title": "Have any questions? We are here to assist you find the best answers"
+      }
+    },
+    "ae64ac8b-6b75-42b5-82a4-e8c4b6ea2af6": {
+      "type": "faq",
+      "blocks": {
+        "831f7068-4f35-421f-8b4d-704cf51b5367": {
+          "type": "heading",
+          "settings": {
+            "text": "General",
+            "image": "shopify:\/\/shop_images\/general.svg"
+          }
+        },
+        "beb0856e-41e9-4740-b096-4b9d5b4a5d67": {
+          "type": "text",
+          "settings": {
+            "question": "Are these real plants?",
+            "answer": "<p>No! we get this a lot. While our plants look incredibly lifelike, unfortunately they are computer generated 3D models base of real life plants for architectural design and 3D visualization software. So, while you can't water them, our goal is to make our 3D models feel like a little digital slice of nature in your projects. They're so realistic, you might just forget they're not the real deal!<\/p>",
+            "question_type": "general"
+          }
+        },
+        "c027718a-3d50-449f-ad16-4984001cdeb0": {
+          "type": "text",
+          "settings": {
+            "question": "How many formats can I purchase per order and can I switch to another format in the future?",
+            "answer": "<p>At Globe Plants, we dedicate significant time and effort to optimize each format individually for its intended software, which is why we offer each format separately per order. We steer clear of quick auto-convert tools to ensure the highest quality. For any secondary format of the same model quality - High Poly or Low Poly, we offer a 50% discount. Please contact us for more details.<\/p>",
+            "question_type": "general"
+          }
+        },
+        "9c2b78c9-a7eb-4a21-933a-793871a3bab8": {
+          "type": "text",
+          "settings": {
+            "question": "I'm looking for specific species but you do not have it on your site. Can I put in a request?",
+            "answer": "<p>Absolutely! We understand that our customers may have specific needs that our current catalog may not cover. We offer a custom request service where you can request specific plant species that are not currently available on our site. Our team of dedicated artists will work to create a high-quality 3D model of the plant species you need. Please visit our <a href=\"https:\/\/globeplants.com\/pages\/custom-3d-plant-models\" target=\"_blank\" title=\"Globe Plants Custom 3D Plants Modelling Service\">Custom Requests <\/a>page for more information and to submit your request.<\/p>",
+            "question_type": "general"
+          }
+        },
+        "b883ad99-9dd6-4fc7-86ed-229db63bdc89": {
+          "type": "heading",
+          "settings": {
+            "text": "Technical",
+            "image": "shopify:\/\/shop_images\/account.svg"
+          }
+        },
+        "820a3c12-da3c-4b92-bd9d-cd2e3e83175c": {
+          "type": "text",
+          "settings": {
+            "question": "What's the difference between High Poly and Low Poly Models at Globe Plants?",
+            "answer": "<p>High Poly and Low Poly models differ primarily in their polygon count and compatible software\/formats, which directly impacts the level of detail and computational requirements.<\/p><p><\/p><ul><li>High Poly models at Globe Plants contain a large number of polygons, resulting in a higher level of detail. This makes them ideal for high-resolution renders or close-up views where every leaf and branch detail can contribute to the overall realism. However, these models are more computationally intensive and may require more advanced hardware for smooth rendering<\/li><\/ul><p><\/p><ul><li>On the other hand, Low Poly models have a reduced polygon count, which makes them less detailed but also less demanding on your system. These models are optimized for efficiency\/performance and are ideal for creating larger scenes, backgrounds, real time rendering or when working on hardware with limited processing power. They allow for faster rendering times while still providing a visually pleasing representation of each 3D plant model.<\/li><\/ul>",
+            "question_type": "technical"
+          }
+        },
+        "39d7bfe8-e443-4287-a9ed-52835791f359": {
+          "type": "text",
+          "settings": {
+            "question": "Can I get both High Poly and Low Poly Models or exchange from one to the other?",
+            "answer": "<p>While we understand the appeal of having both high poly and low poly models, we currently do not offer both formats for just one price. The process of creating each type of model is distinct and requires separate workflows.<\/p><p>Creating a high poly model involves a detailed process to ensure the highest level of realism and detail. The creation of low poly models, while they may appear simpler, is actually a more complex and time-consuming process. It requires careful optimization of each geometries and materials to ensure the model maintains a visually pleasing appearance while having a reduced polygon count for efficiency.<\/p><p>Given the unique processes and the extensive work involved in creating each type of model, we treat high poly and low poly models as separate products. It would be unfair to our team of dedicated artists and to the value of their work to offer two distinct products for the price of one.<\/p><p>We encourage you to choose the model type that best suits your project needs and resources. If you need both high poly and low poly models, they would need to be purchased separately. We appreciate your understanding and are here to assist you in making the best choice for your project.<\/p>",
+            "question_type": "technical"
+          }
+        },
+        "c13fad20-0c50-43f4-9dbd-15df6ae9be70": {
+          "type": "text",
+          "settings": {
+            "question": "How can I get your models to work with SketchUp properly?",
+            "answer": "<p>In order for Globe Plants' models to appear and render correctly in SketchUp, users need to:Create a new folder at the root of C:Drive called “Globeplants_Enscape”. It should be C:\\Globeplants_EnscapeCopy all files from folder SKETCHUP into the newly created folder. You can copy all the proxy files into other folders as you like as they won’t be affected by user path. The proxy files are SketchUp files without extended name “ _fullGeometry”This is an error from SketchUp and can only be fixed by the method above in order to use all the plant models correctly.Alternatively we also included the README file in our bundles and SketchUp format for users to follow.<\/p>",
+            "question_type": "technical"
+          }
+        },
+        "a2296208-efd3-4945-a364-04a26c740782": {
+          "type": "heading",
+          "settings": {
+            "text": "Account",
+            "image": "shopify:\/\/shop_images\/technical.svg"
+          }
+        },
+        "a7daffaf-3e48-44b9-b58d-bfad7c5c599c": {
+          "type": "text",
+          "settings": {
+            "question": "Can I change my email address to a different one?",
+            "answer": "<p>Sure! Simply reach out to us and our team will make the adjusments for you.<\/p>",
+            "question_type": "account"
+          }
+        },
+        "e3cbc972-10b9-4ec2-b3f4-18de8de9c46e": {
+          "type": "text",
+          "settings": {
+            "question": "How can I download the files after placing an order?",
+            "answer": "<p>The download links will be visible right after completing your order on the after purchase page as well as an E-Mail will be sent to your inbox with download instructions. Alternatively, customers can access their download links on their account section through the top right of the menu after logging in.<\/p>",
+            "question_type": "account"
+          }
+        }
+      },
+      "block_order": [
+        "831f7068-4f35-421f-8b4d-704cf51b5367",
+        "beb0856e-41e9-4740-b096-4b9d5b4a5d67",
+        "c027718a-3d50-449f-ad16-4984001cdeb0",
+        "9c2b78c9-a7eb-4a21-933a-793871a3bab8",
+        "b883ad99-9dd6-4fc7-86ed-229db63bdc89",
+        "820a3c12-da3c-4b92-bd9d-cd2e3e83175c",
+        "39d7bfe8-e443-4287-a9ed-52835791f359",
+        "c13fad20-0c50-43f4-9dbd-15df6ae9be70",
+        "a2296208-efd3-4945-a364-04a26c740782",
+        "a7daffaf-3e48-44b9-b58d-bfad7c5c599c",
+        "e3cbc972-10b9-4ec2-b3f4-18de8de9c46e"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "FAQ",
+        "image_empty": "shopify:\/\/shop_images\/search-empty.png",
+        "empty_title": "Sorry we can’t find any matches for",
+        "empty_text": "Please try searching with another words",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#2b2b2b"
+      }
+    },
+    "378cbdaf-e162-4397-a20d-60daacc6f2fa": {
+      "type": "faq-related",
+      "blocks": {
+        "4ad45b75-ce32-4750-9e11-896e25edcf62": {
+          "type": "heading",
+          "settings": {
+            "text": "3Ds Max",
+            "heading_image": "shopify:\/\/shop_images\/format-3DS-Max.png"
+          }
+        },
+        "419043e0-a735-4bc3-baba-13ab1d00999e": {
+          "type": "richtext",
+          "settings": {
+            "question": "Which rendering engines do you support for 3Ds Max?",
+            "question_type": "3ds-max",
+            "answer": "<p>Optimized for V-Ray and Corona, our 3Ds Max format delivers superior rendering performance. These two rendering engines are natively supported, ensuring the highest quality visualizations of our models.<\/p>"
+          }
+        },
+        "fc96be38-ea72-4560-85e6-99d6c2a62d73": {
+          "type": "richtext",
+          "settings": {
+            "question": "Can I use a rendering engine other than V-Ray or Corona with Globe Plants' 3Ds Max models?",
+            "question_type": "3ds-max",
+            "answer": "<p>If you're utilizing a different rendering engine, rest assured that our models remain compatible by converting v-ray or corona materials into standard materials. However, please note that the visual quality may not match the exceptional standards achieved with V-Ray or Corona<\/p>"
+          }
+        },
+        "b204d810-2ff1-4df4-9fc2-364b79a1232b": {
+          "type": "richtext",
+          "settings": {
+            "question": "Do you have Forest Pack Preset setup for 3Ds Max?",
+            "question_type": "3ds-max",
+            "answer": "<p>Yes we do, however we only offer Forest Pack Preset library for our bundles. This feature is not included in any of our individual plant models.<\/p>"
+          }
+        },
+        "6a986d6c-2d06-49fb-ab9c-b61e7e8f053e": {
+          "type": "richtext",
+          "settings": {
+            "question": "Is your 3Ds Max a .3DS file?",
+            "question_type": "3ds-max",
+            "answer": "<p>No! Our 3Ds Max format is a .max file format that works only with Autodesk 3Ds Max software .3DS is an old format that has many limitations on polygons\/textures.<\/p>"
+          }
+        },
+        "08ab7cf2-dc2f-4a24-9939-e204f55b0a45": {
+          "type": "heading",
+          "settings": {
+            "text": "GrowFX",
+            "heading_image": "shopify:\/\/shop_images\/GrowFX-ico.png"
+          }
+        },
+        "b4d17e57-4cfd-4b85-8c29-7bcd6b5f027a": {
+          "type": "richtext",
+          "settings": {
+            "question": "What are the benefits of using Globe Plants' GrowFX format?",
+            "question_type": "growfx",
+            "answer": "<p>Globe Plants' GrowFX format allows for a high degree of customization. You can adjust parameters such as age, season, and level of detail to create unique and realistic plant models for your projects. You can also animate plant growth, wind effects, and more, creating dynamic and lifelike simulations.<\/p>"
+          }
+        },
+        "06622c5b-463f-43c5-b0ee-d45a89ca123b": {
+          "type": "richtext",
+          "settings": {
+            "question": "Do I need specific software to use Globe Plants' GrowFX models?",
+            "question_type": "growfx",
+            "answer": "<p>Yes, to use our GrowFX models, you will need the GrowFX plugin version 1.99 and above from <a href=\"https:\/\/exlevel.com\/features\/\" target=\"_blank\" title=\"Exlevel GrowFX\">Exlevel<\/a>, which only works with Autodesk 3Ds Max.<\/p>"
+          }
+        },
+        "4fa896e5-4863-4336-8ab2-e06fcbc0e91f": {
+          "type": "richtext",
+          "settings": {
+            "question": "Which rendering engines can I use GrowFX files with?",
+            "question_type": "growfx",
+            "answer": "<p>We have premade GrowFX files to be compatible with V-Ray and Corona Renderer for 3Ds Max<\/p>"
+          }
+        },
+        "cb9df2df-b0aa-4a43-9753-542b577d7529": {
+          "type": "heading",
+          "settings": {
+            "text": "FBX",
+            "heading_image": "shopify:\/\/shop_images\/FBX-ico.png"
+          }
+        },
+        "359f16cd-d6f9-4bc2-b6cf-088b3eb11525": {
+          "type": "richtext",
+          "settings": {
+            "question": "Do your FBX files come with textures?",
+            "question_type": "fbx",
+            "answer": "<p>Yes, our FBX files are designed to work seamlessly with textures. However, instead of embedding all the textures directly into each FBX file, we place all textures separately in the 'maps' folder. Users can then relink these textures in their preferred software. Keep in mind that some software might not have this relinking feature. In such cases, you'll need to copy the FBX files directly into the 'maps' folder, ensuring they are in the same location for the textures to appear correctly.<\/p>"
+          }
+        },
+        "261781f9-199d-46c0-9174-59fdf07d2d49": {
+          "type": "richtext",
+          "settings": {
+            "question": "Why FBX and not .3DS or .OBJ?",
+            "question_type": "fbx",
+            "answer": "<p>.3DS and .OBJ have limitations in polygon count and texture loading. FBX is the current industry-standard intermediary format.<\/p>"
+          }
+        },
+        "03d9e3ff-d172-49e4-b63a-cbcda8fdff42": {
+          "type": "heading",
+          "settings": {
+            "text": "SketchUp",
+            "heading_image": "shopify:\/\/shop_images\/format-Sketchup.png"
+          }
+        },
+        "9c2d1bcd-36da-421d-82b8-5e59fb5cb283": {
+          "type": "heading",
+          "settings": {
+            "text": "Cinema 4D",
+            "heading_image": "shopify:\/\/shop_images\/format-CINEMA-4D.png"
+          }
+        },
+        "8a60fc5f-6a9e-4f5a-a92d-9627a00532f4": {
+          "type": "richtext",
+          "settings": {
+            "question": "I have opened my downloaded file, but the textures seem to be missing. How can I make my models appear with textures?",
+            "question_type": "cinema-4d",
+            "answer": "<p>It's a common occurrence across various software where textures may need to be relinked due to directory changes. In Cinema 4D, you can easily address this by navigating to Window &gt; Project Asset &gt; Inspector. From there, select the unloaded assets and choose 'Relink Assets'. This should help you get your textures back in place.<\/p>"
+          }
+        },
+        "1e035091-93c1-4f53-8da6-88b6ec574065": {
+          "type": "richtext",
+          "settings": {
+            "question": "Can I use your models with V-Ray 6?",
+            "question_type": "cinema-4d",
+            "answer": "<p>Certainly! At Globe Plants, we prioritize forward compatibility. V-Ray versions, like your V-Ray 6, are adept at auto-converting materials from the V-Ray 3.7 format. So, rest assured, our will work smoothly on V-Ray 6.<\/p>"
+          }
+        },
+        "114c9de7-a0a9-42dc-9175-f9fe7411890a": {
+          "type": "richtext",
+          "settings": {
+            "question": "I don't use V-Ray or Corona Renderer with C4D. How can I use your model?",
+            "question_type": "cinema-4d",
+            "answer": "<p>Currently, there isn't a quick solution that we're aware of for this specific conversion. However, if you don't use any rendering engine we support, we'd recommend purchasing the FBX file. When you open an FBX file in Cinema 4D, it will default to standard materials, making it a suitable choice for your needs.<\/p>"
+          }
+        },
+        "509c6c59-6c2e-4a7a-8bd0-55d0af3a39db": {
+          "type": "richtext",
+          "settings": {
+            "question": "I am using RedShift, should I purchase your Cinema 4D format?",
+            "question_type": "cinema-4d",
+            "answer": "<p>While we appreciate your interest in our Cinema 4D format, for RedShift users, we'd advise otherwise. At Globe Plants, we offer a distinct <a href=\"https:\/\/globeplants.com\/collections\/redshift-3dsmax-cinema4d?formats=RedShift&quality=High+Poly\" target=\"_blank\" title=\"Globe Plants 3D Plants RedShift Format\">RedShift<\/a> format, but it's limited to specific bundles on our platform. For a better use with RedShift, we highly suggest purchasing the FBX format. When you import an FBX file into Cinema 4D, it comes with standard materials. From there, you can convert them to RedShift.<\/p>"
+          }
+        },
+        "7a0aeb50-9a13-4d98-885e-e3e8fd71b612": {
+          "type": "heading",
+          "settings": {
+            "text": "Blender",
+            "heading_image": "shopify:\/\/shop_images\/format-BLENDER.png"
+          }
+        },
+        "81ff0b6c-3454-48ab-868d-2757f81e22fb": {
+          "type": "richtext",
+          "settings": {
+            "question": "Which renderers does your Blender file format support?",
+            "question_type": "blender",
+            "answer": "<p>Our Blender files are primarily tailored for the Cycles renderer. That said, if you're an Eevee user, our models can still be utilized. Just bear in mind that, due to our shaders being specifically crafted for Cycles, you might need to make some adjustments for optimal results with Eevee.<\/p>"
+          }
+        },
+        "ca762b46-5f70-49a5-8e70-486cef831b37": {
+          "type": "richtext",
+          "settings": {
+            "question": "The models seem quite detailed and heavy. How can I optimize them for larger scenes like forests or multiple object placements?",
+            "question_type": "blender",
+            "answer": "<p>For such scenarios, we highly recommend utilizing Blender's Geometry Nodes. This tool allows you to proxy and scatter objects seamlessly across surfaces, ensuring your scenes remain both detailed and efficient.<\/p>"
+          }
+        },
+        "27ab8548-b30c-4339-9d46-145181533317": {
+          "type": "richtext",
+          "settings": {
+            "question": "Can I copy the models to another location or folder without copying the textures?",
+            "question_type": "blender",
+            "answer": "<p>Absolutely! The textures are embedded within the model itself, so there's no need for separate transfers. The included maps folder is there for those who wish to customize or tweak the original textures.<\/p>"
+          }
+        },
+        "bfd8c9ab-69c6-4b55-adde-ca0d203b4f31": {
+          "type": "heading",
+          "settings": {
+            "text": "Twinmotion",
+            "heading_image": "shopify:\/\/shop_images\/format-TWINMOTION.png"
+          }
+        },
+        "b16abe80-c49f-499b-9ee2-f8d442c8eabf": {
+          "type": "richtext",
+          "settings": {
+            "question": "What's the difference between your Twinmotion file and the FBX or SketchUp files format?",
+            "question_type": "twinmotion",
+            "answer": "<p>It depends on your needs. In theory, you can self-import FBX or SketchUp files into Twinmotion. However, our Twinmotion files are further optimized in terms of materials, such as roughness, bump, and two-sided materials as well as being much easier to import via User Library.<\/p>"
+          }
+        },
+        "70a152da-0024-4d34-bf02-480ad8c809b7": {
+          "type": "richtext",
+          "settings": {
+            "question": "When I load your Twinmotion assets, the textures don't appear. How can I fix this?",
+            "question_type": "twinmotion",
+            "answer": "<p>Please try running your Twinmotion as an administrator. Sometimes, Twinmotion can't extract textures to the folder due to lack of administrative permissions.<\/p>"
+          }
+        },
+        "70f04287-dade-4447-ba0a-fdbe0e791cb5": {
+          "type": "richtext",
+          "settings": {
+            "question": "Are your Twinmotion assets heavy in terms of file size? And will they affect my computer performance?",
+            "question_type": "twinmotion",
+            "answer": "<p>Our Twinmotion assets are offered in both high poly and low poly versions separately from each other. High poly models are detailed and best suited for higher-end computers, while low poly models are optimized for performance on standard machines. We recommend checking your hardware specifications and choosing the appropriate model type to ensure optimal performance.<\/p>"
+          }
+        },
+        "a7824a20-84e1-43ef-b15a-4fe681ef9b3f": {
+          "type": "richtext",
+          "settings": {
+            "question": "Can I use your Twinmotion format assets with the Twinmotion paint tool, and will they animate like the ones in the Twinmotion library?",
+            "question_type": "twinmotion",
+            "answer": "<p>No, the paint tool and animation features are exclusive to Twinmotion's own library. Third-party assets, including ours, are not permitted to utilize these specific features.<\/p>"
+          }
+        },
+        "ca3f2995-3d54-4a1d-93f4-39d464381426": {
+          "type": "heading",
+          "settings": {
+            "text": "Rhinoceros 3D",
+            "heading_image": "shopify:\/\/shop_images\/format-RHINOCEROS-3D.png"
+          }
+        },
+        "7443bdad-d17e-4c4a-97c0-2f2263d22d30": {
+          "type": "richtext",
+          "settings": {
+            "question": "I want to use Globe Plants' Rhino3D assets with a different renderer. How can I do that?",
+            "question_type": "rhinoceros-3d",
+            "answer": "<p>We provide our models with standard materials when purchasing our Rhinoceros 3D format. You can easily convert these to the materials compatible with your preferred renderer.<\/p>"
+          }
+        },
+        "bb07db75-d249-4dd0-88ca-1de4abcf0ced": {
+          "type": "richtext",
+          "settings": {
+            "question": "How can I perform scattering in Rhinoceros?",
+            "question_type": "rhinoceros-3d",
+            "answer": "<p>We recommend using the Grasshopper and Rhino Nature plugins for efficient object scattering in Rhinoceros 3D.<\/p>"
+          }
+        },
+        "230b1b1c-bcef-417f-afb0-7d5281a28623": {
+          "type": "richtext",
+          "settings": {
+            "question": "Can I purchase other formats like .FBX or SketchUp .SKP to import into Rhino3D instead of the .3DM file?",
+            "question_type": "rhinoceros-3d",
+            "answer": "<p>Yes, you can. However, our Rhinoceros files are optimized for the best performance and support both V-Ray and Rhino Legacy renderers. You may have to have to do your own optimization if you purchase other formats.<\/p>"
+          }
+        },
+        "950c6568-2638-48d4-87ac-894437a6529b": {
+          "type": "heading",
+          "settings": {
+            "text": "RedShift",
+            "heading_image": "shopify:\/\/shop_images\/format-REDSHIFT.png"
+          }
+        },
+        "c4402717-1a4b-41ee-8f99-1f561e35955e": {
+          "type": "richtext",
+          "settings": {
+            "question": "I noticed only a few bundles have the RedShift format. If I want to use other plants with RedShift, which format is best?",
+            "question_type": "redshift",
+            "answer": "<p>While we offer limited RedShift-specific formats, we recommend selecting the FBX format for importing into Cinema 4D or 3Ds Max. You can then convert the FBX standard materials into RedShift materials as you see fit.<\/p>"
+          }
+        },
+        "cfa6dd37-46e6-4243-a77f-3884caaf4d72": {
+          "type": "heading",
+          "settings": {
+            "text": "Unreal Engine 5",
+            "heading_image": "shopify:\/\/shop_images\/format-UNREAL-ENGINE-5.png"
+          }
+        },
+        "374060aa-e16d-43a7-86d4-2ac251a29b80": {
+          "type": "richtext",
+          "settings": {
+            "question": "Do your Unreal Engine plants have Wind animation?",
+            "question_type": "unreal-engine-5",
+            "answer": "<p>Yes, our plants are designed to sway gently with the wind. If you're mainly do architectural visualization (archviz), the subtle movement we provide will add a touch of realism to your projects.<\/p>"
+          }
+        },
+        "96ff0418-ebcd-4a67-ab16-21a53f5bcadc": {
+          "type": "richtext",
+          "settings": {
+            "question": "My render quality isn't great in Unreal Engine 5. How can I improve it?",
+            "question_type": "unreal-engine-5",
+            "answer": "<p>Unreal Engine 5 currently supports features like Lumen and Path tracing. Utilizing these can significantly enhance the visual quality of your scenes. There are quite a few tutorials online on how to do so <a href=\"https:\/\/www.youtube.com\/results?search_query=Unreal+Engine+5+Lumen\" target=\"_blank\" title=\"Globe Plants Unreal Engine Lumen YouTube tutorials\">here<\/a>.<\/p>"
+          }
+        },
+        "38590a06-72ec-4ea0-9a52-12a4321a92b0": {
+          "type": "richtext",
+          "settings": {
+            "question": "Can I perform scattering with your models inside Unreal Engine 5?",
+            "question_type": "unreal-engine-5",
+            "answer": "<p>Absolutely! While there are several powerful plugins available for scattering, we particularly recommend <a href=\"https:\/\/www.unrealengine.com\/marketplace\/en-US\/product\/ia-scatter?sessionInvalidated=true\" target=\"_blank\" title=\"Globe Plants UE5 ia scatter\">ia scatter<\/a>. It's both robust and user-friendly.<\/p>"
+          }
+        },
+        "2b8fceac-5bd5-409f-8c83-304127afd73a": {
+          "type": "heading",
+          "settings": {
+            "text": "Enscape",
+            "heading_image": "shopify:\/\/shop_images\/format-ENSCAPE.png"
+          }
+        },
+        "2dbe279e-7be1-422e-8db2-8be15c4c6d8a": {
+          "type": "richtext",
+          "settings": {
+            "question": "Can I purchase the .FBX format instead of your Enscape assets format?",
+            "question_type": "enscape",
+            "answer": "<p>In theory, yes, you can. However, it's essential to note that our FBX files use millimeters (mm) as the unit to suit other software, while Enscape only supports meters (m). So, when using our FBX in Enscape, not only will you need to reload all the textures into each material slot, but you'll also have to scale the model down by a factor of 1000 in the Enscape assets editor. Additionally, you'd have to create placeholders in Enscape to view them on the viewport<\/p>"
+          }
+        },
+        "08586020-3e93-479f-910c-70fbc5e51c80": {
+          "type": "richtext",
+          "settings": {
+            "question": "I can't render your Enscape assets, even though they worked fine previously. What could be the issue?",
+            "question_type": "enscape",
+            "answer": "<p>It's possible that you've altered the 'Source path' folder. It's crucial that the the location of this folder remains unchanged and all assets are consistently copied into it that folder.<\/p>"
+          }
+        },
+        "5361bb40-a8bf-4bb2-b421-fce832ebac66": {
+          "type": "richtext",
+          "settings": {
+            "question": "Do your Enscape assets support Wind animation?",
+            "question_type": "enscape",
+            "answer": "<p>Unfortunately, they don't. Wind animation is an exclusive feature of Enscape assets, and we don't have the authorization to implement this feature<\/p>"
+          }
+        },
+        "25f656fa-0932-40e4-b67b-02e7dbaeb954": {
+          "type": "richtext",
+          "settings": {
+            "question": "How can I modify the scale of Enscape assets when working with BIM\/CAD software like Revit or Archicad?",
+            "question_type": "enscape",
+            "answer": "<p>We provide an ASSETPKG file with our assets. This allows you to easily modify the scale of objects using the Enscape Custom Assets Editor.<\/p>"
+          }
+        },
+        "40b5e30d-d0da-4e97-8709-f335817bcc59": {
+          "type": "richtext",
+          "settings": {
+            "question": "Some assets aren't showing up in Enscape render, while others are, even though I've placed all assets in a single folder. Why is this happening?",
+            "question_type": "enscape",
+            "answer": "<p>Enscape sometimes encounters issues with lengthy folder paths. If the directory path is too long, Enscape might not read the texture files correctly. To avoid this, we recommend placing our Enscape assets in a location with a shorter folder name, such as 'D:\\GP-Enscape'<\/p>"
+          }
+        },
+        "c3298036-b6af-455a-89ef-d7e31e2b6cfe": {
+          "type": "heading",
+          "settings": {
+            "text": "Lumion",
+            "heading_image": "shopify:\/\/shop_images\/format-Lumion.png"
+          }
+        },
+        "cca549b8-230d-4a86-b495-b597059746ad": {
+          "type": "richtext",
+          "settings": {
+            "question": "I don't see Lumion format on your website. Which format should I select if I use Lumion?",
+            "question_type": "lumion",
+            "answer": "<p>All prices on our store are in USD by default. You can change currencies by clicking on the top right USD text in the menu and select the available currencies to be converted.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "4ad45b75-ce32-4750-9e11-896e25edcf62",
+        "419043e0-a735-4bc3-baba-13ab1d00999e",
+        "fc96be38-ea72-4560-85e6-99d6c2a62d73",
+        "b204d810-2ff1-4df4-9fc2-364b79a1232b",
+        "6a986d6c-2d06-49fb-ab9c-b61e7e8f053e",
+        "08ab7cf2-dc2f-4a24-9939-e204f55b0a45",
+        "b4d17e57-4cfd-4b85-8c29-7bcd6b5f027a",
+        "06622c5b-463f-43c5-b0ee-d45a89ca123b",
+        "4fa896e5-4863-4336-8ab2-e06fcbc0e91f",
+        "cb9df2df-b0aa-4a43-9753-542b577d7529",
+        "359f16cd-d6f9-4bc2-b6cf-088b3eb11525",
+        "261781f9-199d-46c0-9174-59fdf07d2d49",
+        "03d9e3ff-d172-49e4-b63a-cbcda8fdff42",
+        "9c2d1bcd-36da-421d-82b8-5e59fb5cb283",
+        "8a60fc5f-6a9e-4f5a-a92d-9627a00532f4",
+        "1e035091-93c1-4f53-8da6-88b6ec574065",
+        "114c9de7-a0a9-42dc-9175-f9fe7411890a",
+        "509c6c59-6c2e-4a7a-8bd0-55d0af3a39db",
+        "7a0aeb50-9a13-4d98-885e-e3e8fd71b612",
+        "81ff0b6c-3454-48ab-868d-2757f81e22fb",
+        "ca762b46-5f70-49a5-8e70-486cef831b37",
+        "27ab8548-b30c-4339-9d46-145181533317",
+        "bfd8c9ab-69c6-4b55-adde-ca0d203b4f31",
+        "b16abe80-c49f-499b-9ee2-f8d442c8eabf",
+        "70a152da-0024-4d34-bf02-480ad8c809b7",
+        "70f04287-dade-4447-ba0a-fdbe0e791cb5",
+        "a7824a20-84e1-43ef-b15a-4fe681ef9b3f",
+        "ca3f2995-3d54-4a1d-93f4-39d464381426",
+        "7443bdad-d17e-4c4a-97c0-2f2263d22d30",
+        "bb07db75-d249-4dd0-88ca-1de4abcf0ced",
+        "230b1b1c-bcef-417f-afb0-7d5281a28623",
+        "950c6568-2638-48d4-87ac-894437a6529b",
+        "c4402717-1a4b-41ee-8f99-1f561e35955e",
+        "cfa6dd37-46e6-4243-a77f-3884caaf4d72",
+        "374060aa-e16d-43a7-86d4-2ac251a29b80",
+        "96ff0418-ebcd-4a67-ab16-21a53f5bcadc",
+        "38590a06-72ec-4ea0-9a52-12a4321a92b0",
+        "2b8fceac-5bd5-409f-8c83-304127afd73a",
+        "2dbe279e-7be1-422e-8db2-8be15c4c6d8a",
+        "08586020-3e93-479f-910c-70fbc5e51c80",
+        "5361bb40-a8bf-4bb2-b421-fce832ebac66",
+        "25f656fa-0932-40e4-b67b-02e7dbaeb954",
+        "40b5e30d-d0da-4e97-8709-f335817bcc59",
+        "c3298036-b6af-455a-89ef-d7e31e2b6cfe",
+        "cca549b8-230d-4a86-b495-b597059746ad"
+      ],
+      "settings": {
+        "title": "Software Related Questions",
+        "text": "Please select the following software below for your answers",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#2b2b2b"
+      }
+    },
+    "2a229014-e3d5-4235-832f-a51bd1b52b5e": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<style>\nmain#main {\n    background-color: var(--background);\n    --background: #f4f4f4;\n}\n.section {\n    padding-block-start:0;\n    padding-block-end:0;\n}\n\n<\/style>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "02f3e9f7-311d-41b5-ad52-0e1c10b36ffe": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "de72dbaf-2bb6-41ad-a995-7dd8a86c98aa": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"chat-here\">                     <svg width=\"28\" height=\"28\" viewBox=\"0 0 28 28\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n                              <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M14 25.3333C20.2592 25.3333 25.3333 20.2592 25.3333 14C25.3333 7.74073 20.2592 2.66663 14 2.66663C7.74073 2.66663 2.66663 7.74073 2.66663 14C2.66663 20.2592 7.74073 25.3333 14 25.3333ZM14 27.3333C21.3638 27.3333 27.3333 21.3638 27.3333 14C27.3333 6.63616 21.3638 0.666626 14 0.666626C6.63616 0.666626 0.666626 6.63616 0.666626 14C0.666626 21.3638 6.63616 27.3333 14 27.3333ZM14 22C14.7363 22 15.3333 21.403 15.3333 20.6666C15.3333 19.9302 14.7363 19.3333 14 19.3333C13.2636 19.3333 12.6666 19.9302 12.6666 20.6666C12.6666 21.403 13.2636 22 14 22ZM11.7235 8.8687C12.7151 8.44847 13.8511 8.26749 14.8197 8.35468C15.8188 8.44461 16.4342 8.79198 16.6958 9.19789C17.0254 9.70941 17.077 10.2375 16.9001 10.791C16.7132 11.3756 16.2544 12.0249 15.4984 12.6391C13.8088 14.012 12.7919 15.0433 12.7919 16.6666C12.7919 17.2189 13.2396 17.6666 13.7919 17.6666C14.3442 17.6666 14.7919 17.2189 14.7919 16.6666C14.7919 16.0938 15.014 15.6097 16.7596 14.1913C17.7214 13.4099 18.4672 12.4572 18.8051 11.3999C19.153 10.3115 19.0493 9.15788 18.377 8.11453C17.6366 6.96558 16.2841 6.47841 14.999 6.36273C13.6834 6.24431 12.2188 6.48663 10.9431 7.02722C10.4346 7.2427 10.1971 7.82962 10.4126 8.33813C10.6281 8.84664 11.215 9.08418 11.7235 8.8687Z\" fill=\"#608239\"\/>                          <\/svg><\/div>\n<style>\n.chat-here {\n  height: 30px;\n  padding: 2px;\n  margin-bottom: 16px;\n}\np:not(.h0,.h1,.h2,.h3,.h4,.h5,.h6),\n.prose * + :is(.h5, .h6, h5, h6) {\n  font-size: 14px !important;\n}\n\n.prose * + :is(.h5, .h6, h5, h6) {\n  margin-block-start: 0;\n  color: #6b6b6b;\n}\n<\/style>"
+          }
+        },
+        "template--19253226406178__02f3e9f7-311d-41b5-ad52-0e1c10b36ffe-1688918780f500930f-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "Can't find the answer you are looking for?"
+          }
+        },
+        "template--19253226406178__02f3e9f7-311d-41b5-ad52-0e1c10b36ffe-1688918780f500930f-1": {
+          "type": "heading",
+          "settings": {
+            "text": "We are here to help.",
+            "heading_tag": "h1"
+          }
+        },
+        "template--19253226406178__02f3e9f7-311d-41b5-ad52-0e1c10b36ffe-1688918780f500930f-2": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Our customer support is available Monday to Friday: <strong>8am-8:30pm<\/strong><\/p><h6>Average answer time: 24h<\/h6>"
+          }
+        },
+        "31b1c693-cd66-42ca-9533-8c99fdd4fea1": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<button class=\"button button--lg\" onclick=\"Chatra('openChat', true)\">Chat with us<\/button>"
+          }
+        }
+      },
+      "block_order": [
+        "de72dbaf-2bb6-41ad-a995-7dd8a86c98aa",
+        "template--19253226406178__02f3e9f7-311d-41b5-ad52-0e1c10b36ffe-1688918780f500930f-0",
+        "template--19253226406178__02f3e9f7-311d-41b5-ad52-0e1c10b36ffe-1688918780f500930f-1",
+        "template--19253226406178__02f3e9f7-311d-41b5-ad52-0e1c10b36ffe-1688918780f500930f-2",
+        "31b1c693-cd66-42ca-9533-8c99fdd4fea1"
+      ],
+      "custom_css": [
+        "> div {padding-block-start: var(--spacing-10);}",
+        "image-banner {max-height: 400px;}",
+        ".prose :is(.h1) + * {margin-block-start: 0;}",
+        ".prose > p.bold,.prose > p.h1 {color: var(--gray-1, #2b2b2b); text-align: center; font-size: 20px; line-height: 1.4; margin-top: 0;}",
+        ".prose > p.bold {font-weight: 400;}",
+        ".prose > p.h1 {font-weight: 600; margin-bottom: 16px;}",
+        ".prose {display: flex; align-items: center; flex-direction: column;}",
+        ".place-self-center {background: #fff; border-radius: 16px; padding: 24px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/contact-banner.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "{{ shop.brand.colors.primary[0].background }}",
+        "overlay_color": "#ffffff",
+        "overlay_opacity": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e045a23f-77c2-4848-ad37-c20bb1ec4a16",
+    "17ee19d0-9a0f-40ec-8950-979625563c99",
+    "ae64ac8b-6b75-42b5-82a4-e8c4b6ea2af6",
+    "378cbdaf-e162-4397-a20d-60daacc6f2fa",
+    "2a229014-e3d5-4235-832f-a51bd1b52b5e",
+    "02f3e9f7-311d-41b5-ad52-0e1c10b36ffe"
+  ]
+}

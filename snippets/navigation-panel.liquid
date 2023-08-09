@@ -1,0 +1,223 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+MEGA MENU PANEL
+----------------------------------------------------------------------------------------------------------------------
+
+This component is used to show the different links in different panel for the menu drawer
+
+********************************************
+Supported variables
+********************************************
+
+* main_menu: the menu to show for the primary menu
+* secondary_menu: the secondary menu (shown on mobile)
+* mega_menu_block: use when mega menu is set to drawer
+* is_mega_menu: set to true if mega menu is set to drawer
+* layout
+{%- endcomment -%}
+
+<div class="panel-list__wrapper">
+  <div class="panel">
+    <div class="panel__wrapper" {% if mega_menu_block.settings.promo_content_layout == 'grid' or mega_menu_block.settings.promo_content_layout == 'collage' %}style="--panel-wrapper-justify-content: flex-start"{% endif %}>
+      {%- if show_country_selector and localization.available_countries.size > 1 -%}
+        {%- assign country_selector = true -%}
+      {%- endif -%}
+
+      {%- if show_locale_selector and localization.available_languages.size > 1 -%}
+        {%- assign locale_selector = true -%}
+      {%- endif -%}
+      <div class="panel__header v-stack gap-4">
+        {%- if shop.customer_accounts_enabled -%}
+          {%- unless customer -%}
+            <div class="h-stack gap-2 navigation-drawer__account medium">
+              {%- render 'icon' with 'account', width: 24, height: 24 -%}
+              <span>
+                <a href="{{ routes.account_login_url }}">{{ 'Sign in' }}</a> {{ 'or' }} <a href="{{ routes.account_register_url }}">{{ 'Sign up' }}</a>
+              </span>
+            </div>
+          {%- else -%}
+            <a href="{{ routes.account_url }}" class="h-stack gap-2 navigation-drawer__account medium">
+              {%- render 'icon' with 'account', width: 24, height: 24 -%}
+              <span>{{ 'Hello, ' | append: customer.first_name }}</span>
+            </a>
+          {%- endunless -%}
+        {%- endif -%}
+
+        <div class="sm:hidden panel-header__cart">
+          <a href="{{ routes.cart_url }}" data-no-instant class="h-stack gap-2 relative tap-area" {% if settings.cart_type != 'page' and request.page_type != 'cart' %}aria-controls="cart-drawer"{% endif %}>
+            {%- render 'icon' with 'cart' -%}
+            <span class="medium">{{ 'My Cart' }}</span>
+
+            <div class="header__cart-count">
+              <cart-count class="count-bubble {% if cart.item_count == 0 %}opacity-0{% endif %}" aria-hidden="true">
+                {{- cart.item_count -}}
+              </cart-count>
+            </div>
+          </a>
+        </div>
+
+        {%- if country_selector or locale_selector -%}
+          <div class="panel-header__localization-wrapper v-stack md:hidden">
+            {%- if country_selector -%}
+              <div class="h-stack justify-between">
+                <span class="medium">{{ 'Currency' }}</span>
+
+                {%- render 'localization-selector', type: 'country', show_country_name: show_country_name, show_country_flag: show_country_flag, popover_vertical_position: 'end' -%}
+              </div>
+            {%- endif -%}
+
+            {%- if locale_selector -%}
+              {%- render 'localization-selector', type: 'locale' -%}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="panel__scroller v-stack gap-8">
+        {%- if is_mega_menu -%}
+          <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}" {%- if section.settings.opening_from == 'bottom' -%}class="sm-max:hidden"{%- endif -%}>
+            {%- render 'icon' with 'close', width: 19, height: 19 -%}
+          </button>
+        {%- endif -%}
+
+        <ul class="navigation-drawer__menu v-stack gap-4">
+          {%- for link in main_menu.links -%}
+            {%- unless is_mega_menu -%}
+              {%- liquid
+                assign link_title_downcase = link.title | downcase
+                assign mega_menu_block = ''
+                assign mega_menu_tab_block = ''
+
+                for block in section.blocks
+                  assign menu_item_downcase = block.settings.menu_item | strip | downcase
+
+                  if menu_item_downcase == link_title_downcase
+                    case block.type
+                      when 'mega_menu'
+                        assign mega_menu_block = block
+                        break
+                      when 'mega_menu_tab'
+                        assign mega_menu_tab_block = block
+                        break
+                    endcase
+
+                    break
+                  endif
+                endfor
+              -%}
+
+            {%- else -%}
+              {%- assign is_image_shown = false -%}
+
+              {%- if mega_menu_block.settings.drawer_link_image == 'show' -%}
+                {%- assign is_image_shown = true -%}
+              {%- endif -%}
+
+            {%- endunless -%}
+
+            <li>
+              {%- if link.levels == 0 and mega_menu_block == '' and mega_menu_tab_block == '' -%}
+                <a href="{{ link.url }}" class="block medium"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              {%- else -%}
+                <details aria-expanded="false" is="accordion-disclosure" class="accordion">
+                  <summary class="text-with-icon w-full group justify-between medium">
+                    {{- link.title -}}
+                    {%- render 'icon' with 'chevron-nav-bottom' -%}
+                  </summary>
+                  <div class="accordion__content">
+                    {%- if mega_menu_tab_block != '' -%}
+                      {%- render 'mega-menu-tabs-mobile', link: link, mega_menu_tab_block: mega_menu_tab_block -%}
+                    {%- elsif mega_menu_block != '' -%}
+                      {%- render 'mega-menu-horizontal', link: link, mega_menu_block: mega_menu_block -%}
+                    {%- else -%}
+                      <ul class="v-stack gap-4" role="list">
+                        {%- for sub_link in link.links -%}
+                          <li>
+                            {%- if sub_link.levels == 0 -%}
+                              <a href="{{ sub_link.url }}" class="block medium" {% if sub_link.current %}aria-current="page"{% endif %}>{{ sub_link.title }}</a>
+                            {%- else -%}
+                              <details class="relative" is="dropdown-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
+                                <summary class="dropdown-menu__item group" {% if sub_link.url != '#' %}data-url="{{ sub_link.url | escape }}"{% endif %}>
+                                  <span><span class="reversed-link">{{- sub_link.title -}}</span></span>
+                                  {%- render 'icon' with 'chevron-right' -%}
+                                </summary>
+
+                                <div class="dropdown-menu">
+                                  <ul class="contents" role="list">
+                                    {%- for sub_sub_link in sub_link.links -%}
+                                      <li>
+                                        <a href="{{ sub_sub_link.url }}" class="dropdown-menu__item group" {% if sub_sub_link.current %}aria-current="page"{% endif %}>
+                                          <span><span class="reversed-link">{{ sub_sub_link.title }}</span></span>
+                                        </a>
+                                      </li>
+                                    {%- endfor -%}
+                                  </ul>
+                                </div>
+                              </details>
+                            {%- endif -%}
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </div>
+                </details>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+
+          {%- if shop.customer_accounts_enabled and customer -%}
+            <li class="logout">
+              <a class="text-with-icon w-full group gap-2 medium" href="{{ routes.account_logout_url }}">
+                {%- render 'icon' with 'logout' -%}
+                {{ 'Log out' }}
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      {%- if is_mega_menu -%}
+        {%- render 'navigation-promo-block', navigation_layout: layout, mega_menu_block: mega_menu_block, is_navigation_drawer: true, link_col: link.links.size -%}
+      {%- else -%}
+        {%- comment -%}
+        ----------------------------------------------------------------------------------------------------------------
+        SOCIAL MEDIA
+        ----------------------------------------------------------------------------------------------------------------
+        {%- endcomment -%}
+
+        {%- if show_social_media -%}
+          <div class="sm:hidden h-stack justify-between panel-footer">
+            <span class="medium title">{{ 'Follow Us' }}</span>
+            <ul class="social-media" role="list">
+              {%- if settings.social_facebook != blank or shop.brand.metafields.social_links.facebook != blank -%}
+                <li>
+                  <a href="{{ settings.social_facebook | default: shop.brand.metafields.social_links.facebook }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'Facebook' }}">
+                    {%- render 'icon' with 'facebook-alt' -%}
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_instagram != blank or shop.brand.metafields.social_links.instagram != blank -%}
+                <li>
+                  <a href="{{ settings.social_instagram | default: shop.brand.metafields.social_links.instagram }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'Instagram' }}">
+                    {%- render 'icon' with 'instagram-alt' -%}
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_youtube != blank or shop.brand.metafields.social_links.youtube != blank -%}
+                <li>
+                  <a href="{{ settings.social_youtube | default: shop.brand.metafields.social_links.youtube }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'YouTube' }}">
+                    {%- render 'icon' with 'youtube-alt' -%}
+                  </a>
+                </li>
+              {%- endif -%}
+              <li>
+                <a href="mailto:{{ shop.email }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'Mail' }}">
+                  {%- render 'icon' with 'mail' -%}
+                </a>
+              </li>
+            </ul>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

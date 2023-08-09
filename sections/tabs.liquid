@@ -1,0 +1,1669 @@
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} {
+        --section-stack-spacing-block: var(--spacing-8);
+      }
+    }
+
+    @media screen and (min-width: 1400px) {
+      #shopify-section-{{ section.id }} {
+        --section-stack-spacing-block: var(--spacing-10);
+      }
+    }
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="main-product-tabs">
+      <div class="section-stack">
+        {%- assign tabDescription = section.blocks | where: 'type', 'tab_description' | first -%}
+        {%- assign tabFormats = section.blocks | where: 'type', 'tab_formats' | first -%}
+        {%- assign productTags = product.tags | join: ', ' -%}
+
+        {%- assign isHighPoly = false -%}
+        {%- assign isLowPoly = false -%}
+        {%- if productTags contains 'High Poly' -%}
+          {%- assign isHighPoly = true -%}
+        {%- elsif productTags contains 'Low Poly' -%}
+          {%- assign isLowPoly = true -%}
+        {%- endif -%}
+
+        <div class="tabs-container">
+          <x-tabs class="tabs-inner">
+            <template shadowrootmode="open">
+              <slot role="tablist" part="tab-list" name="title"></slot>
+              <slot part="tab-panels" name="content"></slot>
+            </template>
+
+            {%- if tabDescription != blank -%}
+              <button type="button" slot="title" class="tabs-nav__button medium text-center">{{ tabDescription.settings.title | escape }}</button>
+              <div role="tabpanel" class="tab-content" slot="content" {% cycle '', 'hidden', 'hidden' %}>
+                <div class="main-product-tabs__grid">
+                  <div class="main-product-tabs__box">
+                    <h2 class="main-product-tabs__title">{{ 'About' }}</h2>
+                    <div class="main-product-tabs__context">
+                      {{ tabDescription.settings.about_description }}
+                    </div>
+                  </div>
+                  <div class="main-product-tabs__box main-product-tabs__box--bg">
+                    <h2 class="main-product-tabs__title">{{ 'Information' }}</h2>
+                    <div class="main-product-tabs__details">
+                    {%- unless product.type == 'Bundle' -%}
+                      {%- if product.metafields.custom.plants_name != blank -%}
+                        <div class="item">
+                          <span class="item-title">{{ 'Botanical Name' }}</span>
+                          <div class="item-content">
+                            <strong>{{ product.metafields.custom.plants_name }}</strong>
+                          </div>
+                        </div>
+                      {%- endif -%}
+
+                      {%- if product.metafields.custom.common_namess != blank -%}
+                        <div class="item">
+                          <span class="item-title">{{ 'Common Name' }}</span>
+                          <div class="item-content">
+                            <strong>{{ product.metafields.custom.common_namess.value | join: ', ' }}</strong>
+                          </div>
+                        </div>
+                      {%- endif -%}
+
+                      {%- if product.metafields.custom.included_in.value != blank -%}
+                        <div class="item">
+                          <span class="item-title">{{ 'Included in' }}</span>
+                          <div class="item-content item-content--included-in">
+                            <strong>
+                              {%- for field in product.metafields.custom.included_in.value %}
+                                <a class="link" href="{{ field.url }}">{{ field.title }}</a>
+                                {%- if forloop.last != true -%}<br />{%- endif -%}
+                              {% endfor -%}
+                            </strong>
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    {%- else -%}
+                      <div class="item">
+                        <span class="item-title">{{ 'Name' }}</span>
+                        <div class="item-content">
+                          <strong>{{ product.title }}</strong>
+                        </div>
+                      </div>
+                    {%- endunless -%}
+
+                    {%- if tabDescription.settings.brand_logo != blank -%}
+                      <div class="item">
+                        <span class="item-title">{{ 'Brand' }}</span>
+                        <div class="item-content h-stack align-center">
+                          {{- tabDescription.settings.brand_logo | image_url: width: 240 | image_tag: loading: 'lazy', class: 'brand-image', alt: shop.name -}}
+                        </div>
+                      </div>
+                    {%- endif -%}
+
+                    {%- if product.metafields.custom.number_of_species != blank -%}
+                      <div class="item">
+                        <span class="item-title">{{ 'Number of Species' }}</span>
+                        <div class="item-content">
+                          <strong>{{ product.metafields.custom.number_of_species }}</strong>
+                        </div>
+                      </div>
+                    {%- endif -%}
+
+                      <div class="item">
+                        <span class="item-title">{{ 'Number of Unique Models/Variations' }}</span>
+                        <div class="item-content">
+                          <strong>{{ product.metafields.custom.number_of_unique_models }}</strong>
+                        </div>
+                      </div>
+
+                    {%- unless product.type == 'Bundle' -%}
+                      <div class="item">
+                        <span class="item-title">{{ 'Textures and Materials' }}</span>
+                        <div class="item-content">
+                          <strong>{{ 'Included' }}</strong>
+                        </div>
+                      </div>
+                    {%- endunless -%}
+
+                      <div class="item">
+                        <span class="item-title">{{ 'Region' }}</span>
+                        <div class="item-content">
+                          <ul class="product-tags">
+                            {%- for tag in product.tags -%}
+                              {%- if tag contains 'Asia' or tag contains 'Europe' or tag contains 'America' or tag contains 'Middle East' or tag contains 'Oceania' or tag contains 'Africa' -%}
+                                <li class="{{ tag }}">{{ tag }}</li>
+                              {%- endif -%}
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+
+                    {%- if product.metafields.custom.regions != blank -%}
+                      <div class="item">
+                        <span class="item-title">{{ 'Commonly Seen In' }}</span>
+                        <div class="item-content">
+                          <strong>{{ product.metafields.custom.regions.value | join: ', ' }}</strong>
+                        </div>
+                      </div>
+                    {%- endif -%}
+
+                    {%- assign pdfURL = product.metafields.custom.pdf_files.value.url -%}
+                    {%- assign pdfFilename = product.metafields.custom.title_pdf -%}
+                    {%- if pdfURL != blank -%}
+                      <div class="item">
+                        <span class="item-title">{{ 'Catalog Download' }}</span>
+                        <div class="item-content">
+                          <a href="{{ pdfURL }}" class="text-with-icon group justify-between gap-2 medium download-pdf" download="{{ pdfFilename }}" target="_blank">
+                            <span><span class="reversed-link">{{ pdfFilename | remove: '.pdf' | append: '.pdf' }}</span></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                              <path fill="#608239" fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v10.19l2.72-2.72a.75.75 0 1 1 1.06 1.06l-4 4a.748.748 0 0 1-1.06 0l-4-4a.75.75 0 1 1 1.06-1.06l2.72 2.72V3a.75.75 0 0 1 .75-.75Zm-8 12a.75.75 0 0 1 .75.75v3.333c0 .253.097.49.26.66a.818.818 0 0 0 .59.257h12.8a.818.818 0 0 0 .59-.258.952.952 0 0 0 .26-.659V15a.75.75 0 0 1 1.5 0v3.333c0 .632-.24 1.243-.678 1.698a2.318 2.318 0 0 1-1.672.719H5.6a2.318 2.318 0 0 1-1.672-.719 2.452 2.452 0 0 1-.678-1.698V15a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    {%- endif -%}
+
+                      <div class="item">
+                        <span class="item-title">{{ 'Software' }}</span>
+                        <div class="item-content">
+                          {%- render 'product-software', product: product -%}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {%- comment -%} Gallery {%- endcomment -%}
+                {%- if product.metafields.custom.gallery.value != blank -%}
+                  <div class="main-product-tabs__gallery">
+                    {%- unless product.type == 'Bundle' -%}
+                      <h3 class="main-product-tabs__subtitle">{{ section.settings.title_gallery }}</h3>
+                    {%- else -%}
+                      <h3 class="main-product-tabs__subtitle">{{ section.settings.title_gallery_bundle }}</h3>
+                    {%- endunless -%}
+
+                    {%- assign gallery_id = 'gallery-carousel-' | append: tabDescription.id -%}
+                    <div class="main-product-tabs__gallery-carousel-wrapper">
+                      <scroll-carousel id="{{ gallery_id }}" class="main-product-tabs__gallery-carousel scroll-area" selector=".gallery-carousel__slide">
+                        {%- for image in product.metafields.custom.gallery.value -%}
+                          {%- assign caption = product.metafields.custom.gallery_title.value[forloop.index0] -%}
+                          <div class="gallery-carousel__slide">
+                            {{- image | image_url: width: 1300 | image_tag: loading: 'lazy', widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'gallery-carousel__image', alt: caption -}}
+                            {%- if caption != '#' -%}
+                              <p class="gallery-carousel__caption">{{ caption }}</p>
+                            {%- endif -%}
+                          </div>
+                        {%- endfor -%}
+                      </scroll-carousel>
+
+                      {%- assign countMedia = product.metafields.custom.gallery.value.count -%}
+                      <div class="prev-next-buttons{% if countMedia < 3 %} sm:hidden{% endif %}">
+                        <button is="prev-button" aria-controls="{{ gallery_id }}" class="circle-button circle-button--fill group" disabled>
+                          <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+                          {%- render 'icon' with 'chevron-left', direction_aware: true -%}
+                        </button>
+
+                        <button is="next-button" aria-controls="{{ gallery_id }}" class="circle-button circle-button--fill group">
+                          <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+                          {%- render 'icon' with 'chevron-right', direction_aware: true -%}
+                        </button>
+                      </div>
+                    </div>
+
+                    <page-dots aria-controls="{{ gallery_id }}" class="main-product-tabs__gallery-dots h-stack{% if countMedia < 3 %} sm:hidden{% endif %}">
+                      {%- for dot in product.metafields.custom.gallery.value -%}
+                        <button type="button" class="gallery-carousel__dot" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+                          <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: forloop.index }}</span>
+                        </button>
+                    {%- endfor -%}
+                    </page-dots>
+                  </div>
+                {%- endif -%}
+
+                {%- comment -%} List of species {%- endcomment -%}
+                {%- if product.metafields.custom.bundles != blank -%}
+                  <div class="main-product-tabs__list-species">
+                    <h3 class="main-product-tabs__subtitle">{{ 'List of species' }}</h3>
+                    <div class="list-species__grid">
+                      {%- for field in product.metafields.custom.bundles.value -%}
+                        <div class="list-species__item{% if isHighPoly %} list-species__item--high{% elsif isLowPoly %} list-species__item--low{% endif %}">
+                          {%- if isHighPoly -%}
+                            <div class="product-tag tag-high">
+                              <span>{{ 'High Poly' }}</span>
+                            </div>
+                          {%- elsif isLowPoly -%}
+                            <div class="product-tag tag-low">
+                              <span>{{ 'Low Poly' }}</span>
+                            </div>
+                          {%- endif -%}
+                          {{- field | image_url: width: 500 | image_tag: loading: 'lazy', widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'list-species__image', alt: field.metafields.custom.plants_name -}}
+                          <a href="{{ field.url }}" class="text-with-icon group gap-2 justify-between animated-arrow-svg">
+                            <span>
+                              {{ field.metafields.custom.plants_name }}
+                              {%- if field.metafields.custom.triangle_count != blank -%}
+                                <span>({{ field.metafields.custom.triangle_count }})</span>
+                              {%- endif -%}
+                            </span>
+                            {%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}
+                          </a>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif-%}
+
+            {%- if tabFormats != blank -%}
+              <button type="button" slot="title" class="tabs-nav__button medium text-center">{{ tabFormats.settings.title | escape }}</button>
+              <div role="tabpanel" class="tab-content" slot="content" {% cycle '', 'hidden', 'hidden' %}>
+                <div class="main-product-tabs__formats-table-wrap">
+                  <h3 class="main-product-tabs__subtitle">{{ tabFormats.settings.title_supported | escape }}</h3>
+
+                  {%- assign formatList = '3Ds Max,GrowFX,FBX,Cinema 4D,SketchUp,Blender,Twinmotion,Rhino3D,Unreal Engine,Enscape,RedShift' -%}
+                  {%- assign formatListArray = formatList | split: ',' -%}
+                  <scroll-carousel selector=".format-col" id="formats-table-{{ tabFormats.id }}" class="main-product-tabs__formats-table scroll-area">
+                    {%- for format in formatListArray -%}
+                      {%- if productTags contains format -%}
+                        {%- assign formatHandle = format | handleize -%}
+                        <div class="format-col">
+                          <div class="item">
+                            {%- assign itemLogoID = 'support_' | append: formatHandle | append: '_logo' -%}
+                            {%- if tabFormats.settings[itemLogoID] != blank -%}
+                              {{- tabFormats.settings[itemLogoID] | image_url: height: 128 | image_tag: loading: 'lazy', widths: '200,300,400,500,600,700', class: 'format-col__image', alt: format -}}
+                            {%- endif -%}
+                          </div>
+                          <div class="item">
+                            {%- assign itemFirstID = 'support_' | append: formatHandle | append: '_title_line1' -%}
+                            {%- if itemFirstID != blank -%}
+                              <span class="text text--large">{{ tabFormats.settings[itemFirstID] }}</span>
+                            {%- else -%}
+                              <span class="empty"></span>
+                            {%- endif -%}
+                          </div>
+                          {%- for i in (2..6) -%}
+                            {%- assign itemImageID = 'support_' | append: formatHandle | append: '_media_line' | append: i -%}
+                            {%- assign itemTitleID = 'support_' | append: formatHandle | append: '_title_line' | append: i -%}
+                            <div class="item">
+                              {%- if tabFormats.settings[itemImageID] != blank -%}
+                                <span class="format-col__image" data-tooltip="{{ tabFormats.settings[itemTitleID] }}" flow="up">
+                                  {{- tabFormats.settings[itemImageID] | image_url: height: 128 | image_tag: loading: 'lazy', widths: '200,300,400,500,600,700', class: 'format-col__image', alt: tabFormats.settings[itemTitleID] -}}
+                                </span>
+                              {%- else -%}
+                                {%- if tabFormats.settings[itemTitleID] != blank -%}
+                                  <span class="text">{{ tabFormats.settings[itemTitleID] }}</span>
+                                {%- else -%}
+                                  <span class="empty"></span>
+                                {%- endif -%}
+                              {%- endif -%}
+                            </div>
+                          {%- endfor -%}
+                          <div class="item item--system">
+                            {%- assign itemWindowTextID = 'support_' | append: formatHandle | append: '_title_window' -%}
+                            {%- assign itemMacTextID = 'support_' | append: formatHandle | append: '_title_mac' -%}
+                            {%- if tabFormats.settings[itemWindowTextID] != blank -%}
+                              <span data-tooltip="{{ tabFormats.settings[itemWindowTextID] }}">
+                                {{- tabFormats.settings.support_icon_window | image_url: height: 128 | image_tag: loading: 'lazy', widths: '200,300,400,500,600,700', class: 'format-col__image', alt: tabFormats.settings[itemWindowTextID] -}}
+                              </span>
+                            {%- endif -%}
+
+                            {%- if tabFormats.settings[itemMacTextID] != blank -%}
+                              <span data-tooltip="{{ tabFormats.settings[itemMacTextID] }}">
+                                {{- tabFormats.settings.support_icon_mac | image_url: height: 128 | image_tag: loading: 'lazy', widths: '200,300,400,500,600,700', class: 'format-col__image', alt: tabFormats.settings[itemMacTextID] -}}
+                              </span>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </scroll-carousel>
+                </div>
+
+                <div class="main-product-tabs__grid">
+                  <div class="main-product-tabs__box main-product-tabs__box--bg">
+                    <h2 class="main-product-tabs__title">{{ 'System Hardware Requirements' }}</h2>
+                    <div class="main-product-tabs__context">
+                      {%- assign systemHardwareHigh = section.blocks | where: 'type', 'system_high' | first -%}
+                      {%- assign systemHardwareLow = section.blocks | where: 'type', 'system_low' | first -%}
+                      {%- assign systemHardware2d = section.blocks | where: 'type', 'system_2d_images' | first -%}
+
+                      {%- if productTags contains 'High Poly' and systemHardwareHigh != blank -%}
+                        <p>{{ systemHardwareHigh.settings.text_general }}
+                          {%- if product.metafields.custom.here_link != blank -%}
+                            {%- assign hereLink = '<a href="' | append: product.metafields.custom.here_link.value.url | append: '">Here!</a>' -%}
+                            {{ systemHardwareHigh.settings.text_recommended | replace: '#here!', hereLink }}
+                          {%- endif -%}
+                        </p>
+                        <div class="system-hardware-table">
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'CPU (processor)' }}</span>
+                            <p>{{ systemHardwareHigh.settings.text_table_cpu }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'System memory (RAM)' }}</span>
+                            <p>{{ systemHardwareHigh.settings.text_table_ram }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Graphics card' }}</span>
+                            <p>{{ systemHardwareHigh.settings.text_table_graphics-card }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Graphics card memory' }}</span>
+                            <p>{{ systemHardwareHigh.settings.text_table_graphics-card-memory }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Hard drive space' }}</span>
+                            <p>{{ systemHardwareHigh.settings.text_table_space }}</p>
+                          </div>
+                        </div>
+                      {%- endif -%}
+
+                      {%- if productTags contains 'Low Poly' and systemHardwareLow != blank -%}
+                        <p>{{ systemHardwareLow.settings.text_general }}
+                          {%- if product.metafields.custom.here_link != blank -%}
+                            {%- assign hereLink = '<a href="' | append: product.metafields.custom.here_link.value.url | append: '">Here!</a>' -%}
+                            {{ systemHardwareLow.settings.text_recommended | replace: '#here!', hereLink }}
+                          {%- endif -%}
+                        </p>
+                        <div class="system-hardware-table">
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'CPU (processor)' }}</span>
+                            <p>{{ systemHardwareLow.settings.text_table_cpu }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'System memory (RAM)' }}</span>
+                            <p>{{ systemHardwareLow.settings.text_table_ram }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Graphics card' }}</span>
+                            <p>{{ systemHardwareLow.settings.text_table_graphics-card }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Graphics card memory' }}</span>
+                            <p>{{ systemHardwareLow.settings.text_table_graphics-card-memory }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Hard drive space' }}</span>
+                            <p>{{ systemHardwareLow.settings.text_table_space }}</p>
+                          </div>
+                        </div>
+                      {%- endif -%}
+
+                      {%- if productTags contains '2D Images' and systemHardware2d != blank -%}
+                        <p>{{ systemHardware2d.settings.text_general }}
+                          {%- if product.metafields.custom.here_link != blank -%}
+                            {%- assign hereLink = '<a href="' | append: product.metafields.custom.here_link.value.url | append: '">Here!</a>' -%}
+                            {{ systemHardware2d.settings.text_recommended | replace: '#here!', hereLink }}
+                          {%- endif -%}
+                        </p>
+                        <div class="system-hardware-table">
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'CPU (processor)' }}</span>
+                            <p>{{ systemHardware2d.settings.text_table_cpu }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'System memory (RAM)' }}</span>
+                            <p>{{ systemHardware2d.settings.text_table_ram }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Graphics card' }}</span>
+                            <p>{{ systemHardware2d.settings.text_table_graphics-card }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Graphics card memory' }}</span>
+                            <p>{{ systemHardware2d.settings.text_table_graphics-card-memory }}</p>
+                          </div>
+                          <div class="system-hardware-table__line">
+                            <span class="title">{{ 'Hard drive space' }}</span>
+                            <p>{{ systemHardware2d.settings.text_table_space }}</p>
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+
+                  <div class="main-product-tabs__box main-product-tabs__box--bg">
+                    <h2 class="main-product-tabs__title">{{ section.settings.title_faqs }}</h2>
+
+                    {%- assign faqHighPoly = section.blocks | where: 'type', 'high' -%}
+                    {%- assign faqLowPoly = section.blocks | where: 'type', 'low' -%}
+                    {%- assign faq2D = section.blocks | where: 'type', '2d' -%}
+                    <div class="main-product-tabs__context">
+                      {%- if productTags contains 'High Poly' and faqHighPoly.size > 0 -%}
+                        {%- for block in faqHighPoly -%}
+                          {%- capture accordion_content -%}
+                            <div class="prose">{{ block.settings.content }}</div>
+                          {%- endcapture -%}
+
+                          {%- render 'accordion', title: block.settings.title, content: accordion_content, block: block -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+
+                      {%- if productTags contains 'Low Poly' and faqLowPoly.size > 0 -%}
+                        {%- for block in faqLowPoly -%}
+                          {%- capture accordion_content -%}
+                            <div class="prose">{{ block.settings.content }}</div>
+                          {%- endcapture -%}
+
+                          {%- render 'accordion', title: block.settings.title, content: accordion_content, block: block -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+
+                      {%- if productTags contains '2D Images' and faq2D.size > 0 -%}
+                        {%- for block in faq2D -%}
+                          {%- capture accordion_content -%}
+                            <div class="prose">{{ block.settings.content }}</div>
+                          {%- endcapture -%}
+
+                          {%- render 'accordion', title: block.settings.title, content: accordion_content, block: block -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+
+                      <div class="chat-here v-stack gap-2 justify-items-center">
+                        {%- render 'icon' with 'question-circle' -%}
+                        <h3>{{ section.settings.title_faqs_note }}</h3>
+                        <p>{{ section.settings.content_faqs_note }} <a class="link" href="{{ section.settings.link_faqs }}">{{ 'here' }}</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif-%}
+          </x-tabs>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "PDP Detail Tabs",
+  "class": "shopify-section--tabs",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_gallery",
+      "label": "Title gallery",
+      "default": "Showcase"
+    },
+    {
+      "type": "text",
+      "id": "title_gallery_bundle",
+      "label": "Title gallery for Bundle",
+      "default": "Technical & features"
+    },
+    {
+      "type": "text",
+      "id": "title_bundle_list",
+      "label": "Title bundle list",
+      "default": "List of species"
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "textarea",
+      "id": "title_faqs",
+      "label": "Title FAQs",
+      "default": "Have a question? <span>We have a mini FAQs below</span>"
+    },
+    {
+      "type": "text",
+      "id": "title_faqs_note",
+      "label": "Title for bottom",
+      "default": "Still have question?"
+    },
+    {
+      "type": "text",
+      "id": "content_faqs_note",
+      "label": "Content for bottom",
+      "default": "Check out our comprehensive FAQs"
+    },
+    {
+      "type": "url",
+      "id": "link_faqs",
+      "label": "FAQs page link"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab_description",
+      "name": "Tab Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Descriptions"
+        },
+        {
+          "type": "richtext",
+          "id": "about_description",
+          "label": "About description"
+        },
+        {
+          "type": "header",
+          "content": "Information"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand logo"
+        }
+      ]
+    },
+    {
+      "type": "tab_formats",
+      "name": "Tab Formats Guide",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Formats Guide"
+        },
+        {
+          "type": "text",
+          "id": "title_supported",
+          "label": "Title for supported table",
+          "default": "SUPPORTED VERSIONS, FORMATS, RENDERER"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_icon_window",
+          "label": "Icon for Window"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_icon_mac",
+          "label": "Icon for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - 3Ds Max"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_3ds-max_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_3ds-max_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_3ds-max_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_3ds-max_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_3ds-max_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_3ds-max_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_3ds-max_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - GrowFX"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_growfx_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_growfx_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_growfx_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_growfx_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_growfx_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_growfx_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_growfx_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - FBX"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_fbx_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_fbx_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_fbx_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_fbx_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_fbx_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_fbx_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_fbx_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - Cinema 4D"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_cinema-4d_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_cinema-4d_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_cinema-4d_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_cinema-4d_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_cinema-4d_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_cinema-4d_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_cinema-4d_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - SketchUp"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_sketchup_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_sketchup_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_sketchup_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_sketchup_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_sketchup_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_sketchup_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_sketchup_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - Blender"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_blender_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_blender_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_blender_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_blender_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_blender_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_blender_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_blender_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - Twinmotion"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_twinmotion_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_twinmotion_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_twinmotion_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_twinmotion_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_twinmotion_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_twinmotion_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_twinmotion_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - Rhino3D"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_rhino3d_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_rhino3d_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_rhino3d_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_rhino3d_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_rhino3d_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_rhino3d_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_rhino3d_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - Unreal Engine 5+"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_unreal-engine_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_unreal-engine_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_unreal-engine_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_unreal-engine_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_unreal-engine_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_unreal-engine_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_unreal-engine_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - Enscape"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_enscape_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_enscape_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_enscape_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_enscape_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_enscape_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_enscape_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_enscape_title_mac",
+          "label": "Title for Mac"
+        },
+        {
+          "type": "header",
+          "content": "Support column - RedShift"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_redshift_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_line1",
+          "label": "Title for line 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_redshift_media_line2",
+          "label": "Media for line 2"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_line2",
+          "label": "Title for line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_redshift_media_line3",
+          "label": "Media for line 3"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_line3",
+          "label": "Title for line 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_redshift_media_line4",
+          "label": "Media for line 4"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_line4",
+          "label": "Title for line 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_redshift_media_line5",
+          "label": "Media for line 5"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_line5",
+          "label": "Title for line 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "support_redshift_media_line6",
+          "label": "Media for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_line6",
+          "label": "Title for line 6"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_window",
+          "label": "Title for Window"
+        },
+        {
+          "type": "text",
+          "id": "support_redshift_title_mac",
+          "label": "Title for Mac"
+        }
+      ]
+    },
+    {
+      "name": "Hardware - High Poly",
+      "type": "system_high",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_general",
+          "label": "General paragraph",
+          "default": "Please check the requirements below to find out if your PC can give you a good Globe Plants experience."
+        },
+        {
+          "type": "text",
+          "id": "text_recommended",
+          "label": "Recommended paragraph",
+          "default": "If your hardware configuration does not meet the requirements below, we have a LOW POLY format product available #here!"
+        },
+        {
+          "type": "header",
+          "content": "Table of Contents"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_cpu",
+          "label": "CPU",
+          "default": "Intel/AMD processor scoring a single thread CPUMark of 2,200 or higher. (Such as the AMD Ryzen 5 1600X, Intel Core i7-4790S or better)"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_ram",
+          "label": "System memory (RAM)",
+          "default": "16 GB or more"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_graphics-card",
+          "label": "Graphics card",
+          "default": "GPU scoring a G3DMark of 9,000 or higher with up-to-date drivers. (Such as the Nvidia GeForce RTX 3060, Quadro RTX 4000, AMD Radeon RX 5700, or better)"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_graphics-card-memory",
+          "label": "Graphics card memory",
+          "default": "6 GB or more*"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_space",
+          "label": "Hard drive space",
+          "default": "Minimum 75 GB of free disk space in the drives where the Windows User Account and Documents folder are located in."
+        }
+      ]
+    },
+    {
+      "name": "Hardware - Low Poly",
+      "type": "system_low",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_general",
+          "label": "General paragraph",
+          "default": "Please check the requirements below to find out if your PC can give you a good Globe Plants experience."
+        },
+        {
+          "type": "text",
+          "id": "text_recommended",
+          "label": "Recommended paragraph",
+          "default": "If your hardware configuration does not meet the requirements below, we have a HIGH POLY format product available #here!"
+        },
+        {
+          "type": "header",
+          "content": "Table of Contents"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_cpu",
+          "label": "CPU",
+          "default": "Intel/AMD processor scoring a single thread CPUMark of 2,200 or higher. (Such as the AMD Ryzen 5 1600X, Intel Core i7-4790S or better)"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_ram",
+          "label": "System memory (RAM)",
+          "default": "16 GB or more"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_graphics-card",
+          "label": "Graphics card",
+          "default": "GPU scoring a G3DMark of 9,000 or higher with up-to-date drivers. (Such as the Nvidia GeForce RTX 3060, Quadro RTX 4000, AMD Radeon RX 5700, or better)"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_graphics-card-memory",
+          "label": "Graphics card memory",
+          "default": "6 GB or more*"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_space",
+          "label": "Hard drive space",
+          "default": "Minimum 75 GB of free disk space in the drives where the Windows User Account and Documents folder are located in."
+        }
+      ]
+    },
+    {
+      "name": "Hardware - 2D Images",
+      "type": "system_2d_images",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_general",
+          "label": "General paragraph",
+          "default": "Please check the requirements below to find out if your PC can give you a good Globe Plants experience."
+        },
+        {
+          "type": "text",
+          "id": "text_recommended",
+          "label": "Recommended paragraph"
+        },
+        {
+          "type": "header",
+          "content": "Table of Contents"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_cpu",
+          "label": "CPU",
+          "default": "Intel/AMD processor scoring a single thread CPUMark of 2,200 or higher. (Such as the AMD Ryzen 5 1600X, Intel Core i7-4790S or better)"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_ram",
+          "label": "System memory (RAM)",
+          "default": "16 GB or more"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_graphics-card",
+          "label": "Graphics card",
+          "default": "GPU scoring a G3DMark of 9,000 or higher with up-to-date drivers. (Such as the Nvidia GeForce RTX 3060, Quadro RTX 4000, AMD Radeon RX 5700, or better)"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_graphics-card-memory",
+          "label": "Graphics card memory",
+          "default": "6 GB or more*"
+        },
+        {
+          "type": "textarea",
+          "id": "text_table_space",
+          "label": "Hard drive space",
+          "default": "Minimum 75 GB of free disk space in the drives where the Windows User Account and Documents folder are located in."
+        }
+      ]
+    },
+    {
+      "name": "FAQ - High Poly",
+      "type": "high",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Write content to help your customers to better understand your products or policies.</p>"
+        }
+      ]
+    },
+    {
+      "name": "FAQ - Low Poly",
+      "type": "low",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Write content to help your customers to better understand your products or policies.</p>"
+        }
+      ]
+    },
+    {
+      "name": "FAQ - 2D Images",
+      "type": "2d",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Write content to help your customers to better understand your products or policies.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Detail Tabs",
+      "blocks": [
+        {
+          "type": "high",
+          "settings": {
+            "title": "Question 1"
+          }
+        },
+        {
+          "type": "high",
+          "settings": {
+            "title": "Question 2"
+          }
+        },
+        {
+          "type": "high",
+          "settings": {
+            "title": "Question 3"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

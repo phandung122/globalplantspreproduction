@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h2",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "bc95c0c7-dabe-49b8-8515-cd3f56ce84b1": {
+      "type": "list-box",
+      "disabled": true,
+      "blocks": {
+        "template--17872606265634__bc95c0c7-dabe-49b8-8515-cd3f56ce84b1-1678950771e06c98be-0": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection-highpoly-img.jpg",
+            "column_size": "3",
+            "title": "High Poly",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "template--17872606265634__bc95c0c7-dabe-49b8-8515-cd3f56ce84b1-1678950771e06c98be-1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection-lowpoly-img.jpg",
+            "column_size": "3",
+            "title": "Low Poly",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "template--17872606265634__bc95c0c7-dabe-49b8-8515-cd3f56ce84b1-1678950771e06c98be-2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection-2dimages-img.jpg",
+            "column_size": "3",
+            "title": "2D Images",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "template--17872606265634__bc95c0c7-dabe-49b8-8515-cd3f56ce84b1-1678950771e06c98be-0",
+        "template--17872606265634__bc95c0c7-dabe-49b8-8515-cd3f56ce84b1-1678950771e06c98be-1",
+        "template--17872606265634__bc95c0c7-dabe-49b8-8515-cd3f56ce84b1-1678950771e06c98be-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "main": {
+      "type": "collection-template-boost-pfs-filter",
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner",
+    "bc95c0c7-dabe-49b8-8515-cd3f56ce84b1",
+    "main"
+  ]
+}

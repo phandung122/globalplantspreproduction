@@ -1,0 +1,105 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CHECKBOX COMPONENT
+----------------------------------------------------------------------------------------------------------------------
+
+This component is used to create the necessary markup to create an input checkbox
+
+********************************************
+Supported variables
+********************************************
+
+* name: the HTML name attribute that is used when the field is submitted.
+* type: by default the snippet generates a checkbox, but you can pass a "radio" type to generate radio buttons
+* form: if specified, define the form ID linked to this input
+* checked: if the checkbox is checked or not
+* disabled: if the checkbox is disabled or not
+* required: if true, the checkbox must be checked
+* value: the value to use (use 1 if none is passed)
+* switch: if set to true, the checkbox is rendered as a switch
+* label: the label to show
+{%- endcomment -%}
+
+{%- capture id -%}checkbox-{{ 'now' | date: '%N' }}{%- endcapture -%}
+
+<div class="checkbox-container {{ label }}" {{ block.shopify_attributes }}>
+  {%- if switch -%}
+    <input id="{{ id }}" class="switch" type="{{ type | default: 'checkbox' }}" role="switch" name="{{ name }}" value="{{ value | default: 1 }}" {% if form %}form="{{ form }}"{% endif %} {% if disabled %}disabled{% endif %} {% if required %}required{% endif %} {% if checked %}checked{% endif %}>
+  {%- else -%}
+    <input id="{{ id }}" class="checkbox {{ value | default: 1 }}" type="{{ type | default: 'checkbox' }}" name="{{ name }}" value="{{ value | default: 1 }}" {% if form %}form="{{ form }}"{% endif %} {% if disabled %}disabled{% endif %} {% if required %}required{% endif %} {% if checked %}checked{% endif %}>
+  {%- endif -%}
+
+  {%- if label != blank -%}
+    {% if value == '3Ds Max'%}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo1 | img_url: '32x32' }}">
+          </span>
+        </label>
+    {% elsif value == 'ArchiCAD' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo2 | img_url: '32x32' }}">
+          </span>
+        </label>
+    {% elsif value == 'Blender' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo3| img_url: '32x32' }}">
+          </span>
+        </label>
+    {% elsif value == 'Cinema 4D' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo4 | img_url: '32x32' }}">
+          </span>
+        </label> 
+    {% elsif value == 'FBX' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo5 | img_url: '32x32' }}">
+          </span>
+        </label> 
+    {% elsif value == 'GrowFX' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo6 | img_url: '32x32' }}">
+          </span>
+        </label> 
+    {% elsif value == 'Revit' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo7 | img_url: '32x32' }}">
+          </span>
+        </label>  
+    {% elsif value == 'RedShift' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo8 | img_url: '32x32' }}">
+          </span>
+        </label>  
+    {% elsif value == 'SketchUp' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo9 | img_url: '32x32' }}">
+          </span>
+        </label>  
+    {% elsif value == 'SketchUp (VRay + Thea + Enscape)' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo10 | img_url: '32x32' }}">
+          </span>
+        </label> 
+    {% elsif value == 'Twinmotion' %}
+        <label for="{{ id }}">
+          <span tooltip="{{ value }}">
+            <img src="{{ section.settings.logo11 | img_url: '32x32' }}">
+          </span>
+        </label>                                   
+    {% else %}
+      <label for="{{ id }}">{{ label }}</label>
+    {% endif %}
+  {%- endif -%}
+
+
+</div>

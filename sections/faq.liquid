@@ -1,0 +1,216 @@
+<script type="module" src="{{ 'faq-scripts.js' | asset_url }}" fetchpriority="low" defer="defer"></script>
+
+<div class="section faqs">
+	<div class="faq-search__tabs" id="faq-search__tabs">
+    <div class="faq-search__tabs-item" id="faq-search__tabs-item">
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {% when 'heading' %}
+            {%- assign title = block.settings.text | downcase -%}
+            <div class="faq-search__tabs-logo" data-search="{{ title }}">
+              {%- if block.settings.image != blank -%}
+                {{-  block.settings.image | image_url: width:  block.settings.image.width | image_tag: widths: '300,400' -}}
+              {%- endif -%}
+              {{- block.settings.text -}}
+            </div>
+        {% endcase %}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="search-result">
+    <div class="filter-list-wrapper">
+      <span class="filter-list-title">
+        <strong id="result-count"></strong>
+        <span> Result for </span>
+      </span>
+      <span class="filter-list-content">
+        <span id="filter-list"></span>
+        <button id="clear-button" class="clear-button">
+          {%- render 'icon' with 'close' -%}
+        </button>
+      </span>
+    </div>
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div {% render 'surface', class: 'faq-main faq-accordion', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
+      <div id="general" class="tab">
+        <ul>
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {% when 'text' %}
+                {% if block.settings.question_type == "general" %}
+                  <li class="faq">
+                    {%- capture general_content -%}
+                      {{ block.settings.answer }}
+                    {%- endcapture -%}
+  
+                    {%- render 'accordion', title: block.settings.question, content: general_content, block: block -%}
+                  </li>
+                {% endif %}
+            {% endcase %}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div id="technical" class="tab">
+        <ul>
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {% when 'text' %}
+                {% if block.settings.question_type == "technical" %}
+                  <li class="faq">
+                    {%- capture technical_content -%}
+                      {{- block.settings.answer -}}
+                    {%- endcapture -%}
+  
+                    {%- render 'accordion', title: block.settings.question, content: technical_content, block: block -%}
+                  </li>
+                {% endif %}
+            {% endcase %}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div id="account" class="tab">
+        <ul>
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {% when 'text' %}
+                {% if block.settings.question_type == "account" %}
+                  <li class="faq">
+                    {%- capture account_content -%}
+                      {{ block.settings.answer }}
+                    {%- endcapture -%}
+  
+                    {%- render 'accordion', title: block.settings.question, content: account_content, block: block -%}
+                  </li>
+                {% endif %}
+            {% endcase %}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+    </div>
+  {%- endif -%}
+
+  <div class="faq-not-found hide" id="faq-not-found">
+    {%- if section.settings.image_empty != blank -%}
+      <div class="faq-not-found-image">
+        {{-  section.settings.image_empty | image_url: width:  section.settings.image_empty.width | image_tag: widths: '300,400' -}}
+      </div>
+    {%- endif -%}
+    
+    <h3>{{ section.settings.empty_title }} <strong id="result-log"></strong></h3>
+    <p>{{ section.settings.empty_text }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "shopify-section--faq",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "blocks": [
+    {
+			"name": "FAQ tabs",
+			"type": "heading",
+			"settings": [
+        {
+					"type": "text",
+					"id": "text",
+					"label": "Tab label",
+					"default": "General"
+				},
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Tabs Image"
+        }
+			]
+		},
+		{
+			"name": "FAQ",
+			"type": "text",
+			"settings": [
+				{
+					"type": "text",
+					"id": "question",
+					"label": "Question",
+					"default": "What currencies do you have ?"
+				},
+        {
+					"type": "richtext",
+					"label": "Answer",
+					"id": "answer",
+					"default": "<p>All prices on our store are in USD by default. You can change currencies by clicking on the top right USD text in the menu and select the available currencies to be converted.</p>"
+				},
+        {
+          "type": "select",
+          "id": "question_type",
+          "label": "Question type",
+          "options": [
+            {
+              "value": "general",
+              "label": "General"
+            },
+            {
+              "value": "technical",
+              "label": "Technical"
+            },
+            {
+              "value": "account",
+              "label": "Account"
+            }
+          ],
+          "default": "general"
+        }
+			]
+		}
+	],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "FAQ"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_empty",
+      "label": "Empty Logo"
+    },
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "FAQ not found label",
+      "default": "Sorry we can’t  find any matches for"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "FAQ not found text",
+      "default": "Please try searching with another words"
+    },
+    {
+      "type": "color",
+      "id": "accordion_background",
+      "label": "Accordion background"
+    },
+    {
+      "type": "color",
+      "id": "accordion_text_color",
+      "label": "Accordion text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ"
+    }
+  ]
+}
+{% endschema %}

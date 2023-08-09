@@ -1,0 +1,302 @@
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --press-items-border: {{ section.settings.logo_item_border.rgb }} / {{ section.settings.logo_item_border.alpha }};
+      --press-max-width: {% if section.settings.content_size == 'small' %}760{% elsif section.settings.content_size == 'medium' %}1000{% elsif section.settings.content_size == 'large' %}1260{% endif %}px;
+    }
+
+    {%- if section.settings.background_image != blank -%}
+      #shopify-section-{{ section.id }} > .section {
+        position: relative;
+      }
+
+      #shopify-section-{{ section.id }} > .section > .section-stack {
+        position: relative;
+        z-index: 2;
+      }
+
+      #shopify-section-{{ section.id }} > .section > img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    {%- endif -%}
+  </style>
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <div {% render 'section-properties' %}>
+    {%- if section.settings.background_image != blank -%}
+      {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
+
+      {{- section.settings.background_image | image_url: width: section.settings.background_image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
+    {%- endif -%}
+
+    <div class="section-stack">
+      {%- if section.settings.title != blank -%}
+        <div class="prose text-center">
+          <h2 class="h1 montserrat">
+            {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+          </h2>
+        </div>
+      {%- endif -%}
+
+      <div class="press">
+        <press-carousel id="carousel-{{ section.id }}" class="press__list full-bleed sm:unbleed"{% if section.settings.autoplay %} autoplay="{{ section.settings.cycle_speed }}"{% endif %} role="region">
+          {%- for block in section.blocks -%}
+            <div id="block-{{ section.id }}-{{ block.id }}" class="press__list-item snap-center {% if forloop.first %}is-selected{% endif %}" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.show_rating -%}
+                <div class="rating">
+                  <div class="rating__stars" role="img" aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}">
+                    {%- for i in (1..5) -%}
+                      {%- if i <= block.settings.rating -%}
+                        {%- render 'icon' with 'rating-star', class: 'rating__star' -%}
+                      {%- else -%}
+                        {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.content != blank -%}
+                <blockquote class="blockquote" reveal-on-scroll="true">
+                  {%- render 'styled-text', content: block.settings.content, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+                </blockquote>
+              {%- endif -%}
+
+              {%- if block.settings.logo != blank or block.settings.author != blank -%}
+                <div class="h-stack gap-2">
+                  {%- if block.settings.logo != blank -%}
+                    <div {% render 'surface', class: 'press__logo rounded', background: section.settings.logo_item_background %}>
+                      {%- capture sizes -%}{{ block.settings.logo_width }}px{%- endcapture -%}
+                      {%- capture widths -%}{{ block.settings.logo_width }}, {{ block.settings.logo_width | times: 2 | at_most: block.settings.logo.width }}{%- endcapture -%}
+                      {%- capture max_width -%}--press-image-max-width: {{ block.settings.logo_width }}px{%- endcapture -%}
+                      {{- block.settings.logo | image_url: width: block.settings.logo.width | image_tag: style: max_width, loading: 'lazy', widths: widths, class: 'press__image aspect-square object-contain', sizes: sizes -}}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if block.settings.author != blank -%}
+                    <p class="press__author semibold">{{ block.settings.author }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </press-carousel>
+
+        {%- if section.blocks.size > 1 -%}
+          <div class="press__controls">
+            <button class="circle-button ring group" is="prev-button" aria-controls="carousel-{{ section.id }}">
+              <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+              <span class="animated-arrow animated-arrow--reverse"></span>
+            </button>
+
+            <page-dots aria-controls="carousel-{{ section.id }}" class="page-dots">
+              {%- for index in (1..section.blocks.size) -%}
+                <button type="button" class="tap-area" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+                  <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: index }}</span>
+                </button>
+              {%- endfor -%}
+            </page-dots>
+
+            <button class="circle-button ring group" is="next-button" aria-controls="carousel-{{ section.id }}">
+              <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+              <span class="animated-arrow"></span>
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Press",
+  "class": "shopify-section--press",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_size",
+      "label": "Content size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "fill",
+          "label": "Fill page"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto rotate between slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "cycle_speed",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "unit": "sec",
+      "label": "Change slides every",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "color",
+      "id": "logo_item_background",
+      "label": "Logo background"
+    },
+    {
+      "type": "color",
+      "id": "logo_item_border",
+      "label": "Logo border"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": "300 x 90px .jpg recommended"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 10,
+          "max": 350,
+          "unit": "px",
+          "step": 5,
+          "label": "Logo width",
+          "default": 40
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Quote",
+          "default": "Write some content about what they says about your store."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_rating",
+          "label": "Show rating",
+          "default": true
+        },
+        {
+          "type": "range",
+          "min": 0,
+          "max": 5,
+          "id": "rating",
+          "label": "Rating",
+          "default": 4
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press",
+      "blocks": [
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,220 @@
+{%- render 'section-spacing-collapsing' -%}
+<div {% render 'section-properties' %}>
+  {%- assign text_position = section.settings.text_position -%}
+  {%- capture loading_strategy -%}{% if forloop.first %}eager{% else %}lazy{% endif %}{%- endcapture -%}
+  {%- capture fetch_priority -%}high{%- endcapture -%}
+
+  {%- if section.settings.background_image != blank -%}
+    {{- section.settings.background_image | image_url: width: section.settings.background_image.width | image_tag: loading: 'eager', fetchpriority: fetch_priority, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'c-contact__desk-bg hidden sm:block' -}}
+  {%- endif -%}
+
+  <div class="c-contact section-stack section-stack--center">
+    {%- capture content -%}
+      {%- if section.settings.title != blank -%}
+        <h1 class="c-contact__heading montserrat h2">
+          {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+        </h1>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="c-contact__subheading montserrat">{{ section.settings.subheading | replace: '<strong>', '<strong class="semibold">' }}</p>
+      {%- endif -%}
+
+      {{- section.settings.content -}}
+
+      <div class="c-contact__information">
+        {%- if section.settings.contact_email != blank -%}
+          <p class="text-with-icon gap-2">
+            {%- render 'icon' with 'mail-line' -%}
+            <span><a href="mailto:{{ section.settings.contact_email }}" class="reversed-link hover:show">{{ section.settings.contact_email }}</a></span>
+          </p>
+        {%- endif -%}
+
+        {%- if section.settings.contact_address != blank -%}
+          <p class="text-with-icon gap-2">
+            {%- render 'icon' with 'address-line' -%}
+            {{ section.settings.contact_address }}
+          </p>
+        {%- endif -%}
+
+        {%- if section.settings.contact_tel != blank -%}
+          <p class="text-with-icon gap-2">
+            {%- render 'icon' with 'phone-line' -%}
+            <span><a href="tel:{{ section.settings.contact_tel }}" class="link">{{ section.settings.contact_tel }}</a></span>
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endcapture -%}
+
+    {%- if content != blank -%}
+      <div class="section-stack__intro">
+        {%- if section.settings.background_mobile_image != blank -%}
+          {{- section.settings.background_mobile_image | image_url: width: section.settings.background_mobile_image.width | image_tag: loading: 'eager', fetchpriority: fetch_priority, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'c-contact__mobile-bg sm:hidden' -}}
+        {%- endif -%}
+        <div class="prose text-{{ text_position }} v-stack gap-4">
+          {{- content -}}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="section-stack__main">
+      <div {% render 'surface', class: 'contact-form rounded', background: section.settings.contact_background %}>
+        {{ section.settings.html }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact embed form",
+  "class": "shopify-section--contact",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Contact Us"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Information"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Email",
+      "default": "info@globeplants.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_address",
+      "label": "Address",
+      "default": "Suite 66/139 Cardigan St, Carton, Victoria 3053, Australia"
+    },
+    {
+      "type": "text",
+      "id": "contact_tel",
+      "label": "Tel",
+      "default": "+61 1800 717 580"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "html",
+      "id": "html",
+      "label": "Form embedded"
+    },
+    {
+      "type": "select",
+      "id": "contact_form_size",
+      "label": "Contact form size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "header",
+      "content": "Section colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_mobile_image",
+      "label": "Background mobile image"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "header",
+      "content": "Contact block colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "contact_background",
+      "label": "Background"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact embed form",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

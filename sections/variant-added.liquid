@@ -1,0 +1,97 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VARIANT ADDED
+----------------------------------------------------------------------------------------------------------------------
+
+This section is used when a product is added to the cart, to show a notification. It is therefore only used internally
+by the theme and is not meant to be included directly into a page.
+
+{%- assign added_to_cart = 'product.general.added_to_cart' | t -%}
+{%- render 'banner', status: 'success', content: added_to_cart -%}
+{%- endcomment -%}
+
+{%- comment -%}
+<div class="v-stack gap-0.5">
+  <a href="{{ product_variant.url }}" class="bold justify-self-start">{{ product_variant.product.title }}</a>
+  {%- assign matched_line_item = cart.items | where: 'product_id', product_variant.product.id | first -%}
+  {%- render 'price-list', product: product_variant.product, line_item: matched_line_item -%}
+</div>
+
+{%- if matched_line_item.line_level_discount_allocations != blank -%}
+  <ul class="contents" role="list">
+    {%- for discount_allocation in matched_line_item.line_level_discount_allocations -%}
+      <li class="badge">
+        {%- render 'icon' with 'discount' -%} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{%- unless product_variant.product.has_only_default_variant -%}
+  <p class="text-sm text-subdued">{{ product_variant.title }}</p>
+{%- endunless -%}
+{%- endcomment -%}
+
+{%- assign isHighPoly = false -%}
+{%- assign isLowPoly = false -%}
+{%- assign is2DImages = false -%}
+
+{%- for tag in product_variant.product.tags -%}
+  {%- case tag -%}
+    {%- when "High Poly"-%}
+      {%- assign card_class = card_class | append: 'quick-buy-drawer__media-wrap--high-poly' -%}
+      {%- assign isHighPoly = true -%}
+      {%- break -%}
+    {%- when "Low Poly"-%}
+      {%- assign card_class = card_class | append: 'quick-buy-drawer__media-wrap--low-poly' -%}
+      {%- assign isLowPoly = true -%}
+      {%- break -%}
+    {%- when "2D Images"-%}
+      {%- assign card_class = card_class | append: 'quick-buy-drawer__media-wrap--2d-images' -%}
+      {%- assign is2DImages = true -%}
+      {%- break -%}
+  {%- endcase -%}
+{%- endfor -%}
+
+<div class="quick-buy-drawer__added">
+  <div class="quick-buy-drawer__variant text-start h-stack gap-4">
+    {%- assign image = product_variant.featured_media | default: product_variant.product.featured_media -%}
+
+    {%- if image != blank -%}
+      <div class="quick-buy-drawer__media-wrap {{ card_class }}">
+        {%- if isLowPoly -%}
+          <div class="product-tag tag-low">
+            <span>{{ 'Low Poly' }}</span>
+          </div>
+        {%- elsif is2DImages -%}
+          <div class="product-tag tag-2d">
+            <span>{{ '2D Images' }}</span>
+          </div>
+        {%- else -%}
+          <div class="product-tag tag-high">
+            <span>{{ 'High Poly' }}</span>
+          </div>
+        {%- endif -%}
+
+        {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '220px', widths: '440,560', class: 'quick-buy-drawer__media rounded-xs' -}}
+      </div>
+    {%- endif -%}
+
+    <div class="v-stack w-full">
+      <p class="quick-buy-drawer__text-added"><strong>{{ 'product.general.added_to_cart' | t }}</strong></p>
+      <p class="quick-buy-drawer__text-total">{{ cart.item_count }} items in the cart <span>({{- cart.total_price | money_with_currency -}})</span></p>
+
+      <form action="{{ routes.cart_url }}" method="post" class="buy-buttons">
+        {%- assign view_cart_label = 'cart.general.view_cart' | t -%}
+
+        {%- render 'button', href: routes.cart_url, content: view_cart_label, stretch: true -%}
+      </form>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Variant added"
+}
+{% endschema %}

@@ -1,0 +1,26 @@
+document.addEventListener('DOMContentLoaded', function() {
+  scrollTo = (element) => {
+      window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: element.offsetTop
+      });
+  }
+  
+  const logoItems = document.querySelectorAll('.fb__title-logo');
+  const itemList = document.querySelector('.fb__title-list');
+
+  itemList.addEventListener('click', function(event) {
+      logoItems.forEach(function(item) {
+          item.classList.remove('active');
+      });
+      const element =  event.target.closest('.fb__title-logo');
+
+      if(!element.classList.contains('disable')) {
+        element.classList.add('active');
+        let itemHref = element.getAttribute('data-href');
+        scrollTo(document.getElementById(itemHref));
+      }
+  })
+
+})

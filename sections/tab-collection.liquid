@@ -1,0 +1,1395 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+CSS
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<style>
+  #shopify-section-{{ section.id }} .collection-list {
+    --collection-list-grid: {% if section.settings.stack_collections %}none{% else %}auto / auto-flow 73vw{% endif %};
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .collection-list {
+      --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 36vw{% endif %};
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .collection-list {
+      --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat({{ 3 | at_most: section.settings.collections_per_row }}, minmax(0, 1fr)){% else %}auto / auto-flow calc(var(--container-inner-width) / {{ section.settings.collections_per_row }} - (var(--grid-gutter) / 3 * 2)){% endif %};
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    #shopify-section-{{ section.id }} .collection-list {
+      --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat({{ section.settings.collections_per_row }}, minmax(0, 1fr)){% else %}auto / auto-flow calc(var(--container-inner-width) / {{ section.settings.collections_per_row }} - (var(--grid-gutter) / {{ section.settings.collections_per_row }} * {{ section.settings.collections_per_row | minus: 1 }})){% endif %};
+    }
+  }
+</style>
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+LIQUID
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    <div class="collection-list-note">
+      <p>{{ section.settings.title }}</p>
+      <button type="button" class="justify-self-center" aria-controls="before-after-image-drawer" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path fill="#9C9C9C" fill-rule="evenodd" d="M12 20.5a8.5 8.5 0 1 0 0-17 8.5 8.5 0 0 0 0 17Zm0 1.5c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Zm0-11.75a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 .75-.75ZM13 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="collection-list-tabs">
+      <x-tabs class="collection-list-tabs__inner tabs-inner">
+        <template shadowrootmode="open">
+          <slot role="tablist" part="tab-list" name="title"></slot>
+          <slot part="tab-panels" name="content"></slot>
+        </template>
+
+        <button type="button" slot="title" class="collection-list-tabs__button">
+          <strong>{{ section.settings.title1 }}</strong>
+          {{ section.settings.content1 | strip_html }}
+        </button>
+        <button type="button" slot="title" class="collection-list-tabs__button">
+          <strong>{{ section.settings.title2 }}</strong>
+          {{ section.settings.content2 | strip_html }}
+        </button>
+        <button type="button" slot="title" class="collection-list-tabs__button">
+          <strong>{{ section.settings.title3 }}</strong>
+          {{ section.settings.content3 | strip_html }}
+        </button>
+
+        {%- assign regionsHigh = section.blocks | where: 'type', 'collection' -%}
+        {%- assign plantTypesHigh = section.blocks | where: 'type', 'Type' -%}
+        {%- assign formatsHigh = section.blocks | where: 'type', 'Fomat' -%}
+
+        <div role="tabpanel" class="tab-content  collection-list-tabs__content  collection-list-tabs__content--high-poly" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+          <x-tabs class="collection-list-tabs__inner-sub  tabs-inner"{% if regionsHigh.size == 0 and plantTypesHigh.size == 0 and formatsHigh.size == 0 %} hidden{% endif %}>
+            <template shadowrootmode="open">
+              <slot role="tablist" part="tab-list" name="title"></slot>
+              <slot part="tab-panels" name="content"></slot>
+            </template>
+
+            {%- if regionsHigh.size > 0 -%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Regions' }}</button>
+            {%- endif -%}
+            {%- if plantTypesHigh.size > 0-%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Plant Types' }}</button>
+            {%- endif -%}
+            {%- if formatsHigh.size > 0 -%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Formats' }}</button>
+            {%- endif -%}
+
+            {%- if regionsHigh.size > 0 -%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in regionsHigh -%}
+                    {%- assign collection = block.settings.collection -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card" reveal-js>
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '800,800,800,800,800,800,1000,1200,1400,1600', class: 'zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                        {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper">
+                        <a class="collection-card__link  animated-arrow-svg" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }} <span class="circle-chevron">{%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}</span></a>
+                        <ul class="collection-card__sub-links  sub_collection">
+                          {%- for i in (1..4) -%}
+                            {%- assign titleLink = "title_link" | append: i -%}
+                            {%- if block.settings[titleLink] != blank -%}
+                              <li>{{ block.settings[titleLink] }}</li>
+                            {%- else -%}
+                              {%- break -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+              </div>
+            {%- endif -%}
+
+            {%- if plantTypesHigh.size > 0-%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in plantTypesHigh -%}
+                    {%- assign collection = block.settings.collection2 -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card" reveal-js>
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '800,800,800,800,800,800,1000,1200,1400,1600', class: 'zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                        {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper">
+                        <a class="collection-card__link  animated-arrow-svg" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }} <span class="circle-chevron">{%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}</span></a>
+                        <ul class="collection-card__sub-links  sub_collection">
+                          {%- for i in (1..4) -%}
+                            {%- assign titleLink = "title_link" | append: i -%}
+                            {%- if block.settings[titleLink] != blank -%}
+                              <li>{{ block.settings[titleLink] }}</li>
+                            {%- else -%}
+                              {%- break -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+              </div>
+            {%- endif -%}
+
+            {%- if formatsHigh.size > 0 -%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in formatsHigh -%}
+                    {%- assign collection = block.settings.collection -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card border">
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media  collection-card__media--custom" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,800,1000,1200,1400,1600', class: 'no-zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- endif -%}
+
+                      <div class="collection-card__content-wrapper  collection-card__content-wrapper--format">
+                        <a class="title" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }}</a>
+                        {%- if block.settings.des != blank -%}
+                          <div class="description">{{ block.settings.des }}</div>
+                        {%- endif -%}
+                        <div class="button-with-icons">
+                          <a class="button  button--border" href="{{ collection_url }}">{{ 'Browse' }}</a>
+                          <div class="icons-list">
+                            {%- for i in (1..6) -%}
+                              {%- assign imageLink = "image" | append: i -%}
+                              {%- assign titleLink = "title" | append: i -%}
+                              {%- if block.settings[imageLink] != blank -%}
+                                <span data-tooltip="{{ block.settings[titleLink] }}">{{- block.settings[imageLink] | image_url: width: 56 | image_tag: loading: 'lazy', sizes: '100vw', class: 'no-zoom-image' -}}</span>
+                              {%- else -%}
+                                {%- break -%}
+                              {%- endif -%}
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+
+                <div class="collection-list-tabs__notes prose">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none"><path fill="currentColor" fill-rule="evenodd" d="M16.5 27.333c6.259 0 11.333-5.074 11.333-11.333 0-6.26-5.074-11.334-11.334-11.334C10.24 4.666 5.166 9.741 5.166 16c0 6.26 5.074 11.333 11.333 11.333Zm0 2c7.363 0 13.333-5.97 13.333-13.333 0-7.364-5.97-13.334-13.334-13.334C9.136 2.666 3.166 8.636 3.166 16s5.97 13.333 13.333 13.333Zm0-5.333a1.333 1.333 0 1 0 0-2.667 1.333 1.333 0 0 0 0 2.667Zm-2.277-13.131c.991-.42 2.127-.602 3.096-.514 1 .09 1.615.437 1.876.843.33.511.381 1.04.204 1.593-.186.584-.645 1.234-1.401 1.848-1.69 1.373-2.707 2.404-2.707 4.027a1 1 0 1 0 2 0c0-.572.222-1.056 1.968-2.475.962-.781 1.708-1.734 2.046-2.791.347-1.089.244-2.242-.429-3.286-.74-1.149-2.093-1.636-3.378-1.751-1.315-.119-2.78.124-4.056.664a1 1 0 0 0 .78 1.842Z" clip-rule="evenodd"/></svg>
+                  <p>Not sure which format to choose?</p>
+                  <p class="second-line">We wrote a guide just for you <a class="link-blog" href="#">here</a></p>
+                </div>
+              </div>
+            {%- endif -%}
+          </x-tabs>
+        </div>
+        <!-- End High Poly -->
+
+        {%- assign regionsLow = section.blocks | where: 'type', 'low_collection' -%}
+        {%- assign plantTypesLow = section.blocks | where: 'type', 'low_Type' -%}
+        {%- assign formatsLow = section.blocks | where: 'type', 'low_Fomat' -%}
+
+        <div role="tabpanel" class="tab-content  collection-list-tabs__content  collection-list-tabs__content--low-poly" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+          <x-tabs class="collection-list-tabs__inner-sub  tabs-inner"{% if regionsLow.size == 0 and plantTypesLow.size == 0 and formatsLow.size == 0 %} hidden{% endif %}>
+            <template shadowrootmode="open">
+              <slot role="tablist" part="tab-list" name="title"></slot>
+              <slot part="tab-panels" name="content"></slot>
+            </template>
+
+            {%- if regionsLow.size > 0 -%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Regions' }}</button>
+            {%- endif -%}
+            {%- if plantTypesLow.size > 0-%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Plant Types' }}</button>
+            {%- endif -%}
+            {%- if formatsLow.size > 0 -%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Formats' }}</button>
+            {%- endif -%}
+
+            {%- if regionsLow.size > 0 -%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in regionsLow -%}
+                    {%- assign collection = block.settings.collection -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card" reveal-js>
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '800,800,800,800,800,800,1000,1200,1400,1600', class: 'zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                        {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper">
+                        <a class="collection-card__link  animated-arrow-svg" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }} <span class="circle-chevron">{%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}</span></a>
+                        <ul class="collection-card__sub-links  sub_collection">
+                          {%- for i in (1..4) -%}
+                            {%- assign titleLink = "title_link" | append: i -%}
+                            {%- if block.settings[titleLink] != blank -%}
+                              <li>{{ block.settings[titleLink] }}</li>
+                            {%- else -%}
+                              {%- break -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+              </div>
+            {%- endif -%}
+
+            {%- if plantTypesLow.size > 0-%}
+              <div role="tabpanel" class="tab-content collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in plantTypesLow -%}
+                    {%- assign collection = block.settings.collection2 -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card" reveal-js>
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '800,800,800,800,800,800,1000,1200,1400,1600', class: 'zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                        {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper">
+                        <a class="collection-card__link  animated-arrow-svg" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }} <span class="circle-chevron">{%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}</span></a>
+                        <ul class="collection-card__sub-links  sub_collection">
+                          {%- for i in (1..4) -%}
+                            {%- assign titleLink = "title_link" | append: i -%}
+                            {%- if block.settings[titleLink] != blank -%}
+                              <li>{{ block.settings[titleLink] }}</li>
+                            {%- else -%}
+                              {%- break -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+              </div>
+            {%- endif -%}
+
+            {%- if formatsLow.size > 0 -%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in formatsLow -%}
+                    {%- assign collection = block.settings.collection -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card border">
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media  collection-card__media--custom" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,800,1000,1200,1400,1600', class: 'no-zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper  collection-card__content-wrapper--format">
+                        <a class="title" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }}</a>
+                        {%- if block.settings.des != blank -%}
+                          <div class="description">{{ block.settings.des }}</div>
+                        {%- endif -%}
+                        <div class="button-with-icons">
+                          <a class="button  button--border" href="{{ collection_url }}">{{ 'Browse' }}</a>
+                          <div class="icons-list">
+                            {%- for i in (1..6) -%}
+                              {%- assign imageLink = "image" | append: i -%}
+                              {%- assign titleLink = "title" | append: i -%}
+                              {%- if block.settings[imageLink] != blank -%}
+                                <span data-tooltip="{{ block.settings[titleLink] }}">{{- block.settings[imageLink] | image_url: width: 56 | image_tag: loading: 'lazy', sizes: '100vw', class: 'no-zoom-image' -}}</span>
+                              {%- else -%}
+                                {%- break -%}
+                              {%- endif -%}
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+
+                <div class="collection-list-tabs__notes prose">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none"><path fill="currentColor" fill-rule="evenodd" d="M16.5 27.333c6.259 0 11.333-5.074 11.333-11.333 0-6.26-5.074-11.334-11.334-11.334C10.24 4.666 5.166 9.741 5.166 16c0 6.26 5.074 11.333 11.333 11.333Zm0 2c7.363 0 13.333-5.97 13.333-13.333 0-7.364-5.97-13.334-13.334-13.334C9.136 2.666 3.166 8.636 3.166 16s5.97 13.333 13.333 13.333Zm0-5.333a1.333 1.333 0 1 0 0-2.667 1.333 1.333 0 0 0 0 2.667Zm-2.277-13.131c.991-.42 2.127-.602 3.096-.514 1 .09 1.615.437 1.876.843.33.511.381 1.04.204 1.593-.186.584-.645 1.234-1.401 1.848-1.69 1.373-2.707 2.404-2.707 4.027a1 1 0 1 0 2 0c0-.572.222-1.056 1.968-2.475.962-.781 1.708-1.734 2.046-2.791.347-1.089.244-2.242-.429-3.286-.74-1.149-2.093-1.636-3.378-1.751-1.315-.119-2.78.124-4.056.664a1 1 0 0 0 .78 1.842Z" clip-rule="evenodd"/></svg>
+                  <p>Not sure which format to choose?</p>
+                  <p class="second-line">We wrote a guide just for you <a class="link-blog" href="#">here</a></p>
+                </div>
+              </div>
+            {%- endif -%}
+          </x-tabs>
+        </div>
+        <!-- End Low Poly -->
+
+        {%- assign regions2D = section.blocks | where: 'type', '2d_collection' -%}
+        {%- assign plantTypes2D = section.blocks | where: 'type', '2d_Type' -%}
+        {%- assign formats2D = section.blocks | where: 'type', '2d_Fomat' -%}
+
+        <div role="tabpanel" class="tab-content  collection-list-tabs__content  collection-list-tabs__content--2d-images" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+          <x-tabs class="collection-list-tabs__inner-sub  tabs-inner"{% if regions2D.size == 0 and plantTypes2D.size == 0 and formats2D.size == 0 %} hidden{% endif %}>
+            <template shadowrootmode="open">
+              <slot role="tablist" part="tab-list" name="title"></slot>
+              <slot part="tab-panels" name="content"></slot>
+            </template>
+
+            {%- if regions2D.size > 0 -%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Regions' }}</button>
+            {%- endif -%}
+            {%- if plantTypes2D.size > 0-%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Plant Types' }}</button>
+            {%- endif -%}
+            {%- if formats2D.size > 0 -%}
+              <button type="button" slot="title" class="collection-list-tabs__button-sub">{{ 'Formats' }}</button>
+            {%- endif -%}
+
+            {%- if regions2D.size > 0 -%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in regions2D -%}
+                    {%- assign collection = block.settings.collection -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card" reveal-js>
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '800,800,800,800,800,800,1000,1200,1400,1600', class: 'zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                        {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper">
+                        <a class="collection-card__link  animated-arrow-svg" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }} <span class="circle-chevron">{%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}</span></a>
+                        <ul class="collection-card__sub-links  sub_collection">
+                          {%- for i in (1..4) -%}
+                            {%- assign titleLink = "title_link" | append: i -%}
+                            {%- if block.settings[titleLink] != blank -%}
+                              <li>{{ block.settings[titleLink] }}</li>
+                            {%- else -%}
+                              {%- break -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+              </div>
+            {%- endif -%}
+
+            {%- if plantTypes2D.size > 0-%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in plantTypes2D -%}
+                    {%- assign collection = block.settings.collection2 -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card" reveal-js>
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '800,800,800,800,800,800,1000,1200,1400,1600', class: 'zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                        {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper">
+                        <a class="collection-card__link  animated-arrow-svg" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }} <span class="circle-chevron">{%- render 'icon' with 'chevron-right-alt', direction_aware: true -%}</span></a>
+                        <ul class="collection-card__sub-links  sub_collection">
+                          {%- for i in (1..4) -%}
+                            {%- assign titleLink = "title_link" | append: i -%}
+                            {%- if block.settings[titleLink] != blank -%}
+                              <li>{{ block.settings[titleLink] }}</li>
+                            {%- else -%}
+                              {%- break -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+              </div>
+            {%- endif -%}
+
+            {%- if formats2D.size > 0 -%}
+              <div role="tabpanel" class="tab-content  collection-list-tabs__content-sub" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden' %}>
+                <collection-list class="collection-list">
+                  {%- for block in formats2D -%}
+                    {%- assign collection = block.settings.collection -%}
+                    {%- assign collection_url = block.settings.url | default: collection.url -%}
+                    <div class="collection-card border">
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <a class="collection-card__media  collection-card__media--custom" href="{{ collection_url }}">{{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,800,1000,1200,1400,1600', class: 'no-zoom-image' -}}</a>
+                        {%- endif -%}
+                      {%- endif -%}
+                      <div class="collection-card__content-wrapper  collection-card__content-wrapper--format">
+                        <a class="title" href="{{ collection_url }}">{{ block.settings.title | default: collection.title | escape }}</a>
+                        {%- if block.settings.des != blank -%}
+                          <div class="description">{{ block.settings.des }}</div>
+                        {%- endif -%}
+                        <div class="button-with-icons">
+                          <a class="button  button--border" href="{{ collection_url }}">{{ 'Browse' }}</a>
+                          <div class="icons-list">
+                            {%- for i in (1..6) -%}
+                              {%- assign imageLink = "image" | append: i -%}
+                              {%- assign titleLink = "title" | append: i -%}
+                              {%- if block.settings[imageLink] != blank -%}
+                                <span data-tooltip="{{ block.settings[titleLink] }}">{{- block.settings[imageLink] | image_url: width: 56 | image_tag: loading: 'lazy', sizes: '100vw', class: 'no-zoom-image' -}}</span>
+                              {%- else -%}
+                                {%- break -%}
+                              {%- endif -%}
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </collection-list>
+
+                <div class="collection-list-tabs__notes prose">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none"><path fill="currentColor" fill-rule="evenodd" d="M16.5 27.333c6.259 0 11.333-5.074 11.333-11.333 0-6.26-5.074-11.334-11.334-11.334C10.24 4.666 5.166 9.741 5.166 16c0 6.26 5.074 11.333 11.333 11.333Zm0 2c7.363 0 13.333-5.97 13.333-13.333 0-7.364-5.97-13.334-13.334-13.334C9.136 2.666 3.166 8.636 3.166 16s5.97 13.333 13.333 13.333Zm0-5.333a1.333 1.333 0 1 0 0-2.667 1.333 1.333 0 0 0 0 2.667Zm-2.277-13.131c.991-.42 2.127-.602 3.096-.514 1 .09 1.615.437 1.876.843.33.511.381 1.04.204 1.593-.186.584-.645 1.234-1.401 1.848-1.69 1.373-2.707 2.404-2.707 4.027a1 1 0 1 0 2 0c0-.572.222-1.056 1.968-2.475.962-.781 1.708-1.734 2.046-2.791.347-1.089.244-2.242-.429-3.286-.74-1.149-2.093-1.636-3.378-1.751-1.315-.119-2.78.124-4.056.664a1 1 0 0 0 .78 1.842Z" clip-rule="evenodd"/></svg>
+                  <p>Not sure which format to choose?</p>
+                  <p class="second-line">We wrote a guide just for you <a class="link-blog" href="#">here</a></p>
+                </div>
+              </div>
+            {%- endif -%}
+          </x-tabs>
+        </div>
+        <!-- End 2D Images -->
+      </x-tabs>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Tabs",
+  "class": "shopify-section--collection-list",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "stack_collections",
+      "label": "Stack collections",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "collections_per_row",
+      "min": 2,
+      "max": 5,
+      "label": "Collections per row (desktop)",
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Collection list"
+    },
+    {
+      "type": "header",
+      "content": "Settings Tabs",
+      "info": "Settings Tabs"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Heading",
+      "default": "Tabs Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content1",
+      "label": "Tab Content"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Heading",
+      "default": "Tabs Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content2",
+      "label": "Tab Content"
+    },
+    {
+      "type": "text",
+      "id": "title3",
+      "label": "Heading",
+      "default": "Tabs Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content3",
+      "label": "Tab Content"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link1",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "Link 1",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link2",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url2",
+          "label": "Link 2",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link3",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url3",
+          "label": "Link 3",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link4",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url4",
+          "label": "Link 4",
+          "info": "Default to collection URL."
+        }
+      ]
+    },
+    {
+      "type": "Type",
+      "name": "Type",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection2",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link1",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "Link 1",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link2",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url2",
+          "label": "Link 2",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link3",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url3",
+          "label": "Link 3",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link4",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url4",
+          "label": "Link 4",
+          "info": "Default to collection URL."
+        }
+      ]
+    },
+    {
+      "type": "Fomat",
+      "name": "Fomat",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "richtext",
+          "id": "des",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title1",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title3",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title4",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image5",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title5",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image6",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title6",
+          "label": "Icon Title"
+        }
+      ]
+    },
+    {
+      "type": "low_collection",
+      "name": "Low Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link1",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "Link 1",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link2",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url2",
+          "label": "Link 2",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link3",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url3",
+          "label": "Link 3",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link4",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url4",
+          "label": "Link 4",
+          "info": "Default to collection URL."
+        }
+      ]
+    },
+    {
+      "type": "low_Type",
+      "name": "Low Type",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection2",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link1",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "Link 1",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link2",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url2",
+          "label": "Link 2",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link3",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url3",
+          "label": "Link 3",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link4",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url4",
+          "label": "Link 4",
+          "info": "Default to collection URL."
+        }
+      ]
+    },
+    {
+      "type": "low_Fomat",
+      "name": "Low Fomat",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "richtext",
+          "id": "des",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title1",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title3",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title4",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image5",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title5",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image6",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title6",
+          "label": "Icon Title"
+        }
+      ]
+    },
+    {
+      "type": "2d_collection",
+      "name": "2D Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link1",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "Link 1",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link2",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url2",
+          "label": "Link 2",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link3",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url3",
+          "label": "Link 3",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link4",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url4",
+          "label": "Link 4",
+          "info": "Default to collection URL."
+        }
+      ]
+    },
+    {
+      "type": "2d_Type",
+      "name": "2D Type",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection2",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link1",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "Link 1",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link2",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url2",
+          "label": "Link 2",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link3",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url3",
+          "label": "Link 3",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "text",
+          "id": "title_link4",
+          "label": "Title link"
+        },
+        {
+          "type": "url",
+          "id": "url4",
+          "label": "Link 4",
+          "info": "Default to collection URL."
+        }
+      ]
+    },
+    {
+      "type": "2d_Fomat",
+      "name": "2D Fomat",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1500 x 1800px .jpg recommended. Default to collection image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "Default to collection title."
+        },
+        {
+          "type": "richtext",
+          "id": "des",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "info": "Default to collection URL."
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title1",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title2",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title3",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title4",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image5",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title5",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image6",
+          "label": "Icon Fomat",
+          "info": "50 x50"
+        },
+        {
+          "type": "text",
+          "id": "title6",
+          "label": "Icon Title"
+        }
+      ]
+    },
+    {
+      "type": "High",
+      "name": "High Poly",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "Low",
+      "name": "Low Poly",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title for Split",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Tabs",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

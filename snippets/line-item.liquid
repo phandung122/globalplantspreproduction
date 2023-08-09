@@ -1,0 +1,174 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+LINE ITEM
+----------------------------------------------------------------------------------------------------------------------
+
+This component renders a single line item product information, and is used on order and cart page.
+
+********************************************
+Supported variables
+********************************************
+
+* line_item: the line item to render (required)
+* show_desktop_quantity: if set to true (for instance on cart drawer), the quantity is also shown on the line
+{%- endcomment -%}
+
+{%- if line_item.variant.inventory_management != blank and line_item.variant.inventory_policy == 'deny' -%}
+  {%- assign line_max_quantity = line_item.variant.inventory_quantity -%}
+{%- endif -%}
+
+{%- assign isHighPoly = false -%}
+{%- assign isLowPoly = false -%}
+{%- assign is2DImages = false -%}
+
+{%- assign card_class = 'line-item__media-wrapper' -%}
+{%- for tag in line_item.product.tags -%}
+  {%- case tag -%}
+    {%- when "High Poly"-%}
+      {%- assign card_class = card_class | append: ' line-item__media-wrapper--high-poly' -%}
+      {%- assign isHighPoly = true -%}
+      {%- break -%}
+    {%- when "Low Poly"-%}
+      {%- assign card_class = card_class | append: ' line-item__media-wrapper--low-poly' -%}
+      {%- assign isLowPoly = true -%}
+      {%- break -%}
+    {%- when "2D Images"-%}
+      {%- assign card_class = card_class | append: ' line-item__media-wrapper--2d-images' -%}
+      {%- assign is2DImages = true -%}
+      {%- break -%}
+  {%- endcase -%}
+{%- endfor -%}
+
+{%- capture productTag -%}
+  {%- if isLowPoly -%}
+    <div class="product-tag tag-low">
+      <span>{{ 'Low Poly' }}</span>
+    </div>
+  {%- elsif is2DImages -%}
+    <div class="product-tag tag-2d">
+      <span>{{ '2D Images' }}</span>
+    </div>
+  {%- else -%}
+    <div class="product-tag tag-high">
+      <span>{{ 'High Poly' }}</span>
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+<line-item class="line-item">
+  {%- if line_item.image != blank -%}
+    <div class="{{ card_class }}">
+      {%- if template.name != 'cart' -%}
+        {{ productTag }}
+      {%- endif -%}
+      {{- line_item.image | image_url: width: line_item.image.width | image_tag: loading: 'lazy', sizes: '142px', widths: '284', class: 'line-item__media rounded-xs' -}}
+
+      <pill-loader class="pill-loader"></pill-loader>
+    </div>
+  {%- endif -%}
+
+  <div class="line-item__info">
+    <div class="v-stack gap-2 justify-items-start">
+      {%- if template.name == 'cart' -%}
+        {{ productTag }}
+      {%- endif -%}
+
+      {%- if line_item.url != blank -%}
+        <a href="{{ line_item.url }}" class="semibold">
+          {%- if line_item.product.metafields.custom.plants_name != blank -%}
+            {{ line_item.product.metafields.custom.plants_name }}
+            {%- for field in line_item.product.metafields.custom.common_namess.value -%}
+              <span class="common_names"> • {{ field }}</span>
+            {%- endfor -%}
+          {%- else -%}
+            {{ line_item.product.title | default: line_item.title }}
+          {%- endif -%}
+        </a>
+      {%- else -%}
+        <p class="semibold">{{ line_item.product.title | default: line_item.title }}</p>
+      {%- endif -%}
+
+      {%- if template.name != 'cart' -%}
+        {%- render 'price-list', line_item: line_item -%}
+      {%- else -%}
+        <ul class="product-tags">
+          {%- for tag in line_item.product.tags -%}
+            {%- if tag contains 'Asia' or tag contains 'Europe' or tag contains 'America' or tag contains 'Middle East' or tag contains 'Oceania' or tag contains 'Africa' -%}
+              <li class="{{ tag }}">{{ tag }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    {%- unless line_item.product.has_only_default_variant or line_item.gift_card -%}
+      {%- if template.name != 'cart' -%}
+        <p class="line-item__variant">{{ line_item.variant.title }}</p>
+      {%- endif -%}
+    {%- endunless -%}
+
+    {%- if line_item.selling_plan_allocation -%}
+      <p class="text-sm text-subdued">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>
+    {%- endif -%}
+
+    {%- unless line_item.properties == blank -%}
+      <ul class="list-disc">
+        {%- for property in line_item.properties -%}
+          {%- assign first_character_in_key = property.first | truncate: 1, '' -%}
+
+          {%- if property.last == blank or first_character_in_key == '_' -%}
+            {%- continue -%}
+          {%- endif -%}
+
+          <li class="text-sm text-subdued">
+            {%- if property.last contains '/uploads/' -%}
+              <a href="{{ property.last }}" class="link">{{ property.last | split: '/' | last }}</a>
+            {%- else -%}
+              {{ property.first }}: {{ property.last }}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endunless -%}
+
+    <div class="text-sm text-subdued sm:hidden">
+      {%- if line_item.url_to_remove -%}
+        <line-item-quantity class="h-stack">
+          <input class="quantity-input" type="hidden" is="quantity-input" inputmode="numeric" {% if line_max_quantity %}max="{{ line_max_quantity }}"{% endif %} data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.order.change_quantity' | t | escape }}" value="{{ line_item.quantity }}">
+
+          <a href="{{ line_item.url_to_remove }}" class="link">
+            <span class="sr-only">{{ 'cart.order.remove' | t }}</span>
+            {%- render 'icon' with 'trash' -%}
+          </a>
+        </line-item-quantity>
+      {%- else -%}
+        {{- 'customer.order.quantity' | t }}: {{ line_item.quantity -}}
+      {%- endif -%}
+    </div>
+
+    {%- if line_item.line_level_discount_allocations != blank -%}
+      <ul class="contents" role="list">
+        {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+          <li class="badge">
+            {%- render 'icon' with 'discount' -%} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
+  {%- if show_desktop_quantity -%}
+    <div class="line-item__actions text-subdued hidden sm:block">
+      <line-item-quantity class="v-stack gap-2">
+        <input class="quantity-input" type="hidden" is="quantity-input" inputmode="numeric" {% if line_max_quantity %}max="{{ line_max_quantity }}"{% endif %} data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.order.change_quantity' | t | escape }}" value="{{ line_item.quantity }}">
+
+        <span class="text-xs text-center">
+          <a href="{{ line_item.url_to_remove }}" class="link">
+            <span class="sr-only">{{ 'cart.order.remove' | t }}</span>
+            {%- render 'icon' with 'trash' -%}
+          </a>
+        </span>
+      </line-item-quantity>
+    </div>
+  {%- endif -%}
+</line-item>

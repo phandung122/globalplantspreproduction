@@ -1,0 +1,81 @@
+{%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --press-items-border: {{ section.settings.logo_item_border.rgb }} / {{ section.settings.logo_item_border.alpha }};
+      --press-max-width: {% if section.settings.content_size == 'small' %}760{% elsif section.settings.content_size == 'medium' %}1000{% elsif section.settings.content_size == 'large' %}1260{% endif %}px;
+    }
+
+    {%- if section.settings.background_image != blank -%}
+      #shopify-section-{{ section.id }} > .section {
+        position: relative;
+      }
+
+      #shopify-section-{{ section.id }} > .section > .section-stack {
+        position: relative;
+        z-index: 2;
+      }
+
+      #shopify-section-{{ section.id }} > .section > img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    {%- endif -%}
+  </style>
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+  {%- if section.settings.show_naviation -%}
+    <div {% render 'section-properties' %}>
+      {%- render 'article-navigation', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: section.settings.show_comments_count, block_attributes: block.shopify_attributes -%}
+    </div>
+  {%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Blog navigation",
+  "class": "shopify-section--blog-navigation",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_naviation",
+      "label": "Show other articles",
+      "default": true
+    },{
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_comments_count",
+      "label": "Show comments count",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog other articles"
+    }
+  ]
+}
+{% endschema %}

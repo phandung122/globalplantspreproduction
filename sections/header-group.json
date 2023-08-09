@@ -1,0 +1,82 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message": {
+          "type": "message",
+          "settings": {
+            "text": "Photo Realistic 3D Plant Models",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "message"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "enable_socials": true,
+        "text_size": "text-xs",
+        "navigation_mode": "arrows",
+        "scrolling_speed": 10,
+        "background": "#f8f8f8",
+        "background_gradient": "",
+        "text_color": "#608239"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "f4ba7214-5c14-483f-9488-1663b8a0dd8e": {
+          "type": "mega_menu_tab",
+          "settings": {
+            "menu_item": "Collections",
+            "menu": "collections-mega-menu",
+            "guide_content": "<p><strong>Not sure which format to choose?<\/strong><\/p><p>Check out our formats guide <a href=\"\/pages\/format-guide\" title=\"Format guide\">here<\/a><\/p>"
+          }
+        },
+        "bc825dcc-cb7e-465c-918f-f03d02c170bb": {
+          "type": "mega_menu_tab",
+          "settings": {
+            "menu_item": "Bundles",
+            "menu": "bundles-mega-menu",
+            "guide_content": "<p><strong>Not sure which format to choose?<\/strong><\/p><p>Check out our format guide <a href=\"\/pages\/format-guide\" title=\"Format guide\">here<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f4ba7214-5c14-483f-9488-1663b8a0dd8e",
+        "bc825dcc-cb7e-465c-918f-f03d02c170bb"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "hide_on_scroll": false,
+        "logo": "shopify:\/\/shop_images\/gp-logo.png",
+        "logo_max_width": 210,
+        "logo_mobile_max_width": 140,
+        "menu": "main-menu-new",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "menu_open_trigger": "hover",
+        "opening_from": "right",
+        "layout": "logo_left_navigation_center",
+        "show_social_media": true,
+        "show_locale_selector": false,
+        "show_country_selector": true,
+        "show_country_flag": true,
+        "show_country_name": false,
+        "transparent_header_text_color": "#ffffff",
+        "reduce_padding": false,
+        "background_opacity": 100,
+        "background_blur_radius": 0
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

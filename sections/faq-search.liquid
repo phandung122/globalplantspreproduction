@@ -1,0 +1,65 @@
+<style>
+.faq a {
+    color: #608239;
+    text-decoration: underline;
+}
+.faq ul, .faq ol {
+    list-style: disc;
+    padding-inline-start: 40px;
+    margin-bottom: 1rem;
+}
+
+.faq ul:last-child, .faq ol:last-child {
+    margin-bottom: 0;
+}
+  
+.faq p:empty {
+    margin-bottom: 0;
+}
+
+.faq p {
+    margin-bottom: 1rem;
+}
+
+.faq p:last-child {
+    margin-bottom: 0;
+}
+</style>
+<div class="section-faq-search__title">
+  {%- if section.settings.title != blank -%}
+    <div class="c-search-box">
+      <div class="section">
+        <div class="section-stack">
+          <h2 class="h2 montserrat">{%- render 'styled-text', content: section.settings.title -%}</h2>
+           <div class="search-input">
+              <button type="button">{%- render 'icon' with 'search' -%}</button>
+              <input type="text" id="search-input" placeholder="Type your question here"  autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search">
+           </div>
+        </div>
+      </div>
+    </div>          
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "FAQ search",
+  "class": "shopify-section--faq-search",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Have any questions? We’re here to assist you"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ search"
+    }
+  ]
+}
+{% endschema %}
