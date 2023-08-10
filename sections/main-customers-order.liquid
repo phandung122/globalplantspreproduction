@@ -84,7 +84,7 @@
                                     {{ 'customer.order.track_shipment' | t }}
                                 </a>
                             {%- endif -%}
-                          {% if line_item.variant.metafields.dda.digital or order.metafields.dda.sendowl_order_id %}(<a href="https://transactions.sendowl.com/orders/shopify_return/153044?order_id={{ order.id }}&email={{ order.email }}{% if order.metafields.dda.sendowl_order_id %}&sendowl_order_id={{ order.metafields.dda.sendowl_order_id }}{% endif %}">download here</a>){% endif %}
+                          {% if line_item.variant.metafields.dda.digital or order.metafields.dda.sendowl_order_id %}(<a href="https://transactions.sendowl.com/orders/shopify_return/153044?order_id={{ order.id }}&email={{ order.email }}{% if order.metafields.dda.sendowl_order_id %}&sendowl_order_id={{ order.metafields.dda.sendowl_order_id }}{% endif %}">download models</a>){% endif %}
                             <div>
                                 {{ line_item.fulfillment.tracking_company }}
                                 {%- if line_item.fulfillment.tracking_number -%} #{{ line_item.fulfillment.tracking_number }} {%- endif -%}
@@ -171,7 +171,28 @@
                   {%- render 'icon' with 'picto-file' -%}
                   <p class="bold">{{ 'customer.order.billing_address' | t }}</p>
                 </div>
+                {% comment %}
                 {{- order.billing_address | format_address -}}
+                {% endcomment %}
+
+                  <div class="customer-billing-address customer-billing-address-{{ order.billing_address.id }}">
+                    <p class="name">{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
+                    <p class="address">{{ order.billing_address.address1 }}{% if order.billing_address.address2 != blank %}, {{ order.billing_address.address2 }}{% endif %}{% if order.billing_address.city != blank %}, {{ order.billing_address.city }}{% endif %}{% if order.billing_address.province != blank %}, {{ order.billing_address.province }}{% endif %}{% if order.billing_address.zip != blank %}, {{ order.billing_address.zip }}{% endif %}
+                    </p>
+                    {% if customer.email != blank %}
+                    <p class="email">{{ customer.email }}</p>
+                    {% endif %}
+                    {% if order.billing_address.company != blank %}
+                    <p class="company">{{ order.billing_address.company }}</p>
+                    {% endif %}
+                    {% if order.billing_address.phone != blank %}
+                    <p class="phone">{{ order.billing_address.phone }}</p>
+                    {% endif %}
+                    {% if customer.metafields.customer_hub.vat != blank %}
+                    <p class="vat">{{ customer.metafields.customer_hub.vat }}</p>
+                    {% endif %}
+                  </div>
+
               </div>
             {%- endif -%}
 
@@ -181,8 +202,29 @@
                   {%- render 'icon' with 'picto-box' -%}
                   <p class="bold">{{ 'customer.order.shipping_address' | t }}</p>
                 </div>
-
+                {% comment %}
                 {{- order.shipping_address | format_address -}}
+                {% endcomment %}
+
+
+                  <div class="customer-shipping-address customer-shipping-address-{{ order.shipping_address.id }}">
+                    <p class="name">{{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}</p>
+                    <p class="address">{{ order.shipping_address.address1 }}{% if order.shipping_address.address2 != blank %}, {{ order.shipping_address.address2 }}{% endif %}{% if order.shipping_address.city != blank %}, {{ order.shipping_address.city }}{% endif %}{% if order.shipping_address.province != blank %}, {{ order.shipping_address.province }}{% endif %}{% if order.shipping_address.zip != blank %}, {{ order.shipping_address.zip }}{% endif %}
+                    </p>
+                    {% if customer.email != blank %}
+                    <p class="email">{{ customer.email }}</p>
+                    {% endif %}
+                    {% if order.shipping_address.company != blank %}
+                    <p class="company">{{ order.shipping_address.company }}</p>
+                    {% endif %}
+                    {% if order.shipping_address.phone != blank %}
+                    <p class="phone">{{ order.shipping_address.phone }}</p>
+                    {% endif %}
+                    {% if customer.metafields.customer_hub.vat != blank %}
+                    <p class="vat">{{ customer.metafields.customer_hub.vat }}</p>
+                    {% endif %}
+                  </div>
+
               </div>
             {%- endif -%}
           </div>
@@ -194,6 +236,62 @@
 <script>
   window.billingAddress = '{{ order.billing_address | json }}';
 </script>
+
+<style>
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.unreal-engine-lumen {
+  background-image: url('{{ 'UNREAL.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.hdri-all-formats {
+  background-image: url('{{ 'HDRI.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.redshift {
+  background-image: url('{{ 'redshift.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.fbx--obj {
+  background-image: url('{{ 'FBX.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.mesh--growfx {
+  background-image: url('{{ 'Growfx.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.rhinoceros-d-v-ray--rhino-renderer-only {
+  background-image: url('{{ 'RHINOCEROS.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.cinema-d-v-ray--corona {
+  background-image: url('{{ 'cinema4d.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.blender-cycles {
+  background-image: url('{{ 'Blender.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.twinmotion {
+  background-image: url('{{ 'TWINMOTION.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.twinmotion-low-poly {
+  background-image: url('{{ 'TWINMOTION.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.enscape-revit-sketchup-rhinod-vectorworks-archicad {
+  background-image: url('{{ 'ENSCAPE-Revit.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.sketchup-v-ray--thea--enscape {
+  background-image: url('{{ 'Sketchup.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.sketchup-v-ray--full-geometry-skp-mesh {
+  background-image: url('{{ 'Sketchup.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.sketchup-vray--full-geometry-mesh {
+  background-image: url('{{ 'Sketchup.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.fbx-low-poly {
+  background-image: url('{{ 'FBX-low.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.fbx {
+  background-image: url('{{ 'FBX.png' | asset_url }}');
+}
+#CustomerHubApp.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General.chContent-Body-Page-Order .chContent-Body-Page-Content-Wrapper .chContent-BPCW-Order--Details .chfl-x .chContent-BPCW-Order--Details-Products .chContent-BPCW-Order--Details-Product .chProductFormat span.ds-max-v-ray--corona {
+  background-image: url('{{ '3DsMax.png' | asset_url }}');
+}
+</style>
+
+
 {% schema %}
 {
   "name": "Customer order",

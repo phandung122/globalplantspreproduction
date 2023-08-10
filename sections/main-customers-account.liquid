@@ -107,6 +107,132 @@
     </div>
   {%- endif -%}
 </div>
+{% assign bought_products = ',' %}
+{% assign bought_tags = ',' %}
+{%- for order in customer.orders -%}
+  {%- for line_item in order.line_items -%}
+    {% assign bought_products = bought_products | append: line_item.product_id | append: ',' %}
+    {% assign bought_tags = bought_tags | append: line_item.product.tags | append: ',' %}
+  {%- endfor -%}
+{%- endfor -%}
+{% assign bought_tags = bought_tags | replace: '[', '' | replace: ']', '' %}
+
+{% assign poly_first = '' %}
+{% assign poly_second = '' %}
+{% assign collection_first = '' %}
+{% assign collection_second = '' %}
+{% assign collection_third = '2d-images' %}
+{% assign bought_region = '' %}
+
+{% if bought_tags contains 'High Poly' %}
+  {% assign poly_first = 'High Poly' %}
+  {% assign collection_first = 'realistic-3d-plants-high-poly' %}
+  {% if bought_tags contains 'Low Poly' %}
+    {% assign poly_second = 'Low Poly' %}
+    {% assign collection_second = 'low-poly' %}
+  {% else %}
+    {% assign poly_second = '2D Images' %}
+    {% assign collection_second = '2d-images' %}
+  {% endif %}
+{% else %}
+  {% assign poly_first = 'Low Poly' %}
+  {% assign poly_second = '2D Images' %}
+  {% assign collection_first = 'low-poly' %}
+  {% assign collection_second = '2d-images' %}
+{% endif %}
+
+{% if bought_tags contains 'America' %}
+  {% assign bought_region = bought_region | append: 'America' | append: ',' %}
+{% endif %}
+{% if bought_tags contains 'Africa' %}
+  {% assign bought_region = bought_region | append: 'Africa' | append: ',' %}
+{% endif %}
+{% if bought_tags contains 'Asia' %}
+  {% assign bought_region = bought_region | append: 'Asia' | append: ',' %}
+{% endif %}
+{% if bought_tags contains 'Oceania' %}
+  {% assign bought_region = bought_region | append: 'Oceania' | append: ',' %}
+{% endif %}
+{% if bought_tags contains 'Europe' %}
+  {% assign bought_region = bought_region | append: 'Europe' | append: ',' %}
+{% endif %}
+{% if bought_tags contains 'Middle East' %}
+  {% assign bought_region = bought_region | append: 'Middle East' | append: ',' %}
+{% endif %}
+
+<div class="acount-upsell-container">
+  {% assign counter = 0 %}
+  <product-list class="product-list">
+  {% paginate collections[collection_first].products by 500 %}
+    {% assign products = collections[collection_first].products | sort: 'best-selling' %}
+    {% for product in products %}   
+      {% if bought_products contains product.id %}
+        {% continue %}
+      {% endif %}
+      {% if counter < 4 and product.tags contains poly_first %}
+
+        {% for tag in product.tags %}
+          {% if bought_region contains tag %}
+            {%- render 'product-card', product: product, stacked: true, background: "#ffffff", text_color: "#1a1a1a", show_badges: true -%}
+            {% assign counter = counter | plus: 1 %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+      {% endif %}
+      {% if counter >= 4 %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endpaginate %}
+
+  {% paginate collections[collection_second].products by 500 %}
+    {% assign products = collections[collection_second].products | sort: 'best-selling' %}
+    {% for product in products %}   
+      {% if bought_products contains product.id %}
+        {% continue %}
+      {% endif %}
+      {% if counter < 4 and product.tags contains poly_second %}
+        
+        {% for tag in product.tags %}
+          {% if bought_region contains tag %}
+            {%- render 'product-card', product: product, stacked: true, background: "#ffffff", text_color: "#1a1a1a", show_badges: true -%}
+            {% assign counter = counter | plus: 1 %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+      {% endif %}
+      {% if counter >= 4 %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endpaginate %} 
+
+  {% paginate collections[collection_third].products by 500 %}
+    {% assign products = collections[collection_third].products | sort: 'best-selling' %}
+    {% for product in products %}   
+      {% if bought_products contains product.id %}
+        {% continue %}
+      {% endif %}
+      {% if counter < 4 and product.tags %}
+        
+        {% for tag in product.tags %}
+          {% if bought_region contains tag %}
+            {%- render 'product-card', product: product, stacked: true, background: "#ffffff", text_color: "#1a1a1a", show_badges: true -%}
+            {% assign counter = counter | plus: 1 %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+      {% endif %}
+      {% if counter >= 4 %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endpaginate %}
+  </product-list>
+</div>
 
 {% schema %}
 {

@@ -74,7 +74,7 @@ Supported variables
       {%- endif -%}
 
       {%- if line_item.url != blank -%}
-        <a href="{{ line_item.url }}" class="semibold">
+        <a data-productid="{{ line_item.product_id }}" href="{{ line_item.url }}" class="semibold line-item-product-title">
           {%- if line_item.product.metafields.custom.plants_name != blank -%}
             {{ line_item.product.metafields.custom.plants_name }}
             {%- for field in line_item.product.metafields.custom.common_namess.value -%}

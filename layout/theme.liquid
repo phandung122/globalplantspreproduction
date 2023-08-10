@@ -56,6 +56,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'hover-min.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'main.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'app.css' | asset_url | stylesheet_tag: preload: true -}}
   </head>
 
   <body class="{% if settings.show_page_transition %}page-transition{% endif %} {% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %} template--{{ template.name }}">
@@ -101,7 +102,8 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       <script src="{{ 'customers-register.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {%- if request.page_type == 'customers/account' or request.page_type == 'customers/addresses' or request.page_type == 'customers/order' -%}
+    {%- if request.page_type == 'customers/account' or request.page_type == 'customers/addresses' or request.page_type == 'customers/login' or request.page_type == 'customers/order' -%}
+      <script type="module" src="{{ 'app.js' | asset_url }}"></script>
       {% if customer %}
         <script>
           window.customerInfo = window.customerInfo || {};

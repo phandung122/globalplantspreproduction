@@ -34,7 +34,22 @@
                     <p class="bold">{{ 'customer.addresses.address_title' | t: position: forloop.index }}</p>
                   {%- endif -%}
 
+                  {% comment %}
                   {{- address | format_address -}}
+                  {% endcomment %}
+                  <div class="customer-address customer-address-{{ address.id }} {%- if address == customer.default_address -%}customer-address-default{%- endif -%}">
+                    <p class="name">{{ address.first_name }} {{ address.last_name }}</p>
+                    {% if address.address1 != blank %}
+                    <p class="address">{{ address.address1 }}{% if address.address2 != blank %}, {{ address.address2 }}{% endif %}{% if address.city != blank %}, {{ address.city }}{% endif %}{% if address.province != blank %}, {{ address.province }}{% endif %}{% if address.zip != blank %}, {{ address.zip }}{% endif %}
+                    </p>
+                    {% endif %}
+                    {% if address.company != blank %}
+                    <p class="company">{{ address.company }}</p>
+                    {% endif %}
+                    {% if address.phone != blank %}
+                    <p class="phone">{{ address.phone }}</p>
+                    {% endif %}
+                  </div>
 
                   <div class="address__actions">
                     <button type="button" aria-controls="customer-address-{{ address.id }}" aria-expanded="false">

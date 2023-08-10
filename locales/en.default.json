@@ -194,7 +194,7 @@
   },
   "customer": {
     "account": {
-      "welcome": "Welcome, {{first_name}}",
+      "welcome": "My Account",
       "tagline": "View all your orders and manage your account information.",
       "orders": "Orders",
       "addresses": "Addresses",
@@ -211,18 +211,20 @@
       "sign_up": "Sign up"
     },
     "recover_password": {
-      "title": "Recover password",
-      "email": "E-mail",
-      "submit": "Recover",
+      "title": "Reset Your Password",
+      "email": "Enter your registered email address",
+      "submit": "Send Reset Link",
       "back_to_login": "Back to login",
-      "success_message": "An e-mail has been sent to your address with instructions to reset your password."
+      "success_message": "We've sent a reset link to your email. Click it to set a new password. Can't find it? Please check your spam\/junk folder."
     },
     "register": {
       "title": "Sign up",
       "first_name": "First name",
       "last_name": "Last name",
       "email": "E-mail",
+      "vat": "VAT Number",
       "password": "Password",
+      "confirm_password": "Re-enter Password",
       "accepts_marketing": "Register to our newsletter",
       "submit": "Create account",
       "login": "Login"
@@ -236,10 +238,10 @@
       "cancel": "Cancel"
     },
     "reset_password": {
-      "title": "Reset password",
-      "password": "Password",
-      "password_confirmation": "Password confirmation",
-      "submit": "Reset"
+      "title": "Create a New Password",
+      "password": "New Password",
+      "password_confirmation": "Confirm Password",
+      "submit": "Reset Password"
     },
     "order": {
       "order": "Order",
