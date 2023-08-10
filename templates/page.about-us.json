@@ -1,0 +1,436 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "9ba87ca7-fcba-49e3-b3cc-3a723073ba56": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-gallery-01.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_text_extend": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-gallery-02.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_text_extend": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-gallery-03.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_text_extend": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-gallery-04.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_text_extend": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "3448298f-dfbf-4502-96d8-ed5be92cff41": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-gallery-05.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_text_extend": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "128fc0f6-c099-4dc2-a499-10a5a18726c5": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-gallery-06.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_text_extend": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "8ab6a4a5-0655-4210-b299-7663ea1ef02e": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-gallery-07.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_text_extend": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-1",
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-2",
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-3",
+        "template--20251168571682__9ba87ca7-fcba-49e3-b3cc-3a723073ba56-item-4",
+        "3448298f-dfbf-4502-96d8-ed5be92cff41",
+        "128fc0f6-c099-4dc2-a499-10a5a18726c5",
+        "8ab6a4a5-0655-4210-b299-7663ea1ef02e"
+      ],
+      "settings": {
+        "full_width": false,
+        "custom_class": "about-gallery",
+        "subheading": "About Us",
+        "title": "Let <strong>Our Plants<\/strong> Do The Talking",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "139ecd92-a210-4cb9-81bb-ffb19f0b051c": {
+      "type": "multi-column",
+      "blocks": {
+        "template--20251168571682__139ecd92-a210-4cb9-81bb-ffb19f0b051c-item-1": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "Our Story",
+            "heading_tag": "h2",
+            "content": "<p>With over <strong>10 years<\/strong> of professional Architecture Visualisation and Landscape Design experience using GrowFX, we combine those years of experience to produce the highest possible quality of 3D digital plants and trees to almost indistinguishable to real life.<\/p><p><strong>Globe Plants<\/strong> 3D foliage models will guarantee to accommodate for highest level of production.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "template--20251168571682__139ecd92-a210-4cb9-81bb-ffb19f0b051c-item-2": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "Our Vision",
+            "heading_tag": "h2",
+            "content": "<p>At <strong>Globe Plants<\/strong>, we believe in the fusion of art and technology. Our vision is to provide the most lifelike, detailed, and scientifically accurate 3D plant models, bridging the gap between virtual and real-world landscapes.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "template--20251168571682__139ecd92-a210-4cb9-81bb-ffb19f0b051c-item-1",
+        "template--20251168571682__139ecd92-a210-4cb9-81bb-ffb19f0b051c-item-2"
+      ],
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "disable_scroll": true,
+        "is_promotion_grid": false,
+        "custom_class": "",
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "7c0d75f7-b622-49a5-a3a0-356e9411a23b": {
+      "type": "impact-text",
+      "blocks": {
+        "template--20251168571682__7c0d75f7-b622-49a5-a3a0-356e9411a23b-item-1": {
+          "type": "item",
+          "settings": {
+            "title": "980+",
+            "subheading": "",
+            "content": "<p>3D Plant Species<\/p>",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": true,
+            "animate_impact_text_duration": 3
+          }
+        },
+        "ff30064d-676b-4a6e-9568-46f8afb0a8cf": {
+          "type": "item",
+          "settings": {
+            "title": "14,000+",
+            "subheading": "",
+            "content": "<p>Users Worldwide<\/p>",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": true,
+            "animate_impact_text_duration": 3
+          }
+        },
+        "55879803-072e-4b7d-a288-4bc59028bf19": {
+          "type": "item",
+          "settings": {
+            "title": "30+",
+            "subheading": "",
+            "content": "<p>New Plants Every Week<\/p>",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": true,
+            "animate_impact_text_duration": 3
+          }
+        },
+        "d2012231-94bf-4ea7-931e-be8d0b03d34f": {
+          "type": "item",
+          "settings": {
+            "title": "220+",
+            "subheading": "",
+            "content": "<p>Custom Requests<\/p>",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": true,
+            "animate_impact_text_duration": 3
+          }
+        }
+      },
+      "block_order": [
+        "template--20251168571682__7c0d75f7-b622-49a5-a3a0-356e9411a23b-item-1",
+        "ff30064d-676b-4a6e-9568-46f8afb0a8cf",
+        "55879803-072e-4b7d-a288-4bc59028bf19",
+        "d2012231-94bf-4ea7-931e-be8d0b03d34f"
+      ],
+      "settings": {
+        "full_width": false,
+        "stack_mobile": true,
+        "text_alignment": "start",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 1,
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "heading_text_color": "#005742",
+        "heading_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09": {
+      "type": "multi-column",
+      "blocks": {
+        "template--20251168571682__786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09-item-1": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "3D Vegetation Models",
+            "heading_tag": "h5",
+            "content": "<p>Send us the species that you would like to create in Botanical or Common names, as well as any references (photos) if you have<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "template--20251168571682__786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09-item-2": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Architectural Visualization",
+            "heading_tag": "h5",
+            "content": "<p>Our team of experts is always here to help, from technical queries to assistance in choosing the perfect model for your project.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "template--20251168571682__786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09-item-3": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Animation",
+            "heading_tag": "h5",
+            "content": "<p>Our models are crafted with meticulous attention to detail, capturing every nuance of the plants they represent.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "template--20251168571682__786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09-item-1",
+        "template--20251168571682__786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09-item-2",
+        "template--20251168571682__786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09-item-3"
+      ],
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "disable_scroll": true,
+        "is_promotion_grid": false,
+        "custom_class": "our-expertises",
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "Our Expertises",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "2f823673-7688-430f-ba80-355660d38549": {
+      "type": "video",
+      "blocks": {
+        "template--20251168571682__2f823673-7688-430f-ba80-355660d38549-play-1": {
+          "type": "play",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "template--20251168571682__2f823673-7688-430f-ba80-355660d38549-play-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=MzYbr-yBBVg",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "751fb187-2b89-4ddb-bb9d-668ea48feede": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bundle-53-img.jpg",
+            "stretch_image": false,
+            "link_text": "Bundle 53",
+            "link_text_extend": "British Home & Garden Plants",
+            "link_url": "shopify:\/\/products\/bundle-53-british-home-garden-plants-3d-plant-model",
+            "background": "",
+            "text_color": "rgba(0,0,0,0)",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bundle-52-img.jpg",
+            "stretch_image": false,
+            "link_text": "Bundle 52",
+            "link_text_extend": "North American Trees",
+            "link_url": "shopify:\/\/products\/bundle-52-north-american-trees-3d-model",
+            "background": "",
+            "text_color": "rgba(0,0,0,0)",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bundle-51-img.jpg",
+            "stretch_image": false,
+            "link_text": "Bundle 51",
+            "link_text_extend": "Bamboo World",
+            "link_url": "shopify:\/\/products\/bundle-51-bamboo-world-3d-model",
+            "background": "",
+            "text_color": "rgba(0,0,0,0)",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bundle-collection-img.jpg",
+            "stretch_image": true,
+            "link_text": "View more",
+            "link_text_extend": "",
+            "link_url": "shopify:\/\/collections\/3d-plant-bundles",
+            "background": "rgba(0,0,0,0)",
+            "text_color": "#608239",
+            "overlay_color": "#383838",
+            "overlay_opacity": 100
+          }
+        }
+      },
+      "block_order": [
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-1",
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-2",
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-3",
+        "template--20251168571682__751fb187-2b89-4ddb-bb9d-668ea48feede-item-4"
+      ],
+      "settings": {
+        "full_width": false,
+        "custom_class": "",
+        "subheading": "",
+        "title": "Latest Collections",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "9ba87ca7-fcba-49e3-b3cc-3a723073ba56",
+    "139ecd92-a210-4cb9-81bb-ffb19f0b051c",
+    "7c0d75f7-b622-49a5-a3a0-356e9411a23b",
+    "786fb5fc-ebe0-40e9-bd9d-588ffdd2cc09",
+    "2f823673-7688-430f-ba80-355660d38549",
+    "751fb187-2b89-4ddb-bb9d-668ea48feede"
+  ]
+}

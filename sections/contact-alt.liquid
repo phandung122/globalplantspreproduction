@@ -1,11 +1,11 @@
 {%- render 'section-spacing-collapsing' -%}
-<div {% render 'section-properties' %}>
+<div {% render 'section-properties' %} style="background: url({{- section.settings.background_image | image_url: width: section.settings.background_image.width }}) no-repeat fixed center; background-size: cover;">
   {%- assign text_position = section.settings.text_position -%}
   {%- capture loading_strategy -%}{% if forloop.first %}eager{% else %}lazy{% endif %}{%- endcapture -%}
   {%- capture fetch_priority -%}high{%- endcapture -%}
 
   {%- if section.settings.background_image != blank -%}
-    {{- section.settings.background_image | image_url: width: section.settings.background_image.width | image_tag: loading: 'eager', fetchpriority: fetch_priority, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'c-contact__desk-bg hidden sm:block' -}}
+    {{- section.settings.background_image | image_url: width: section.settings.background_image.width | image_tag: loading: 'eager', fetchpriority: fetch_priority, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'c-contact__desk-bg hidden' -}}
   {%- endif -%}
 
   <div class="c-contact section-stack section-stack--center">

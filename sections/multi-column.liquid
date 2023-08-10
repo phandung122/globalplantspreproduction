@@ -34,10 +34,10 @@
       {{- section.settings.background_image | image_url: width: section.settings.background_image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
     {%- endif -%}
 
-    <div class="section-stack{% if section.settings.is_promotion_grid %} c-collection-grid{%- endif -%}">
+    <div class="section-stack{% if section.settings.is_promotion_grid %} c-collection-grid{%- endif %} {{ section.settings.custom_class }}">
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, link_text: section.settings.link_text, link_url: section.settings.link_url , text_alignment: section.settings.text_alignment -%}
 
-      <div class="multi-column scroll-area bleed md:unbleed">
+      <div class="multi-column{% unless section.settings.disable_scroll %} scroll-area bleed md:unbleed{% endunless %}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'item' -%}
@@ -110,9 +110,20 @@
     },
     {
       "type": "checkbox",
+      "id": "disable_scroll",
+      "label": "Disable scroll",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "is_promotion_grid",
       "label": "Is promotion grid",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
     },
     {
       "type": "select",
