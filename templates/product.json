@@ -210,8 +210,8 @@
             "support_redshift_title_line4": "",
             "support_redshift_title_line5": "",
             "support_redshift_title_line6": "",
-            "support_redshift_title_window": "Title for Window",
-            "support_redshift_title_mac": "Title for Mac"
+            "support_redshift_title_window": "Windows 10 & 11 in 64-bit version",
+            "support_redshift_title_mac": "MacOS Monterey 12.x"
           }
         },
         "a64dc731-7431-4079-86da-6523132172b8": {
@@ -219,11 +219,11 @@
           "settings": {
             "text_general": "Please check the requirements below to find out if your PC can give you a good Globe Plants experience.",
             "text_recommended": "If your hardware configuration does not meet the requirements below, we have a LOW POLY format product available #here!",
-            "text_table_cpu": "Intel\/AMD processor scoring a single thread CPUMark of 2,200 or higher. (Such as the AMD Ryzen 5 1600X, Intel Core i7-4790S or better)",
+            "text_table_cpu": "Intel or AMD processor with a single-thread CPUMark rating of 3,000 or above is needed (such as AMD Ryzen 5 5500, Intel Core i7-11700T, or better)",
             "text_table_ram": "16 GB or more",
-            "text_table_graphics-card": "GPU scoring a G3DMark of 9,000 or higher with up-to-date drivers. (Such as the Nvidia GeForce RTX 3060, Quadro RTX 4000, AMD Radeon RX 5700, or better)",
-            "text_table_graphics-card-memory": "6 GB or more*",
-            "text_table_space": "Minimum 75 GB of free disk space in the drives where the Windows User Account and Documents folder are located in."
+            "text_table_graphics-card": "GPU that achieves a G3DMark score of at least 15,000, accompanied by the latest drivers, is required. Examples include the Nvidia GeForce RTX 3080, AMD Radeon RX 6800 XT or superior models",
+            "text_table_graphics-card-memory": "12 GB or more*",
+            "text_table_space": "Minimum 50 GB of free disk space"
           }
         },
         "3d0644d0-f7a2-457f-9be7-eb9b5ef898ae": {
