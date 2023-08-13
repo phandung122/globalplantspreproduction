@@ -50,7 +50,7 @@ Supported variables
         <div class="variant-picker__option-info">
           <div class="h-stack gap-2">
             <legend class="text-subdued">{{ 'Formats selected' }}:</legend>
-            <variant-option-value form="{{ form_id }}" for="option{{ option.position }}">{{ option.selected_value }}</variant-option-value>
+            <variant-option-value form="{{ form_id }}" for="option{{ option.position }}"></variant-option-value>
           </div>
 
           {%- if block.settings.formats_guide_link != blank -%}
@@ -103,9 +103,9 @@ Supported variables
               {%- for value in option.values -%}
                 {%- assign selected = false -%}
 
-                {%- if value == option.selected_value -%}
+                {% comment %} {%- if value == option.selected_value -%}
                   {%- assign selected = true -%}
-                {%- endif -%}
+                {%- endif -%} {% endcomment %}
 
                 {%- case selector_type -%}
                   {%- when 'variant' -%}

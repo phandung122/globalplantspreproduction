@@ -54,7 +54,150 @@
                   {%- endif -%}
 
                   <tr>
-                    <td>{%- render 'line-item', line_item: line_item -%}</td>
+                    <td>
+                      {%- if line_item.variant.inventory_management != blank and line_item.variant.inventory_policy == 'deny' -%}
+                        {%- assign line_max_quantity = line_item.variant.inventory_quantity -%}
+                      {%- endif -%}
+
+                      {%- assign isHighPoly = false -%}
+                      {%- assign isLowPoly = false -%}
+                      {%- assign is2DImages = false -%}
+
+                      {%- assign card_class = 'line-item__media-wrapper' -%}
+                      {%- for tag in line_item.product.tags -%}
+                        {%- case tag -%}
+                          {%- when "High Poly"-%}
+                            {%- assign card_class = card_class | append: ' line-item__media-wrapper--high-poly' -%}
+                            {%- assign isHighPoly = true -%}
+                            {%- break -%}
+                          {%- when "Low Poly"-%}
+                            {%- assign card_class = card_class | append: ' line-item__media-wrapper--low-poly' -%}
+                            {%- assign isLowPoly = true -%}
+                            {%- break -%}
+                          {%- when "2D Images"-%}
+                            {%- assign card_class = card_class | append: ' line-item__media-wrapper--2d-images' -%}
+                            {%- assign is2DImages = true -%}
+                            {%- break -%}
+                        {%- endcase -%}
+                      {%- endfor -%}
+
+                      {%- capture productTag -%}
+                        {%- if isLowPoly -%}
+                          <div class="product-tag tag-low">
+                            <span>{{ 'Low Poly' }}</span>
+                          </div>
+                        {%- elsif is2DImages -%}
+                          <div class="product-tag tag-2d">
+                            <span>{{ '2D Images' }}</span>
+                          </div>
+                        {%- else -%}
+                          <div class="product-tag tag-high">
+                            <span>{{ 'High Poly' }}</span>
+                          </div>
+                        {%- endif -%}
+                      {%- endcapture -%}
+
+                      <line-item class="line-item">
+                        {%- if line_item.image != blank -%}
+                          <div class="{{ card_class }}">
+                            {{- line_item.image | image_url: width: line_item.image.width | image_tag: loading: 'lazy', sizes: '142px', widths: '284', class: 'line-item__media rounded-xs' -}}
+                          </div>
+                        {%- endif -%}
+
+                        <div class="line-item__info">
+                          <div class="v-stack gap-2 justify-items-start">
+                            {{ productTag }}
+
+                            {%- if line_item.url != blank -%}
+                              <a href="{{ line_item.url }}" class="semibold">
+                                {%- if line_item.product.metafields.custom.plants_name != blank -%}
+                                  {{ line_item.product.metafields.custom.plants_name }}
+                                  {%- for field in line_item.product.metafields.custom.common_namess.value -%}
+                                    <span class="common_names"> • {{ field }}</span>
+                                  {%- endfor -%}
+                                {%- else -%}
+                                  {{ line_item.product.title | default: line_item.title }}
+                                {%- endif -%}
+                              </a>
+                            {%- else -%}
+                              <p class="semibold">{{ line_item.product.title | default: line_item.title }}</p>
+                            {%- endif -%}
+
+                            <ul class="product-tags">
+                              {%- for tag in line_item.product.tags -%}
+                                {%- if tag contains 'Asia' or tag contains 'Europe' or tag contains 'America' or tag contains 'Middle East' or tag contains 'Oceania' or tag contains 'Africa' -%}
+                                  <li class="{{ tag }}">{{ tag }}</li>
+                                {%- endif -%}
+                              {%- endfor -%}
+                            </ul>
+                          </div>
+
+                          {%- if line_item.selling_plan_allocation -%}
+                            <p class="text-sm text-subdued">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>
+                          {%- endif -%}
+
+                          {%- unless line_item.properties == blank -%}
+                            <ul class="list-disc">
+                              {%- for property in line_item.properties -%}
+                                {%- assign first_character_in_key = property.first | truncate: 1, '' -%}
+
+                                {%- if property.last == blank or first_character_in_key == '_' -%}
+                                  {%- continue -%}
+                                {%- endif -%}
+
+                                <li class="text-sm text-subdued">
+                                  {%- if property.last contains '/uploads/' -%}
+                                    <a href="{{ property.last }}" class="link">{{ property.last | split: '/' | last }}</a>
+                                  {%- else -%}
+                                    {{ property.first }}: {{ property.last }}
+                                  {%- endif -%}
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          {%- endunless -%}
+
+                          <div class="text-sm text-subdued sm:hidden">
+                            {%- if line_item.url_to_remove -%}
+                              <line-item-quantity class="h-stack">
+                                <input class="quantity-input" type="hidden" is="quantity-input" inputmode="numeric" {% if line_max_quantity %}max="{{ line_max_quantity }}"{% endif %} data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.order.change_quantity' | t | escape }}" value="{{ line_item.quantity }}">
+
+                                <a href="{{ line_item.url_to_remove }}" class="link">
+                                  <span class="sr-only">{{ 'cart.order.remove' | t }}</span>
+                                  {%- render 'icon' with 'trash' -%}
+                                </a>
+                              </line-item-quantity>
+                            {%- else -%}
+                              {{- 'customer.order.quantity' | t }}: {{ line_item.quantity -}}
+                            {%- endif -%}
+                          </div>
+
+                          {%- if line_item.line_level_discount_allocations != blank -%}
+                            <ul class="contents" role="list">
+                              {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+                                <li class="badge">
+                                  {%- render 'icon' with 'discount' -%} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          {%- endif -%}
+                        </div>
+
+                        {%- if show_desktop_quantity -%}
+                          <div class="line-item__actions text-subdued hidden sm:block">
+                            <line-item-quantity class="v-stack gap-2">
+                              <input class="quantity-input" type="hidden" is="quantity-input" inputmode="numeric" {% if line_max_quantity %}max="{{ line_max_quantity }}"{% endif %} data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.order.change_quantity' | t | escape }}" value="{{ line_item.quantity }}">
+
+                              <span class="text-xs text-center">
+                                <a href="{{ line_item.url_to_remove }}" class="link">
+                                  <span class="sr-only">{{ 'cart.order.remove' | t }}</span>
+                                  {%- render 'icon' with 'trash' -%}
+                                </a>
+                              </span>
+                            </line-item-quantity>
+                          </div>
+                        {%- endif -%}
+                      </line-item>
+                    </td>
 
                     <td class="hidden align-center text-center sm:table-cell">
                       {%- unless line_item.product.has_only_default_variant or line_item.gift_card -%}
@@ -72,13 +215,73 @@
 
                           <p class="text-value">{{ value }}</p>
 
-                          <button type="button" aria-controls="quick-edit-{{ line_item.id }}" aria-expanded="false" is="custom-button" aria-busy="false" class="button-value">
-                            <span class="sr-only">{{ 'Quick edit' }}</span>
+                          <button type="button" aria-controls="quick-edit-{{ line_item.id }}" aria-expanded="false" aria-busy="false" class="button-value">
                             {%- render 'icon' with 'edit' -%}
                           </button>
                         </div>
 
-                        <quick-buy-drawer id="quick-edit-{{ line_item.id }}" header-bordered open-from="left" handle="{{ line_item.product.handle }}" role="region" aria-live="polite" class="quick-buy-drawer drawer"></quick-buy-drawer>
+                        <quick-edit-drawer id="quick-edit-{{ line_item.id }}" header-bordered open-from="left" role="region" aria-live="polite" class="quick-buy-drawer quick-buy-drawer--edit drawer">
+                          <p class="text-with-icon gap-2 h5" slot="header">
+                            {%- render 'icon' with 'edit' -%}
+                            {{ 'Change Format' }}
+                          </p>
+                          <div class="quick-buy-drawer__info">
+                            <p>{{ 'Please select from the following formats:' }}</p>
+                            <div class="product-info__variant-picker">
+                              <variant-update-picker class="variant-picker" current-id="{{ line_item.variant.id }}" update-button=".button-{{ line_item.variant.id }}">
+                                {%- for option in line_item.product.options_with_values -%}
+                                  {%- assign option_downcase = option.name | downcase -%}
+                                  {%- assign name = 'option' | append: option.position -%}
+
+                                  <fieldset class="variant-picker__option no-js:hidden">
+                                    <div class="variant-picker__option-info">
+                                      <p data-variant-value>{{ line_item.variant.title }}</p>
+                                    </div>
+
+                                    <div>
+                                      <div data-option-selector class="variant-picker__option-values wrap gap-1">
+                                        {%- for value in option.values -%}
+                                          {%- capture id -%}edit-swatch-{{ 'now' | date: '%N' }}{%- endcapture -%}
+                                          {%- assign selected = false -%}
+
+                                          {%- if value == line_item.variant.title -%}
+                                            {%- assign selected = true -%}
+                                          {%- endif -%}
+
+                                          {%- assign variant_for_value = line_item.product.variants | where: name, value | first -%}
+
+                                          <input class="sr-only" type="radio" name="{{ name }}" id="{{ id | escape }}" value="{{ value | escape }}" variant-id="{{ variant_for_value.id }}" {% if selected %}checked="checked"{% endif %}>
+
+                                          <label class="block-swatch" for="{{ id | escape }}" data-option-value>
+                                            {%- assign firstWord = value | split: " " | first | handleize -%}
+                                            {%- assign lastWord = value | split: " " | last | handleize -%}
+                                            {%- assign swatchImage = firstWord | prepend: 'image_swatch_' -%}
+                                            {%- assign swatchImageLast = lastWord | prepend: 'image_swatch_' -%}
+                                            {%- if firstWord == '3ds' or firstWord == 'growfx' or firstWord == 'fbx' or firstWord == 'cinema' or firstWord == 'sketchup' or firstWord == 'twinmotion' or firstWord == 'blender' or firstWord == 'rhinoceros' or firstWord == 'redshift' or firstWord == 'unreal' or firstWord == 'enscape' or firstWord == 'hdri' -%}
+                                              {{- settings[swatchImage] | image_url: width: 100 | image_tag: loading: 'lazy', class: 'block-swatch__image', alt: value -}}
+                                            {%- elsif lastWord == 'growfx' -%}
+                                              {{- settings[swatchImageLast] | image_url: width: 100 | image_tag: loading: 'lazy', class: 'block-swatch__image', alt: value -}}
+                                            {%- endif -%}
+                                            <span class="text-value">{{ value }}</span>
+                                          </label>
+                                        {%- endfor -%}
+                                      </div>
+                                    </div>
+                                  </fieldset>
+                                {%- endfor -%}
+                              </variant-update-picker>
+                            </div>
+
+                            <button type="button" class="button button-{{ line_item.variant.id }}" is="update-cart-button" current-variant-id="{{ line_item.variant.id }}" update-variant-id="{{ line_item.variant.id }}">
+                              <div>{{ 'Apply' }}</div>
+                              <span class="button__loader">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                              </span>
+                            </button>
+                          </div>
+                        </quick-edit-drawer>
                       {%- endunless -%}
                     </td>
 
@@ -134,7 +337,7 @@
                         </div>
                       {%- endif -%}
 
-                      <div class="h-stack gap-4 justify-between">
+                      <div class="h-stack gap-4 justify-between cart-form__subtotal">
                         <span>{{ 'cart.general.subtotal' | t }}</span>
                         <span class="medium">{{ cart.items_subtotal_price | money }}</span>
                       </div>
@@ -156,7 +359,7 @@
                         </div>
                       {% endfor %}
 
-                      <div class="h-stack gap-4 justify-between">
+                      <div class="h-stack gap-4 justify-between cart--form__total">
                         <span class="h6 semibold">{{ 'cart.general.total' | t }}</span>
                         <span class="h6 semibold">{{- cart.total_price | money_with_currency -}}</span>
                       </div>
