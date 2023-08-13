@@ -9,266 +9,262 @@
         "content_width": "80ch"
       }
     },
-    "b551f411-6c8e-43b2-8326-4d6da7748706": {
-      "type": "image-with-text-overlay",
+    "666fe956-6360-41b6-b02f-12f3185ce42f": {
+      "type": "main-format-guide",
       "blocks": {
-        "template--19253226471714__b551f411-6c8e-43b2-8326-4d6da7748706-16869307280cf0e2ef-1": {
-          "type": "heading",
+        "3710a3e2-6697-4596-919c-06cdc0a490f2": {
+          "type": "header",
           "settings": {
-            "text": "Formats Guide",
-            "heading_tag": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "template--19253226471714__b551f411-6c8e-43b2-8326-4d6da7748706-16869307280cf0e2ef-1"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/guide-format-banner.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
-      }
-    },
-    "58da9686-ee82-4cfe-812a-6ee6967f434f": {
-      "type": "rich-text",
-      "blocks": {
-        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-1": {
-          "type": "heading",
-          "settings": {
-            "text": "A Guide To Choosing The Best 3D File Format For Your Software",
-            "heading_tag": "h5",
-            "text_color": "",
-            "gradient": ""
+            "models_type": "high",
+            "title": "<h4><strong>High<\/strong> Poly Models<\/h4>",
+            "content": "<p>High number of polygons that pushing our 3D plant models quality to the maximum. Suitable for: Photorealistic 3D rendering and Architectural Visualization. Requirements: High performance computer hardware to handle the poly counts and capable rendering engines.<\/p>",
+            "text_color": "#005742",
+            "background_color": "#edfbdd"
           }
         },
-        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-2": {
-          "type": "richtext",
+        "c028f9d4-ea02-4fd8-aecb-8543e41aedd5": {
+          "type": "header",
           "settings": {
-            "content": "<p>With countless formats available to choose from on our website, importing the correct ones can affect how our 3D plant models look and perform. A common sentiment shared by our customers is that they wish to use only the best-looking plants in their scene. However, sometimes it pays to be practical, especially if you don’t have a top-of-the-line computer system. Keep in mind that high-quality models can crash! To avoid this, you may opt to use the low poly version of the models you desire. This ensures that you can load our models without sacrificing too much quality.<br\/><br\/>Here’s our starter ‘How To’ guide. Read on to see how to navigate through each 3D file format Globe Plants offers and view our recommendations. Our 3D plant models are split into one of two categories: low poly models and high poly models.<\/p>"
+            "models_type": "low",
+            "title": "<h4><strong>Low<\/strong> Poly Models<\/h4>",
+            "content": "<p>High number of polygons that pushing our 3D plant models quality to the maximum. Suitable for: Photorealistic 3D rendering and Architectural Visualization. Requirements: High performance computer hardware to handle the poly counts and capable rendering engines.<\/p>",
+            "text_color": "#f89132",
+            "background_color": "#fff6e1"
           }
-        }
-      },
-      "block_order": [
-        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-1",
-        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-2"
-      ],
-      "custom_css": [
-        ".h5 {font-size: 1.25rem; text-align: left; width: 100%;}",
-        ".rich-text__wrapper {max-width: 100%;}",
-        ".text-center {text-align: justify;}",
-        "p {font-size: 14px; line-height: 1.4;}",
-        "> div {padding-block-start: 32px; padding-block-end: 0; --container-max-width: 1106px; max-width: var(--container-max-width); margin: 0 auto;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "content_width": "medium",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "c5435422-e1bd-4a78-b5bf-5826e625717e": {
-      "type": "format-guide",
-      "blocks": {
-        "template--19253226471714__c5435422-e1bd-4a78-b5bf-5826e625717e-168676314326fdbe91-0": {
+        },
+        "3cb2399f-29ed-4a52-904a-b112317f6fbc": {
+          "type": "header",
+          "settings": {
+            "models_type": "2d",
+            "title": "<h4><strong>2D png<\/strong> & image props<\/h4>",
+            "content": "<p>High number of polygons that pushing our 3D plant models quality to the maximum. Suitable for: Photorealistic 3D rendering and Architectural Visualization. Requirements: High performance computer hardware to handle the poly counts and capable rendering engines.<\/p>",
+            "text_color": "#b38cb4",
+            "background_color": "#eee5ee"
+          }
+        },
+        "ffdd4774-eee0-40d1-a7da-10c1fe1e20ea": {
+          "type": "hardware",
+          "settings": {
+            "models_type": "high",
+            "title": "Graphics Card",
+            "content": "<p>Dedicated Graphics card With VRAM memory of 6GB or more<\/p>",
+            "image": "shopify:\/\/shop_images\/pci-card_1.png"
+          }
+        },
+        "c0f47864-5eab-49aa-8222-0d782735985e": {
+          "type": "hardware",
+          "settings": {
+            "models_type": "high",
+            "title": "CPU(Processor)",
+            "content": "<p>Intel\/AMD Processor with benchmark score of 2500 or higher here<\/p>",
+            "image": "shopify:\/\/shop_images\/cpu_1.png"
+          }
+        },
+        "835ff031-91c3-4382-a374-7aad58dc689a": {
+          "type": "hardware",
+          "settings": {
+            "models_type": "high",
+            "title": "RAM",
+            "content": "<p>32GB or above<\/p>",
+            "image": "shopify:\/\/shop_images\/ram_1.png"
+          }
+        },
+        "template--20281279611170__666fe956-6360-41b6-b02f-12f3185ce42f-item-1": {
           "type": "item",
           "settings": {
             "models_type": "high",
-            "image": "shopify:\/\/shop_images\/globe-plants-collection-logo-3dsmax.png",
+            "image": "shopify:\/\/shop_images\/image_74.png",
             "title": "Mesh (3Ds Max)",
-            "content": "<p>A .max format should only be used in Autodesk 3Ds Max with the minimum requirement being 2018 version. This format includes three native rendering engines for 3Ds Max: V-Ray Renderer, Corona Renderer and FStorm. Choosing this format for any Globe Plants bundle will include all Forest Pack Preset Library for the rendering engines listed above. This is NOT a .3ds file, we do not support .3ds on our website.<\/p>"
+            "content": "<p><strong>A .max<\/strong> format should only be used in <strong>Autodesk 3Ds Max<\/strong> with the minimum requirement being 2018 version. This format includes three native rendering engines for 3Ds Max: V-Ray Renderer, Corona Renderer and FStorm. Choosing this format for any Globe Plants bundle will include all Forest Pack Preset Library for the rendering engines listed above. This is <strong>NOT<\/strong> a .3ds file, we do not support .3ds on our website.<\/p>"
           }
         },
-        "f30a0452-d525-46d2-a7f3-40b1aa4a6fe9": {
+        "48be3d81-6947-459d-9656-3508df510fff": {
           "type": "item",
           "settings": {
             "models_type": "high",
-            "image": "shopify:\/\/shop_images\/Growfx_de3ccf5f-f775-4cdc-8a95-4b70aa8dbb66.png",
+            "image": "shopify:\/\/shop_images\/image_70.png",
             "title": "Mesh + GrowFX",
-            "content": "<p>This format includes the above Mesh (3Ds Max) format plus additional GrowFX files that can be used in GrowFX (a 3Ds Max exclusive plugin) which allow users to edit the plants and add wind animation to the models.<\/p>"
+            "content": "<p>This format includes the above Mesh (3Ds Max) format plus additional GrowFX files that can be used in GrowFX (a 3Ds Max exclusive plugin). Allow users the flexibility to edit the plants and add wind animation to the models. Require GrowFX 1.99 SP11 and above<\/p>"
           }
         },
-        "aa9d78c9-742e-45fa-858f-248d097f90c5": {
+        "a80d3ccf-4cf5-44e6-a23e-1812dcb5e476": {
           "type": "item",
           "settings": {
             "models_type": "high",
-            "image": "shopify:\/\/shop_images\/FBX_6d125ce6-95ea-4862-8adb-67cfb441bd1a.png",
+            "image": "shopify:\/\/shop_images\/Sketchup_1.png",
+            "title": "SketchUp (V-Ray + Fullgeometry SKP Mesh)",
+            "content": "<p>Only choose this format if quality is your concern and you want our models to look the best they can be. You must also have a high-end hardware requirement to in order to support the models properly. This format is best used for SketchUp.<\/p><p>We include <strong>.skp proxy<\/strong> files for rendering engines V-Ray as well as <strong>Full Geometry .skp<\/strong> files with materials embedded into the models.<\/p><p>We include a ‘README’ file when downloaded for instructions on how to import and use our models<\/p>"
+          }
+        },
+        "d59f8f36-8adb-4371-8ae7-096cc2c116ae": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/FBX_1.png",
             "title": "FBX",
             "content": "<p>Our .fbx is optimised to be as universal as possible. It is widely compatible with almost all software that accepts the FBX format.<\/p>"
           }
         },
-        "d715e21d-a4d5-48db-a71a-3ab78e234af3": {
-          "type": "item",
-          "settings": {
-            "models_type": "low",
-            "image": "shopify:\/\/shop_images\/FBX-1.png",
-            "title": "FBX",
-            "content": "<p>Our .fbx is optimised to be as universal as possible. It is widely compatible with almost all software that accepts the FBX format.<\/p>"
-          }
-        },
-        "852da656-bc13-44c3-a119-d43db7a5a28e": {
+        "7c87a1da-2f83-479d-bbaa-1506d3ea5eee": {
           "type": "item",
           "settings": {
             "models_type": "high",
-            "image": "shopify:\/\/shop_images\/Sketchup_2d70ef0f-64c0-42c9-9d2e-4b061b22dac4.png",
-            "title": "Cinema 4D (VRay + Corona)",
-            "content": "<p>Our .c4d format is best used in Maxon Cinema 4D through VRay Renderer and Corona Renderer. After importing our models, please relink all textures in C4D so that they appear correctly after rendering. Here’s a video to show how to do this process.<\/p>"
-          }
-        },
-        "2cd1c3d6-3952-421b-b125-c86c8a77a1ef": {
-          "type": "item",
-          "settings": {
-            "models_type": "low",
-            "image": "shopify:\/\/shop_images\/Sketchup_0e4f7697-e767-4f77-8da3-3c25aecaf64c.png",
-            "title": "SketchUp (VRay + Thea + Enscape)",
-            "content": "<p>Includes everything that the high poly version has while remaining low poly and light for users.<\/p>"
-          }
-        },
-        "931af6d3-8284-44de-878c-2bb30818c8a5": {
-          "type": "item",
-          "settings": {
-            "models_type": "high",
-            "image": "shopify:\/\/shop_images\/Sketchup-1.png",
-            "title": "SketchUp (VRay + Thea + Enscape)",
-            "content": "<p>Only choose this format if quality is your concern and you want our models to look the best they can be. You must also have a high-end hardware requirement to in order to support the products properly. This format is best used for SketchUp.<br\/><br\/>We include<strong> .skp<\/strong> files for rendering engines V-Ray, Thea and Enscape as well as Full <strong>Geometry .skp<\/strong> files with materials embedded into the models.<br\/><br\/>Enscape users who wish to prioritise quality must follow our instructions carefully. You must copy the models into C:Drive so that Enscape can load all the textures properly. Currently, this only works for Windows as your operating system and not Mac OS. This high poly format will <strong>NOT<\/strong> work with Enscape Custom Asset Library as they only allow low poly models to be imported.<br\/><br\/>We include a ‘README’ file for instructions on how to use the models for the above three rendering engines when you download this format.<br\/>FBX<\/p>"
-          }
-        },
-        "1950d2cb-3eb9-4353-bc52-731fe899930b": {
-          "type": "item",
-          "settings": {
-            "models_type": "high",
-            "image": "shopify:\/\/shop_images\/pngwing_1.png",
-            "title": "",
-            "content": ""
-          }
-        },
-        "27cc2689-7534-4a7f-95a3-a22da7a3b376": {
-          "type": "item",
-          "settings": {
-            "models_type": "high",
-            "image": "shopify:\/\/shop_images\/image_71.png",
+            "image": "shopify:\/\/shop_images\/image_71_03cb57cf-0b19-4ecc-834a-a9116c1f5b2f.png",
             "title": "Blender (Cycles)",
             "content": "<p>A .blend format that is best used in Blender through the Cycles rendering engine.<\/p>"
           }
         },
-        "75485ff7-6b6c-41d9-8d21-fe502b7c1508": {
+        "b5d79dc7-187b-4137-9202-72d3c98c8df6": {
           "type": "item",
           "settings": {
             "models_type": "high",
-            "image": "shopify:\/\/shop_images\/formats-TWINMOTION.png",
-            "title": "Twinmotion",
-            "content": "<p>With twinmotion<\/p>"
+            "image": "shopify:\/\/shop_images\/Group_34.png",
+            "title": "Cinema 4D (V-Ray + Corona)",
+            "content": "<p>Our .c4d format is best used in Maxon Cinema 4D through VRay Renderer and Corona Renderer. After importing our models, please relink all textures in C4D so that they appear correctly after rendering. Here’s a video to show how to do this process.<\/p>"
           }
         },
-        "89833dcd-ee6a-47b1-9ead-2d5083b42937": {
+        "7e0d84b6-194e-4871-a3b6-00b0718ee509": {
           "type": "item",
           "settings": {
             "models_type": "high",
-            "image": "shopify:\/\/shop_images\/image_49_2e79430a-42c7-4d01-9157-c80073ccbbc3.png",
-            "title": "",
-            "content": ""
-          }
-        },
-        "e52f6c27-94dc-4c39-85ba-762e13331bad": {
-          "type": "item",
-          "settings": {
-            "models_type": "high",
-            "image": "shopify:\/\/shop_images\/image_47_4e511509-0925-4a8a-9931-c5664402cfc7.png",
+            "image": "shopify:\/\/shop_images\/image_47_7006028e-c579-417c-86ca-8613ce86cd1a.png",
             "title": "RedShift",
             "content": "<p>Includes .max and .c4d. Currently only available in certain bundles.<\/p>"
           }
         },
-        "1d6a4ad0-d172-4b66-89c8-93d1250e696a": {
+        "c1e31ac1-dcf2-4b4c-ab5f-bb58641a5f46": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/image_45_234bd6b4-6f85-45fe-bca1-a898bf0184bc.png",
+            "title": "Twinmotion",
+            "content": "<p>A .tmi format specifically made for Epic Games' Twinmotion with native support for Ray Tracing. Users can import our .tmi files directly into User Library, found in:<\/p><ul><li>Windows: C:\\Users\\[username]\\Documents\\Twinmotion[version]\\UserLibrary<\/li><li>MacOS: HD:Users:[username]:Documents:Twinmotion[version]:UserLibrary<\/li><\/ul>"
+          }
+        },
+        "704501f0-8374-456a-a195-0575557a350c": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/image_49_da86b8f0-1c2e-4139-930b-103ddd2ccede.png",
+            "title": "Rhinoceros 3D (V-Ray and Rhino Renderer Only)",
+            "content": "<p>A .3dm format that is native to Rhinoceros using Rhino Renderer or V-Ray with proxies included. Can also be used with Rhino Nature for best scattering results.<\/p>"
+          }
+        },
+        "868310b5-647b-4093-9fb2-a633aa1076b5": {
+          "type": "hardware",
+          "settings": {
+            "models_type": "low",
+            "title": "Graphics Card",
+            "content": "<p>Dedicated Graphics card With VRAM memory of 6GB or more<\/p>",
+            "image": "shopify:\/\/shop_images\/pci-card_1.png"
+          }
+        },
+        "fca487cb-bed6-4a4b-a669-bd8e013b8f27": {
+          "type": "hardware",
+          "settings": {
+            "models_type": "low",
+            "title": "CPU(Processor)",
+            "content": "<p>Intel\/AMD Processor with benchmark score of 2000 or higher here<\/p>",
+            "image": "shopify:\/\/shop_images\/cpu_1.png"
+          }
+        },
+        "ef23c6fb-e4a6-42ea-9ec3-a88cdd389f32": {
+          "type": "hardware",
+          "settings": {
+            "models_type": "low",
+            "title": "RAM",
+            "content": "<p>32GB or above<\/p>",
+            "image": "shopify:\/\/shop_images\/ram_1.png"
+          }
+        },
+        "bd3ee643-0ed4-481f-aa58-1bccbf5f5bf4": {
           "type": "item",
           "settings": {
             "models_type": "low",
-            "image": "shopify:\/\/shop_images\/Enscape_REVIT_1.png",
+            "image": "shopify:\/\/shop_images\/Sketchup_1_1.png",
+            "title": "SketchUp (VRay + Thea + Enscape)",
+            "content": "<p>Includes everything that the high poly version has while remaining low poly and light for users.<\/p>"
+          }
+        },
+        "e886084a-abbc-4163-b444-4dc34bcb941b": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/FBX_1_1.png",
+            "title": "FBX",
+            "content": "<p>Includes low poly models. .fbx and .obj are used for importing into multiple software that accepts FBX or OBJ format.<\/p>"
+          }
+        },
+        "81bda7f1-8dc7-4e01-a449-9f9de1524e8a": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/image_76.png",
             "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
             "content": "<p>Enscape bundles that are pre-made and ready for use in Revit, SketchUp, Rhino3D, Vectorworks and ArchiCAD through Enscape custom asset library.<\/p>"
           }
         },
-        "38230c3c-1a6c-4e40-be37-81cb91c0a775": {
+        "aa1e113e-979a-431c-9b49-eb8b93913cc1": {
           "type": "item",
           "settings": {
             "models_type": "low",
-            "image": "shopify:\/\/shop_images\/Enscape_SKETCHUP_1.png",
-            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
-            "content": ""
+            "image": "shopify:\/\/shop_images\/image_45_1.png",
+            "title": "Twinmotion (Low Poly)",
+            "content": "<p>A low poly .tmi format specifically made for Epic Games' Twinmotion with native support for Ray Tracing. Users can import our .tmi files directly into User Library, found in:Windows: C:\\Users\\[username]\\Documents\\Twinmotion[version]\\UserLibraryMacOS: HD:Users:[username]:Documents:Twinmotion[version]:UserLibrary<\/p>"
           }
         },
-        "e8e6b7e5-5019-4b7f-bf3e-0205a0b047a1": {
+        "d2226e9c-6136-46bc-be95-c171670a9679": {
           "type": "item",
           "settings": {
-            "models_type": "low",
-            "image": "shopify:\/\/shop_images\/Enscape_REVIT_1.png",
-            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
-            "content": ""
+            "models_type": "2d",
+            "image": "shopify:\/\/shop_images\/UNREAL_68301ca1-fa9b-425f-ada2-3ecdfc456874.png",
+            "title": "HDRI",
+            "content": "<p>Bla bla<\/p>"
           }
         },
-        "985cf894-58ee-4014-b95b-1c29b18e8d5b": {
+        "3ffcb3eb-59ac-4fe3-8668-0dce5cd5266a": {
           "type": "item",
           "settings": {
-            "models_type": "low",
-            "image": "shopify:\/\/shop_images\/ENSCAPE_ArchiCAD_1.png",
-            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
-            "content": ""
-          }
-        },
-        "7ca33750-a8cc-4949-ac88-807c6af93d1b": {
-          "type": "item",
-          "settings": {
-            "models_type": "low",
-            "image": "shopify:\/\/shop_images\/ENSCAPE_VECTORWORKS_1.png",
-            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
-            "content": ""
-          }
-        },
-        "b8342d21-e106-45d4-ad7d-7ef5556eebef": {
-          "type": "item",
-          "settings": {
-            "models_type": "high",
-            "title": "Mesh (3Ds Max)",
-            "content": "<p>A .max format should only be used in Autodesk 3Ds Max with the minimum requirement being 2018 version. This format includes three native rendering engines for 3Ds Max: V-Ray Renderer, Corona Renderer and FStorm. Choosing this format for any Globe Plants bundle will include all Forest Pack Preset Library for the rendering engines listed above. This is NOT a .3ds file, we do not support .3ds on our website.<\/p>"
+            "models_type": "2d",
+            "image": "shopify:\/\/shop_images\/TWINMOTION_b7eedc11-9e9a-4d52-bd18-0b2d34ad5dc2.png",
+            "title": "PNG Cutouts",
+            "content": "<p>Bla bla<\/p>"
           }
         }
       },
       "block_order": [
-        "template--19253226471714__c5435422-e1bd-4a78-b5bf-5826e625717e-168676314326fdbe91-0",
-        "f30a0452-d525-46d2-a7f3-40b1aa4a6fe9",
-        "aa9d78c9-742e-45fa-858f-248d097f90c5",
-        "d715e21d-a4d5-48db-a71a-3ab78e234af3",
-        "852da656-bc13-44c3-a119-d43db7a5a28e",
-        "2cd1c3d6-3952-421b-b125-c86c8a77a1ef",
-        "931af6d3-8284-44de-878c-2bb30818c8a5",
-        "1950d2cb-3eb9-4353-bc52-731fe899930b",
-        "27cc2689-7534-4a7f-95a3-a22da7a3b376",
-        "75485ff7-6b6c-41d9-8d21-fe502b7c1508",
-        "89833dcd-ee6a-47b1-9ead-2d5083b42937",
-        "e52f6c27-94dc-4c39-85ba-762e13331bad",
-        "1d6a4ad0-d172-4b66-89c8-93d1250e696a",
-        "38230c3c-1a6c-4e40-be37-81cb91c0a775",
-        "e8e6b7e5-5019-4b7f-bf3e-0205a0b047a1",
-        "985cf894-58ee-4014-b95b-1c29b18e8d5b",
-        "7ca33750-a8cc-4949-ac88-807c6af93d1b",
-        "b8342d21-e106-45d4-ad7d-7ef5556eebef"
+        "3710a3e2-6697-4596-919c-06cdc0a490f2",
+        "c028f9d4-ea02-4fd8-aecb-8543e41aedd5",
+        "3cb2399f-29ed-4a52-904a-b112317f6fbc",
+        "ffdd4774-eee0-40d1-a7da-10c1fe1e20ea",
+        "c0f47864-5eab-49aa-8222-0d782735985e",
+        "835ff031-91c3-4382-a374-7aad58dc689a",
+        "template--20281279611170__666fe956-6360-41b6-b02f-12f3185ce42f-item-1",
+        "48be3d81-6947-459d-9656-3508df510fff",
+        "a80d3ccf-4cf5-44e6-a23e-1812dcb5e476",
+        "d59f8f36-8adb-4371-8ae7-096cc2c116ae",
+        "7c87a1da-2f83-479d-bbaa-1506d3ea5eee",
+        "b5d79dc7-187b-4137-9202-72d3c98c8df6",
+        "7e0d84b6-194e-4871-a3b6-00b0718ee509",
+        "c1e31ac1-dcf2-4b4c-ab5f-bb58641a5f46",
+        "704501f0-8374-456a-a195-0575557a350c",
+        "868310b5-647b-4093-9fb2-a633aa1076b5",
+        "fca487cb-bed6-4a4b-a669-bd8e013b8f27",
+        "ef23c6fb-e4a6-42ea-9ec3-a88cdd389f32",
+        "bd3ee643-0ed4-481f-aa58-1bccbf5f5bf4",
+        "e886084a-abbc-4163-b444-4dc34bcb941b",
+        "81bda7f1-8dc7-4e01-a449-9f9de1524e8a",
+        "aa1e113e-979a-431c-9b49-eb8b93913cc1",
+        "d2226e9c-6136-46bc-be95-c171670a9679",
+        "3ffcb3eb-59ac-4fe3-8668-0dce5cd5266a"
       ],
       "settings": {
-        "title_1": "Which Software Are You Interested In?",
-        "content": "<p>Please choose one of the following formats so we can help find the best option at Globe Plants for you:<\/p>",
-        "title_2": "A Brief Description Of Our Formats",
-        "subtitle_1": "High Poly Models",
-        "content_models_1": "<p>High number of polygons that pushing our 3D plant models quality to the maximum. Suitable for: Photorealistic 3D rendering and Architectural Visualization. Requirements: High performance computer hardware to handle the poly counts and capable rendering engines. <\/p>\n<p>\nOur high poly models contain these formats:<\/p>",
-        "subtitle_2": "Low Poly Models",
-        "content_models_2": "<p>Our low poly models are highly optimised. Their polygons\/triangles are reduced by approx. 400-800% compared to their high poly counterparts. The model quality is therefore reduced to compromise for performance but they are perfectly acceptable. <\/p>\n<p>\nOnly available in Bundles and contain these formats:<\/p>",
-        "remember_note": "Remember Our personal customer support is lifetime and tailored to your needs. We are ready and available to assist you with any further questions you have or assistance that you require. Shoot us an email here"
+        "title": "<h1><strong>Formats<\/strong> Guide<\/h1>",
+        "subtitle": "A Guide To Choosing The Best 3D File Format For Your Software",
+        "content": "<p>With countless formats available to choose from on our website, importing the correct ones can affect how our 3D plant models look and perform. A common sentiment shared by our customers is that they wish to use only the best-looking plants in their scene. However, sometimes it pays to be practical, especially if you don’t have a top-of-the-line computer system. Keep in mind that high-quality models can crash! To avoid this, you may opt to use the low poly version of the models you desire. This ensures that you can load our models without sacrificing too much quality.<\/p>",
+        "selection_header": "Select from one of Our Primary Categories",
+        "hardware_requirements": "Hardware Requirements",
+        "hardware_requirements_content": "<p>Each software require a different specs, for more accurate requirement, please refer to individual software’s official requirement. But in general we suggest:<\/p>"
       }
     },
     "1fb03e12-149e-424f-ab2c-e80a6f0e01fb": {
@@ -369,13 +365,270 @@
         "title": "File Format Recommendations",
         "content": "<p>The following is a long but useful list of common design software along with the file format(s) that we recommend for both Windows and Mac OS.<\/p>"
       }
+    },
+    "b551f411-6c8e-43b2-8326-4d6da7748706": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--19253226471714__b551f411-6c8e-43b2-8326-4d6da7748706-16869307280cf0e2ef-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Format guide",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "template--19253226471714__b551f411-6c8e-43b2-8326-4d6da7748706-16869307280cf0e2ef-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/guide-format-banner.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "58da9686-ee82-4cfe-812a-6ee6967f434f": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-1": {
+          "type": "heading",
+          "settings": {
+            "text": "A Guide To Choosing The Best 3D File Format For Your Software",
+            "heading_tag": "h5",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-2": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>With countless formats available to choose from on our website, importing the correct ones can affect how our 3D plant models look and perform. A common sentiment shared by our customers is that they wish to use only the best-looking plants in their scene. However, sometimes it pays to be practical, especially if you don’t have a top-of-the-line computer system. Keep in mind that high-quality models can crash! To avoid this, you may opt to use the low poly version of the models you desire. This ensures that you can load our models without sacrificing too much quality.<br\/><br\/>Here’s our starter ‘How To’ guide. Read on to see how to navigate through each 3D file format Globe Plants offers and view our recommendations. Our 3D plant models are split into one of two categories: low poly models and high poly models.<br\/><br\/>Please note that if you see a plant\/bundle without “Low poly” in the title, it is strictly a high poly product only.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-1",
+        "template--19253226471714__58da9686-ee82-4cfe-812a-6ee6967f434f-1686991495c0028b6e-2"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".h5 {font-size: 1.25rem; text-align: left; width: 100%;}",
+        ".rich-text__wrapper {max-width: 100%;}",
+        ".text-center {text-align: justify;}",
+        "p {font-size: 14px; line-height: 1.4;}",
+        "> div {padding-block-start: 32px; padding-block-end: 0; --container-max-width: 1106px; max-width: var(--container-max-width); margin: 0 auto;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "c5435422-e1bd-4a78-b5bf-5826e625717e": {
+      "type": "format-guide",
+      "blocks": {
+        "template--19253226471714__c5435422-e1bd-4a78-b5bf-5826e625717e-168676314326fdbe91-0": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/3DsMax_e21afc6e-a506-484c-b547-6d2ff593a2a7.png",
+            "title": "Mesh (3Ds Max)",
+            "content": "<p>A .max format should only be used in Autodesk 3Ds Max with the minimum requirement being 2018 version. This format includes three native rendering engines for 3Ds Max: V-Ray Renderer, Corona Renderer and FStorm. Choosing this format for any Globe Plants bundle will include all Forest Pack Preset Library for the rendering engines listed above. This is NOT a .3ds file, we do not support .3ds on our website.<\/p>"
+          }
+        },
+        "f30a0452-d525-46d2-a7f3-40b1aa4a6fe9": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/Growfx_de3ccf5f-f775-4cdc-8a95-4b70aa8dbb66.png",
+            "title": "Mesh + GrowFX",
+            "content": "<p>This format includes the above Mesh (3Ds Max) format plus additional GrowFX files that can be used in GrowFX (a 3Ds Max exclusive plugin) which allow users to edit the plants and add wind animation to the models.<\/p>"
+          }
+        },
+        "aa9d78c9-742e-45fa-858f-248d097f90c5": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/FBX_6d125ce6-95ea-4862-8adb-67cfb441bd1a.png",
+            "title": "FBX",
+            "content": "<p>Our .fbx is optimised to be as universal as possible. It is widely compatible with almost all software that accepts the FBX format.<\/p>"
+          }
+        },
+        "d715e21d-a4d5-48db-a71a-3ab78e234af3": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/FBX-1.png",
+            "title": "FBX",
+            "content": "<p>Our .fbx is optimised to be as universal as possible. It is widely compatible with almost all software that accepts the FBX format.<\/p>"
+          }
+        },
+        "852da656-bc13-44c3-a119-d43db7a5a28e": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/Sketchup_2d70ef0f-64c0-42c9-9d2e-4b061b22dac4.png",
+            "title": "Cinema 4D (VRay + Corona)",
+            "content": "<p>Our .c4d format is best used in Maxon Cinema 4D through VRay Renderer and Corona Renderer. After importing our models, please relink all textures in C4D so that they appear correctly after rendering. Here’s a video to show how to do this process.<\/p>"
+          }
+        },
+        "2cd1c3d6-3952-421b-b125-c86c8a77a1ef": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/Sketchup_0e4f7697-e767-4f77-8da3-3c25aecaf64c.png",
+            "title": "SketchUp (VRay + Thea + Enscape)",
+            "content": "<p>Includes everything that the high poly version has while remaining low poly and light for users.<\/p>"
+          }
+        },
+        "931af6d3-8284-44de-878c-2bb30818c8a5": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/Sketchup-1.png",
+            "title": "SketchUp (VRay + Thea + Enscape)",
+            "content": "<p>Only choose this format if quality is your concern and you want our models to look the best they can be. You must also have a high-end hardware requirement to in order to support the products properly. This format is best used for SketchUp.<br\/><br\/>We include<strong> .skp<\/strong> files for rendering engines V-Ray, Thea and Enscape as well as Full <strong>Geometry .skp<\/strong> files with materials embedded into the models.<br\/><br\/>Enscape users who wish to prioritise quality must follow our instructions carefully. You must copy the models into C:Drive so that Enscape can load all the textures properly. Currently, this only works for Windows as your operating system and not Mac OS. This high poly format will <strong>NOT<\/strong> work with Enscape Custom Asset Library as they only allow low poly models to be imported.<br\/><br\/>We include a ‘README’ file for instructions on how to use the models for the above three rendering engines when you download this format.<br\/>FBX<\/p>"
+          }
+        },
+        "1950d2cb-3eb9-4353-bc52-731fe899930b": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/pngwing_1.png",
+            "title": "",
+            "content": ""
+          }
+        },
+        "27cc2689-7534-4a7f-95a3-a22da7a3b376": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/image_71.png",
+            "title": "Blender (Cycles)",
+            "content": "<p>A .blend format that is best used in Blender through the Cycles rendering engine.<\/p>"
+          }
+        },
+        "75485ff7-6b6c-41d9-8d21-fe502b7c1508": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/image_45.png",
+            "title": "",
+            "content": ""
+          }
+        },
+        "89833dcd-ee6a-47b1-9ead-2d5083b42937": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/image_49_2e79430a-42c7-4d01-9157-c80073ccbbc3.png",
+            "title": "",
+            "content": ""
+          }
+        },
+        "e52f6c27-94dc-4c39-85ba-762e13331bad": {
+          "type": "item",
+          "settings": {
+            "models_type": "high",
+            "image": "shopify:\/\/shop_images\/image_47_4e511509-0925-4a8a-9931-c5664402cfc7.png",
+            "title": "RedShift",
+            "content": "<p>Includes .max and .c4d. Currently only available in certain bundles.<\/p>"
+          }
+        },
+        "1d6a4ad0-d172-4b66-89c8-93d1250e696a": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/Enscape_REVIT_1.png",
+            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
+            "content": "<p>Enscape bundles that are pre-made and ready for use in Revit, SketchUp, Rhino3D, Vectorworks and ArchiCAD through Enscape custom asset library.<\/p>"
+          }
+        },
+        "38230c3c-1a6c-4e40-be37-81cb91c0a775": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/Enscape_SKETCHUP_1.png",
+            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
+            "content": ""
+          }
+        },
+        "e8e6b7e5-5019-4b7f-bf3e-0205a0b047a1": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/Enscape_REVIT_1.png",
+            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
+            "content": ""
+          }
+        },
+        "985cf894-58ee-4014-b95b-1c29b18e8d5b": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/ENSCAPE_ArchiCAD_1.png",
+            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
+            "content": ""
+          }
+        },
+        "7ca33750-a8cc-4949-ac88-807c6af93d1b": {
+          "type": "item",
+          "settings": {
+            "models_type": "low",
+            "image": "shopify:\/\/shop_images\/ENSCAPE_VECTORWORKS_1.png",
+            "title": "Enscape (Revit, SketchUp, Rhino3D, Vectorworks, ArchiCAD)",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19253226471714__c5435422-e1bd-4a78-b5bf-5826e625717e-168676314326fdbe91-0",
+        "f30a0452-d525-46d2-a7f3-40b1aa4a6fe9",
+        "aa9d78c9-742e-45fa-858f-248d097f90c5",
+        "d715e21d-a4d5-48db-a71a-3ab78e234af3",
+        "852da656-bc13-44c3-a119-d43db7a5a28e",
+        "2cd1c3d6-3952-421b-b125-c86c8a77a1ef",
+        "931af6d3-8284-44de-878c-2bb30818c8a5",
+        "1950d2cb-3eb9-4353-bc52-731fe899930b",
+        "27cc2689-7534-4a7f-95a3-a22da7a3b376",
+        "75485ff7-6b6c-41d9-8d21-fe502b7c1508",
+        "89833dcd-ee6a-47b1-9ead-2d5083b42937",
+        "e52f6c27-94dc-4c39-85ba-762e13331bad",
+        "1d6a4ad0-d172-4b66-89c8-93d1250e696a",
+        "38230c3c-1a6c-4e40-be37-81cb91c0a775",
+        "e8e6b7e5-5019-4b7f-bf3e-0205a0b047a1",
+        "985cf894-58ee-4014-b95b-1c29b18e8d5b",
+        "7ca33750-a8cc-4949-ac88-807c6af93d1b"
+      ],
+      "disabled": true,
+      "settings": {
+        "title_1": "Which Software Are You Interested In?",
+        "content": "<p>Please choose one of the following formats so we can help find the best option at Globe Plants for you:<\/p>",
+        "title_2": "A Brief Description Of Our Formats",
+        "subtitle_1": "High Poly Models",
+        "content_models_1": "<p>High number of polygons that pushing our 3D plant models quality to the maximum. Suitable for: Photorealistic 3D rendering and Architectural Visualization. Requirements: High performance computer hardware to handle the poly counts and capable rendering engines. <\/p>\n<p>\nOur high poly models contain these formats:<\/p>",
+        "subtitle_2": "Low Poly Models",
+        "content_models_2": "<p>Our low poly models are highly optimised. Their polygons\/triangles are reduced by approx. 400-800% compared to their high poly counterparts. The model quality is therefore reduced to compromise for performance but they are perfectly acceptable. <\/p>\n<p>\nOnly available in Bundles and contain these formats:<\/p>",
+        "remember_note": "Remember Our personal customer support is lifetime and tailored to your needs. We are ready and available to assist you with any further questions you have or assistance that you require. Shoot us an email here"
+      }
     }
   },
   "order": [
     "main",
+    "666fe956-6360-41b6-b02f-12f3185ce42f",
+    "1fb03e12-149e-424f-ab2c-e80a6f0e01fb",
     "b551f411-6c8e-43b2-8326-4d6da7748706",
     "58da9686-ee82-4cfe-812a-6ee6967f434f",
-    "c5435422-e1bd-4a78-b5bf-5826e625717e",
-    "1fb03e12-149e-424f-ab2c-e80a6f0e01fb"
+    "c5435422-e1bd-4a78-b5bf-5826e625717e"
   ]
 }

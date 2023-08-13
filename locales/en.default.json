@@ -162,10 +162,10 @@
       "all_posts": "All posts"
     },
     "post": {
-      "written_by": "By {{ author }}",
+      "written_by": "{{ author }}",
       "share": "Share",
       "tags": "Tags",
-      "continue_reading": "Reading next"
+      "continue_reading": "Other articles"
     },
     "comments": {
       "leave_comment": "Leave a comment",

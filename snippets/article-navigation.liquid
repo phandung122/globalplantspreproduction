@@ -15,11 +15,11 @@ Shows the prev next articles for a given blog post.
 
   <div class="article-prev-next scroll-area bleed sm:unbleed">
     {%- if blog.previous_article -%}
-      {%- render 'blog-post-card', article: blog.previous_article, heading_size: 'h5', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: show_comments_count, show_category: true -%}
+      {%- render 'blog-post-card', article: blog.previous_article, heading_size: 'h5', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: show_comments_count, show_category: true, show_excerpt: true -%}
     {%- endif -%}
 
     {%- if blog.next_article -%}
-      {%- render 'blog-post-card', article: blog.next_article, heading_size: 'h5', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: show_comments_count, show_category: true -%}
+      {%- render 'blog-post-card', article: blog.next_article, heading_size: 'h5', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: show_comments_count, show_category: true, show_excerpt: true -%}
     {%- endif -%}
   </div>
 </div>

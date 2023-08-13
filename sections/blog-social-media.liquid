@@ -41,12 +41,12 @@
         {%- assign share_label = 'general.social.share' | t -%}
         {%- assign share_url = shop.url | append: article.url -%}
 
-        <button class="button button--subdued button--lg w-full h-stack gap-3 align-center justify-center sm:hidden" is="share-button" style="--button-background: 0 0 0 / 0" share-url="{{ share_url | escape }}" share-title="{{ article.title | escape }}">
+        <button class="button sm-max:hidden button--subdued button--lg w-full h-stack gap-3 align-center justify-center sm:hidden" is="share-button" style="--button-background: 0 0 0 / 0" share-url="{{ share_url | escape }}" share-title="{{ article.title | escape }}">
           {%- render 'icon' with 'share', with: 18, height: 18 -%}
           {{- 'general.social.share' | t -}}
         </button>
 
-        <ul class="h-stack sm-max:hidden gap-3" role="list">
+        <ul class="h-stack gap-4" role="list">
           <li><a href="{% render 'share-link', host: 'twitter', title: article.title, url: share_url %}" class="share-buttons__item" target="_blank" aria-label="{{ 'general.social.share_on' | t: social_media: 'Twitter' }}">{%- render 'icon' with 'twitter', width: 24, height: 24 -%}</a></li>
           <li><a href="{% render 'share-link', host: 'messenger', title: article.title, url: share_url %}" class="share-buttons__item" target="_blank" aria-label="{{ 'general.social.share_on' | t: social_media: 'Messenger' }}">{%- render 'icon' with 'messenger', width: 24, height: 24 -%}</a></li>
           <li><a href="{% render 'share-link', host: 'facebook', title: article.title, url: share_url %}" class="share-buttons__item" target="_blank" aria-label="{{ 'general.social.share_on' | t: social_media: 'Facebook' }}">{%- render 'icon' with 'facebook', width: 24, height: 24 -%}</a></li>

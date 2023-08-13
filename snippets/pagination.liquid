@@ -17,29 +17,35 @@ Supported variables
 {%- endcomment -%}
 
 {%- if paginate.pages > 1 -%}
-  <nav class="{{ class }} pagination" role="navigation" aria-label="{{ 'general.accessibility.pagination' | t }}">
+  <nav id="page_navigation" class="{{ class }} pagination" role="navigation" aria-label="{{ 'general.accessibility.pagination' | t }}">
     {%- if paginate.previous.is_link -%}
       {%- assign previous_page = paginate.current_page | minus: 1 -%}
 
-      <a class="pagination__item group" {% if facet %}is="facet-link"{% endif %} rel="prev" aria-label="{{ 'general.accessibility.go_to_page' | t: index: previous_page }}" href="{{ paginate.previous.url }}{{ hash }}">
+      <a class="previous_link pagination__item group" {% if facet %}is="facet-link"{% endif %} rel="prev" aria-label="{{ 'general.accessibility.go_to_page' | t: index: previous_page }}" href="{{ paginate.previous.url }}{{ hash }}">
         <span class="animated-arrow animated-arrow--reverse"></span>
       </a>
     {%- else -%}
-      <span class="pagination__item pagination__item--disabled">
+      <span class="previous_link disable pagination__item pagination__item--disabled">
         <span class="animated-arrow animated-arrow--reverse"></span>
       </span>
     {%- endif -%}
 
-    <span class="pagination__current">{{ paginate.current_page }}&nbsp;&nbsp;/&nbsp;&nbsp;{{ paginate.pages }}</span>
+    {% for part in paginate.parts -%}
+      {% if part.is_link -%}
+        <div class="page_link"">{{ part.title | link_to: part.url }}</div>
+      {%- else -%}
+        <div class="page_link active_page">{{ part.title }}</div>
+      {% endif %}
+    {%- endfor %}
 
     {%- if paginate.next.is_link -%}
       {%- assign next_page = paginate.current_page | plus: 1 -%}
 
-      <a class="pagination__item group" {% if facet %}is="facet-link"{% endif %} rel="next" aria-label="{{ 'general.accessibility.go_to_page' | t: index: next_page }}" href="{{ paginate.next.url }}{{ hash }}">
+      <a class="next_link pagination__item group" {% if facet %}is="facet-link"{% endif %} rel="next" aria-label="{{ 'general.accessibility.go_to_page' | t: index: next_page }}" href="{{ paginate.next.url }}{{ hash }}">
         <span class="animated-arrow"></span>
       </a>
     {%- else -%}
-      <span class="pagination__item pagination__item--disabled">
+      <span class="next_link disable pagination__item pagination__item--disabled">
         <span class="animated-arrow"></span>
       </span>
     {%- endif -%}

@@ -1,0 +1,343 @@
+{{- 'app-format.css' | asset_url | stylesheet_tag: preload: true -}}
+<script type="module" src="{{ 'app-format.js' | asset_url }}"></script>
+
+<div class="main-format-guide">
+  <div class="main-format-guide-header">
+    <div class="main-format-guide-header-inner">
+      <div class="main-format-guide-header-title">
+        {{ section.settings.title }}
+      </div>
+      <div class="main-format-guide-header-content">
+        <h4>{{ section.settings.subtitle }}</h4>
+        {{ section.settings.content }}
+      </div>
+    </div>
+  </div>
+  <div class="main-format-guide-body">
+    <div class="main-format-guide-body-inner">
+      <div class="main-format-guide-body-menu">
+        <h3>{{ section.settings.selection_header }}</h3>
+        <div class="main-format-guide-body-menu-items">
+          {% assign blocks = section.blocks | where: 'type', 'header' %}
+          {% for block in blocks %}
+          <div class="main-format-guide-body-menu-item {% if forloop.first %}active{% endif %}" model-type="{{ block.settings.models_type }}">
+            <div class="main-format-guide-body-menu-item-title" style="--text-color:{{ block.settings.text_color }};--background-color:{{ block.settings.background_color }}" >
+              {{ block.settings.title }}
+            </div>
+            <div class="main-format-guide-body-menu-content">
+              <div class="main-format-guide-body-menu-content-inner">
+                {{ block.settings.content }}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="main-format-guide-body-menu-mobile-content"></div>
+      </div>
+      <div class="main-format-guide-body-content">
+        <div class="main-format-guide-body-tabs">
+          <!-- HIGH TAB CONTAINER -->
+          <div class="main-format-guide-body-tab active" model-type="high">
+            <div class="main-format-guide-body-tab-inner">
+              <div class="main-format-guide-body-tab-format-guide-container">
+                {% assign blocks = section.blocks | where: 'type', 'item' %}
+                {% for block in blocks %}
+                  {% if block.settings.models_type == 'high' %}
+                    <div class="format-guide-item">
+                      <div class="format-guide-item-image">
+                        {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'format-guide-image' -}}
+                      </div>
+                      <div class="format-guide-item-content">
+                        <h5>{{ block.settings.title }}</h5>
+                        <div class="format-guide-item-text">
+                          {{ block.settings.content }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div class="main-format-guide-body-hardware">
+                <h4>{{ section.settings.hardware_requirements }}</h4>
+                {{ section.settings.hardware_requirements_content }}
+                <div class="main-format-guide-body-hardware-items">
+                  {% assign blocks = section.blocks | where: 'type', 'hardware' %}
+                  {% for block in blocks %}
+                    {% if block.settings.models_type == 'high' %}
+                    <div class="main-format-guide-body-hardware-item">
+                      <div class="main-format-guide-body-hardware-item-image">
+                        {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'hardware-image' -}}
+                      </div>
+                      <div class="main-format-guide-body-hardware-item-content">
+                        <h5>{{ block.settings.title }}</h5>
+                        <div class="main-format-guide-body-hardware-item-text">
+                          {{ block.settings.content }}
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- LOW TAB CONTAINER -->
+          <div class="main-format-guide-body-tab" model-type="low">
+            <div class="main-format-guide-body-tab-inner">
+              <div class="main-format-guide-body-tab-format-guide-container">
+                {% assign blocks = section.blocks | where: 'type', 'item' %}
+                {% for block in blocks %}
+                  {% if block.settings.models_type == 'low' %}
+                    <div class="format-guide-item">
+                      <div class="format-guide-item-image">
+                        {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'format-guide-image' -}}
+                      </div>
+                      <div class="format-guide-item-content">
+                        <h5>{{ block.settings.title }}</h5>
+                        <div class="format-guide-item-text">
+                          {{ block.settings.content }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div class="main-format-guide-body-hardware">
+                <h4>{{ section.settings.hardware_requirements }}</h4>
+                {{ section.settings.hardware_requirements_content }}
+                <div class="main-format-guide-body-hardware-items">
+                  {% assign blocks = section.blocks | where: 'type', 'hardware' %}
+                  {% for block in blocks %}
+                    {% if block.settings.models_type == 'low' %}
+                    <div class="main-format-guide-body-hardware-item">
+                      <div class="main-format-guide-body-hardware-item-image">
+                        {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'hardware-image' -}}
+                      </div>
+                      <div class="main-format-guide-body-hardware-item-content">
+                        <h5>{{ block.settings.title }}</h5>
+                        <div class="main-format-guide-body-hardware-item-text">
+                          {{ block.settings.content }}
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2D TAB CONTAINER -->
+          <div class="main-format-guide-body-tab" model-type="2d">
+            <div class="main-format-guide-body-tab-inner">
+              <div class="main-format-guide-body-tab-format-guide-container">
+                {% assign blocks = section.blocks | where: 'type', 'item' %}
+                {% for block in blocks %}
+                  {% if block.settings.models_type == '2d' %}
+                    <div class="format-guide-item">
+                      <div class="format-guide-item-image">
+                        {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'format-guide-image' -}}
+                      </div>
+                      <div class="format-guide-item-content">
+                        <h5>{{ block.settings.title }}</h5>
+                        <div class="format-guide-item-text">
+                          {{ block.settings.content }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <!-- END OF TABS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Format Guide",
+  "class": "shopify-section--main-format-guide",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "selection_header",
+      "label": "Selection Header",
+      "default": "Select from one of Our Primary Categories"
+    },
+    {
+      "type": "text",
+      "id": "hardware_requirements",
+      "label": "Hardware Requirements Text",
+      "default": "Hardware Requirements"
+    },
+    {
+      "type": "richtext",
+      "id": "hardware_requirements_content",
+      "label": "Hardware Requirements Content"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Hardware",
+      "type": "hardware",
+      "settings": [
+        {
+          "type": "select",
+          "id": "models_type",
+          "label": "Poly Models Type",
+          "options": [
+            {
+              "value": "high",
+              "label": "High Poly Models"
+            },
+            {
+              "value": "low",
+              "label": "Low Poly Models"
+            },
+            {
+              "value": "2d",
+              "label": "2D PNG & Image Props"
+            }
+          ],
+          "default": "high"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Hardware logo"
+        }
+      ]
+    },
+    {
+      "name": "Format Header",
+      "type": "header",
+      "settings": [
+        {
+          "type": "select",
+          "id": "models_type",
+          "label": "Poly Models Type",
+          "options": [
+            {
+              "value": "high",
+              "label": "High Poly Models"
+            },
+            {
+              "value": "low",
+              "label": "Low Poly Models"
+            },
+            {
+              "value": "2d",
+              "label": "2D PNG & Image Props"
+            }
+          ],
+          "default": "high"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Active Text Color"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Active Background Color"
+        }
+      ]
+    },
+    {
+      "name": "Format Item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "models_type",
+          "label": "Poly Models Type",
+          "options": [
+            {
+              "value": "high",
+              "label": "High Poly Models"
+            },
+            {
+              "value": "low",
+              "label": "Low Poly Models"
+            },
+            {
+              "value": "2d",
+              "label": "2D PNG & Image Props"
+            }
+          ],
+          "default": "high"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Format logo"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Mesh (3Ds Max)"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>A .max format should only be used in Autodesk 3Ds Max with the minimum requirement being 2018 version. This format includes three native rendering engines for 3Ds Max: V-Ray Renderer, Corona Renderer and FStorm. Choosing this format for any Globe Plants bundle will include all Forest Pack Preset Library for the rendering engines listed above. This is NOT a .3ds file, we do not support .3ds on our website.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Format guide",
+      "blocks": [
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

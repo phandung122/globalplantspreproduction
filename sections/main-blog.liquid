@@ -35,21 +35,43 @@
     <header {% render 'surface', class: 'blog-banner', text_color: section.settings.banner_text_color, background: section.settings.banner_background %}>
       <div class="container">
         <div class="blog-banner-content v-stack text-center justify-items-center">
-          <div class="v-stack gap-4">
+          <div class="blog-banner-content-left">
             {%- if section.settings.title != blank -%}
-              <div class="h5">
+              <div class="h1">
                 {{- section.settings.title -}}
               </div>
             {%- endif -%}
-            <h1 class="h2">{{- blog.title -}}</h1>
-
+            <div class="blog-banner-content-mobile sm:hidden">
+              <h4 class="h5">{{- section.settings.subtitle -}}</h4>
+              {%- if section.settings.content != blank -%}
+                <div class="content">
+                  {{- section.settings.content -}}
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="blog-banner-search-wrapper">
+              <input type="text" id="search-blog" placeholder="Search"  autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search">
+              <span id="blog-clear-search" class="clear-button">{%- render 'icon' with 'close' -%}</span>
+              <span class="search-blog-status">
+                <span class="search-blog-status-text"></span>
+                <span class="filter-list-content">
+                  <span id="blog-filter-list"></span>
+                  <button id="blog-clear-button" class="clear-button">
+                    {%- render 'icon' with 'close' -%}
+                  </button>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div class="blog-banner-content-right hidden sm:block">
+            <h4 class="h5">{{- section.settings.subtitle -}}</h4>
             {%- if section.settings.content != blank -%}
-              <div class="h5">
+              <div class="content">
                 {{- section.settings.content -}}
               </div>
             {%- endif -%}
           </div>
-
+          {% comment %}
           {%- if section.settings.show_newsletter_form -%}
             {%- form 'customer', id: 'blog-newsletter', class: 'blog-banner__form form' -%}
               {%- if form.posted_successfully? -%}
@@ -73,10 +95,11 @@
               </div>
             {%- endform -%}
           {%- endif -%}
+          {% endcomment %}
         </div>
 
         {%- if section.settings.show_tags and blog.all_tags.size > 0 -%}
-          <div class="scroll-area bleed sm:unbleed justify-items-center">
+          <div class="blog-filter-list-wrapper scroll-area bleed sm:unbleed">
             <div class="blog-filter-list">
               <ul class="h-stack text-sm" role="tablist">
                 <li role="tab" aria-selected="{% if current_tags == blank %}true{% else %}false{% endif %}">
@@ -100,7 +123,7 @@
       </div>
     </header>
 
-    <div class="blog-posts__container container">
+    <div class="blog-posts__container">
       {%- paginate blog.articles by section.settings.articles_per_page -%}
         <div class="blog-posts">
           {%- for article in blog.articles -%}
@@ -255,6 +278,12 @@
       "default": "The Resources"
     },
     {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubHeading",
+      "default": "Premier destination for 3D plant insights."
+    },
+    {
       "type": "richtext",
       "id": "content",
       "label": "Content",
@@ -301,7 +330,7 @@
       "type": "range",
       "id": "articles_per_page",
       "label": "Articles per page",
-      "min": 5,
+      "min": 3,
       "max": 24,
       "step": 1,
       "default": 6

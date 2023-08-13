@@ -57,6 +57,11 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {{- 'hover-min.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'main.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'app.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'app-terms.css' | asset_url | stylesheet_tag: preload: true -}}
+
+    {% if template contains 'blog' or template contains 'article' %}
+      {{- 'app-blog.css' | asset_url | stylesheet_tag: preload: true -}}
+    {% endif %}
   </head>
 
   <body class="{% if settings.show_page_transition %}page-transition{% endif %} {% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %} template--{{ template.name }}">
@@ -116,5 +121,9 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         <script src="{{ 'customers-account.js' | asset_url }}" defer="defer"></script>
       {% endif %}
     {%- endif -%}
+
+    {% if template contains 'blog' or template contains 'article' %}
+      <script type="module" src="{{ 'app-blog.js' | asset_url }}"></script>
+    {% endif %}
   </body>
 </html>

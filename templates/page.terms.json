@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "f534dca4-4ca3-44b5-a072-9797722bc164": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--20382301585698__f534dca4-4ca3-44b5-a072-9797722bc164-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ page.title }}",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--20382301585698__f534dca4-4ca3-44b5-a072-9797722bc164-heading-1"
+      ],
+      "custom_css": [
+        ".h1 {color: var(--white, #fff); font-family: Montserrat; font-size: 64px; font-style: normal; font-weight: 700; line-height: 120%; \/* 76.8px *\/}",
+        "@media screen and (max-width: 991px) {.h1 {font-size: 40px; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/globe-plants-3d-plant-model-bundle-46-wetland-plants-PRV4_1.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "6c9e9893-7ca8-4103-8624-db7449934d88": {
+      "type": "main-terms",
+      "blocks": {
+        "1695f747-f038-4ecb-959e-8a5a0290c2e6": {
+          "type": "item",
+          "settings": {
+            "page": "terms-and-conditions"
+          }
+        },
+        "c9381578-764e-4bc1-a9ee-620dc76f8aa7": {
+          "type": "item",
+          "settings": {
+            "page": "privacy-policy"
+          }
+        },
+        "d7c52917-3cb9-4337-8eca-c6015e11b8ab": {
+          "type": "item",
+          "settings": {
+            "page": "refund-policy"
+          }
+        }
+      },
+      "block_order": [
+        "1695f747-f038-4ecb-959e-8a5a0290c2e6",
+        "c9381578-764e-4bc1-a9ee-620dc76f8aa7",
+        "d7c52917-3cb9-4337-8eca-c6015e11b8ab"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    }
+  },
+  "order": [
+    "f534dca4-4ca3-44b5-a072-9797722bc164",
+    "main",
+    "6c9e9893-7ca8-4103-8624-db7449934d88"
+  ]
+}

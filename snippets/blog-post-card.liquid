@@ -79,19 +79,20 @@ Supported parameters
 
       {%- if featured != true and show_excerpt -%}
         {%- if article -%}
-          <p class="text-sm">{{ article.excerpt_or_content | strip_html | truncate: 200 }}</p>
+          <p class="article-excerpt text-sm">{{ article.excerpt_or_content | strip_html | truncate: 200 }}</p>
         {%- else -%}
-          <p class="text-sm">{{ 'general.on_boarding.blog_post_excerpt' | t }}</p>
+          <p class="article-excerpt text-sm">{{ 'general.on_boarding.blog_post_excerpt' | t }}</p>
         {%- endif -%}
       {%- endif -%}
 
-      {% comment %} {%- if show_excerpt -%}
+      {% comment %}
+      {%- if show_excerpt -%}
         {%- if article -%}
           <p {% if featured %}class="text-lg"{% endif %}>{{ article.excerpt_or_content | strip_html | truncate: 200 }}</p>
         {%- else -%}
           <p {% if featured %}class="text-lg"{% endif %}>{{ 'general.on_boarding.blog_post_excerpt' | t }}</p>
         {%- endif -%}
-      {%- endif -%} {% endcomment %}
+      {%- endif -%}{% endcomment %}
 
       {%- if show_readmore -%}
         <a href="{{ article.url }}" class="text-with-icon animated-arrow-svg justify-self-end justify-end group">
@@ -103,7 +104,7 @@ Supported parameters
       {%- if show_category and article.tags.size > 0 -%}
         <div class="blog-tags v-stack gap-3">
         {% for tags in article.tags %}
-          <span class="badge badge--current badge--lg">{{ tags }}</span>
+          <a href="{{ blog.url }}/tagged/{{ tags | handle }}" class="badge badge--current badge--lg">{{ tags }}</a>
         {% endfor %}
         </div>
       {%- endif -%}

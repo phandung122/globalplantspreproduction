@@ -115,6 +115,40 @@
     </div>
   </div>
 
+  {% if article.metafields.custom.feature_product.value != blank %}
+  {% assign feature_product = article.metafields.custom.feature_product.value %}
+  <div class="article-feature-product-wrapper">
+    <div class="article-feature-product-content">
+      <div class="article-feature-product-top">
+        <h4>Special Offer!</h4>
+      </div>
+      <div class="article-feature-product-inner">
+        <h3>
+          {%- if feature_product.metafields.custom.plants_name != blank -%}
+            {{ feature_product.metafields.custom.plants_name }}
+            {%- for field in feature_product.metafields.custom.common_namess.value -%}
+              <span class="common_names">• {{ field }}</span>
+            {%- endfor -%}
+          {%- else -%}
+            {{ feature_product.title }}
+          {%- endif -%}
+        </h3>
+        <div class="article-feature-product-price">
+          <span class="article-feature-product-price-text">From only</span>
+          <span class="article-feature-product-price-number">{%- render 'price-list', product: feature_product -%}</span>
+        </div>
+      </div>
+      <div class="article-feature-product-bottom">
+        <a href="{{ feature_product.url }}" class="button">View product</a>
+        <span>Or click this product card</span>
+      </div>
+    </div>
+    <div class="article-feature-product-card-wrapper">
+      {%- render 'product-card', product: feature_product, stacked: true, background: "#ffffff", text_color: "#1a1a1a", show_badges: true -%}
+    </div>
+  </div>
+  {% endif %}
+
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when 'comments' -%}

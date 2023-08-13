@@ -42,6 +42,7 @@
     </div>
     
     <div class="section-format__content">
+      <div class="section-format__content-inner mobile">
         {%- if section.blocks.size > 0 -%}
             {%- for block in section.blocks -%}
                 <div class="format__file-item">
@@ -52,12 +53,59 @@
                 {%- endif -%}
                 {%- if block.settings.content != blank  -%}
                     <div class="format__file-content">
+                      <div class="format__file-content-inner">
                         {{- block.settings.content -}}
+                      </div>
                     </div>
                 {%- endif -%}
                 </div>
             {%- endfor -%}
         {%- endif -%}
+      </div>
+      <div class="section-format__content-inner desktop">
+        {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              {% assign mod = forloop.index | modulo: 2 %}
+              {% if mod == 0 %}{% continue %}{% endif %}
+                <div class="format__file-item">
+                {%- if block.settings.title != blank  -%}
+                    <div class="format__file-label">
+                        {{ block.settings.title }}
+                    </div>
+                {%- endif -%}
+                {%- if block.settings.content != blank  -%}
+                    <div class="format__file-content">
+                      <div class="format__file-content-inner">
+                        {{- block.settings.content -}}
+                      </div>
+                    </div>
+                {%- endif -%}
+                </div>
+            {%- endfor -%}
+        {%- endif -%}
+      </div>
+      <div class="section-format__content-inner desktop">
+        {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              {% assign mod = forloop.index | modulo: 2 %}
+              {% if mod != 0 %}{% continue %}{% endif %}
+                <div class="format__file-item">
+                {%- if block.settings.title != blank  -%}
+                    <div class="format__file-label">
+                        {{ block.settings.title }}
+                    </div>
+                {%- endif -%}
+                {%- if block.settings.content != blank  -%}
+                    <div class="format__file-content">
+                      <div class="format__file-content-inner">
+                        {{- block.settings.content -}}
+                      </div>
+                    </div>
+                {%- endif -%}
+                </div>
+            {%- endfor -%}
+        {%- endif -%}
+      </div>
     </div>
 </div>
 {% schema %}
@@ -86,7 +134,6 @@
     {
       "name": "Format file item",
       "type": "item",
-      "limit": 11,
       "settings": [
         {
           "type": "text",
